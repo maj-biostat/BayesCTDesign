@@ -13,6 +13,8 @@ Depends: R (>= 3.5.0)
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+URL: http://github.com/begglest/BayesCTDesign
+BugReports: http://github.com/begglest/BayesCTDesign/issues
 Imports: eha (>= 2.5.1),
     ggplot2 (>= 2.2.1),
     survival (>= 2.41-3),

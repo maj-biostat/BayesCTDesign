@@ -143,7 +143,7 @@ weibull_test <- simple_sim(trial_reps = 2, outcome_type = "weibull",
                            time_vec = NULL, censor_value = NULL,
                            alpha = 0.05, get_var = TRUE,
                            get_bias = TRUE, get_mse = TRUE,
-                           seedval=123)
+                           seedval=123, quietly=TRUE)
 
 #Tabulate the simulation results for power.
 test_table <- print_table(bayes_ctd_array=weibull_test, measure="power",
@@ -182,7 +182,8 @@ weibull_test2 <- historic_sim(trial_reps = 100, outcome_type = "weibull",
                               rand_control_diff = c(0.8, 1, 1.2),
                               hist_control_data = histdata, time_vec = NULL,
                               censor_value = 3, alpha = 0.05, get_var = TRUE,
-                              get_bias = TRUE, get_mse = TRUE, seedval=123)
+                              get_bias = TRUE, get_mse = TRUE, seedval=123,
+                              quietly=TRUE)
 
 #Tabulate the simulation results for power.
 test_table <- print_table(bayes_ctd_array=weibull_test2, measure="power",
@@ -223,7 +224,8 @@ bernoulli_test <- historic_sim(trial_reps = 100, outcome_type = "bernoulli",
                               rand_control_diff = c(1.8),
                               hist_control_data = histdata, time_vec = NULL,
                               censor_value = 3, alpha = 0.05, get_var = TRUE,
-                              get_bias = TRUE, get_mse = TRUE, seedval=123)
+                              get_bias = TRUE, get_mse = TRUE, seedval=123,
+                              quietly=TRUE)
 test_table <- print_table(bayes_ctd_array=bernoulli_test, measure="power",
                          tab_type=NULL, effect_val=NULL,
                          subj_per_arm_val=NULL)

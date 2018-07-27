@@ -106,6 +106,13 @@
 #' @param get_mse A TRUE/FALSE indicator of whether an array of MSE
 #'   estimates will be returned.  Default is \code{FALSE}.
 #' @param seedval A seed value for pseudo-random number generation.
+#' @param quietly A TRUE/FALSE indicator of whether notes are printed
+#'   to output about simulation progress as the simulation runs.  If
+#'   running interactively in RStudio or running in the R console,
+#'   \code{quietly} can be set to FALSE.  If running in a Notebook or
+#'   knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
+#'   each note will be printed on a separate line and it will take up
+#'   alot of output space.  Default is \code{TRUE}.
 #'
 #' @return \code{historic_sim()} returns an S3 object of class \code{bayes_ctd_array}.
 #'   As noted in details, an object of class \code{bayes_ctd_array }has 6 elements: a
@@ -144,7 +151,8 @@
 #'                              rand_control_diff = c(0.8, 1),
 #'                              hist_control_data = histdata, time_vec = NULL,
 #'                              censor_value = 3, alpha = 0.05, get_var = TRUE,
-#'                              get_bias = TRUE, get_mse = TRUE, seedval=123)
+#'                              get_bias = TRUE, get_mse = TRUE, seedval=123,
+#'                              quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
 #' test_table <- print_table(bayes_ctd_array=weibull_test, measure="power",
@@ -210,7 +218,8 @@
 #'                               rand_control_diff = c(0.6, 1, 1.6),
 #'                               hist_control_data = histdata, time_vec = NULL,
 #'                               censor_value = 3, alpha = 0.05, get_var = TRUE,
-#'                               get_bias = TRUE, get_mse = TRUE, seedval=123)
+#'                               get_bias = TRUE, get_mse = TRUE, seedval=123,
+#'                               quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
 #' test_table <- print_table(bayes_ctd_array=poisson_test, measure="power",
@@ -241,7 +250,8 @@
 #'                                rand_control_diff = c(1.8),
 #'                                hist_control_data = histdata, time_vec = NULL,
 #'                                censor_value = 3, alpha = 0.05, get_var = TRUE,
-#'                                get_bias = TRUE, get_mse = TRUE, seedval=123)
+#'                                get_bias = TRUE, get_mse = TRUE, seedval=123,
+#'                                quietly=TRUE)
 #'
 #' test_table <- print_table(bayes_ctd_array=lognormal_test, measure="power",
 #'                           tab_type=NULL)
@@ -254,7 +264,7 @@
 #' @export
 historic_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_arm = c(50, 100, 150, 200, 250), a0_vals = c(0,
     0.33, 0.67, 1), effect_vals = c(0.6, 1, 1.4), rand_control_diff = c(0.8, 1, 1.2), hist_control_data = NULL, time_vec = NULL,
-    censor_value = NULL, alpha = 0.05, get_var = FALSE, get_bias = FALSE, get_mse = FALSE, seedval=NULL){
+    censor_value = NULL, alpha = 0.05, get_var = FALSE, get_bias = FALSE, get_mse = FALSE, seedval=NULL, quietly=TRUE){
 
 	#set random seed
 	set.seed(seedval)
@@ -267,37 +277,37 @@ historic_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_ar
         weibull_error_checks(effect_vals, hist_control_data, rand_control_diff, censor_value, alpha)
         results <- weibull_sim(trial_reps = trial_reps, subj_per_arm = subj_per_arm, a0_vals = a0_vals, effect_vals = effect_vals,
             rand_control_diff = rand_control_diff, hist_control_data = hist_control_data, censor_value = censor_value,
-            alpha = alpha, get_var = get_var, get_bias = get_bias, get_mse = get_mse)
+            alpha = alpha, get_var = get_var, get_bias = get_bias, get_mse = get_mse, quietly=quietly)
 
     } else if (tolower(outcome_type) == "lognormal") {
         lognormal_error_checks(effect_vals, hist_control_data, rand_control_diff, censor_value, alpha)
         results <- lognormal_sim(trial_reps = trial_reps, subj_per_arm = subj_per_arm, a0_vals = a0_vals, effect_vals = effect_vals,
             rand_control_diff = rand_control_diff, hist_control_data = hist_control_data, censor_value = censor_value,
-            alpha = alpha, get_var = get_var, get_bias = get_bias, get_mse = get_mse)
+            alpha = alpha, get_var = get_var, get_bias = get_bias, get_mse = get_mse, quietly=quietly)
 
     } else if (tolower(outcome_type) == "pwe") {
         pwe_error_checks(effect_vals, hist_control_data, rand_control_diff, time_vec, censor_value, alpha)
         results <- pwe_sim(trial_reps = trial_reps, subj_per_arm = subj_per_arm, a0_vals = a0_vals, effect_vals = effect_vals,
             rand_control_diff = rand_control_diff, hist_control_data = hist_control_data, time_vec_val = time_vec, censor_value = censor_value,
-            alpha = alpha, get_var = get_var, get_bias = get_bias, get_mse = get_mse)
+            alpha = alpha, get_var = get_var, get_bias = get_bias, get_mse = get_mse, quietly=quietly)
 
     } else if (tolower(outcome_type) == "gaussian") {
         gaussian_error_checks(effect_vals, hist_control_data, rand_control_diff, alpha)
         results <- gaussian_sim(trial_reps = trial_reps, subj_per_arm = subj_per_arm, a0_vals = a0_vals, effect_vals = effect_vals,
             rand_control_diff = rand_control_diff, hist_control_data = hist_control_data, alpha = alpha, get_var = get_var,
-            get_bias = get_bias, get_mse = get_mse)
+            get_bias = get_bias, get_mse = get_mse, quietly=quietly)
 
     } else if (tolower(outcome_type) == "bernoulli") {
         bernoulli_error_checks(effect_vals, hist_control_data, rand_control_diff, alpha)
         results <- bernoulli_sim(trial_reps = trial_reps, subj_per_arm = subj_per_arm, a0_vals = a0_vals, effect_vals = effect_vals,
             rand_control_diff = rand_control_diff, hist_control_data = hist_control_data, alpha = alpha, get_var = get_var,
-            get_bias = get_bias, get_mse = get_mse)
+            get_bias = get_bias, get_mse = get_mse, quietly=quietly)
 
     } else if (tolower(outcome_type) == "poisson") {
         poisson_error_checks(effect_vals, hist_control_data, rand_control_diff, alpha)
         results <- poisson_sim(trial_reps = trial_reps, subj_per_arm = subj_per_arm, a0_vals = a0_vals, effect_vals = effect_vals,
             rand_control_diff = rand_control_diff, hist_control_data = hist_control_data, alpha = alpha, get_var = get_var,
-            get_bias = get_bias, get_mse = get_mse)
+            get_bias = get_bias, get_mse = get_mse, quietly=quietly)
     }
 
     if ((length(subj_per_arm) == 1 & length(a0_vals) == 1 & length(effect_vals) == 1) |
@@ -427,6 +437,13 @@ historic_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_ar
 #' @param get_mse A TRUE/FALSE indicator of whether an array of MSE
 #'   estimates will be returned.  Default is \code{FALSE}.
 #' @param seedval A seed value for pseudo-random number generation.
+#' @param quietly A TRUE/FALSE indicator of whether notes are printed
+#'   to output about simulation progress as the simulation runs.  If
+#'   running interactively in RStudio or running in the R console,
+#'   \code{quietly} can be set to FALSE.  If running in a Notebook or
+#'   knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
+#'   each note will be printed on a separate line and it will take up
+#'   alot of output space.  Default is \code{TRUE}.
 #'
 #' @return \code{simple_sim()} returns an S3 object of class \code{bayes_ctd_array}.
 #'   As noted in Details, an object of class \code{bayes_ctd_array} has 6 elements: a
@@ -455,7 +472,7 @@ historic_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_ar
 #'                            control_parms = c(2.82487,3), time_vec = NULL,
 #'                            censor_value = NULL, alpha = 0.05,
 #'                            get_var = TRUE, get_bias = TRUE, get_mse = TRUE,
-#'                            seedval=123)
+#'                            seedval=123, quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
 #' test_table <- print_table(bayes_ctd_array=weibull_test, measure="power",
@@ -481,7 +498,7 @@ historic_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_ar
 #' @export
 simple_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_arm = c(50, 100, 150, 200, 250), effect_vals = c(0.6,1,
     1.4), control_parms = NULL, time_vec = NULL, censor_value = NULL, alpha = 0.05, get_var = FALSE, get_bias = FALSE,
-    get_mse = FALSE, seedval=NULL) {
+    get_mse = FALSE, seedval=NULL, quietly=TRUE) {
 
 	#set random seed
 	set.seed(seedval)
@@ -493,35 +510,35 @@ simple_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_arm 
         weibull_error_checks_simple(effect_vals, control_parms, censor_value, alpha)
         results <- simple_weibull_sim(trial_reps = trial_reps, subj_per_arm = subj_per_arm, effect_vals = effect_vals,
             scale1_value = control_parms[1], common_shape_value = control_parms[2], censor_value = censor_value, alpha = alpha,
-            get_var = get_var, get_bias = get_bias, get_mse = get_mse)
+            get_var = get_var, get_bias = get_bias, get_mse = get_mse, quietly=quietly)
 
     } else if (tolower(outcome_type) == "lognormal") {
         lognormal_error_checks_simple(effect_vals, control_parms, censor_value, alpha)
         results <- simple_lognormal_sim(trial_reps = trial_reps, subj_per_arm = subj_per_arm, effect_vals = effect_vals,
             mu1_val = control_parms[1], common_sd_val = control_parms[2], censor_value = censor_value, alpha = alpha,
-            get_var = get_var, get_bias = get_bias, get_mse = get_mse)
+            get_var = get_var, get_bias = get_bias, get_mse = get_mse, quietly=quietly)
 
     } else if (tolower(outcome_type) == "pwe") {
         pwe_error_checks_simple(effect_vals, time_vec, control_parms, censor_value, alpha)
         results <- simple_pwe_sim(trial_reps = trial_reps, subj_per_arm = subj_per_arm, effect_vals = effect_vals, time_vec_val = time_vec,
             rc_hazards = control_parms, censor_value = censor_value, alpha = alpha, get_var = get_var, get_bias = get_bias,
-            get_mse = get_mse)
+            get_mse = get_mse, quietly=quietly)
 
     } else if (tolower(outcome_type) == "gaussian") {
         gaussian_error_checks_simple(effect_vals, control_parms, alpha)
         results <- simple_gaussian_sim(trial_reps = trial_reps, subj_per_arm = subj_per_arm, effect_vals = effect_vals,
             mu1_val = control_parms[1], common_sd_val = control_parms[2], alpha = alpha, get_var = get_var, get_bias = get_bias,
-            get_mse = get_mse)
+            get_mse = get_mse, quietly=quietly)
 
     } else if (tolower(outcome_type) == "bernoulli") {
         bernoulli_error_checks_simple(effect_vals, control_parms, alpha)
         results <- simple_bernoulli_sim(trial_reps = trial_reps, subj_per_arm = subj_per_arm, effect_vals = effect_vals,
-            prob1_val = control_parms[1], alpha = alpha, get_var = get_var, get_bias = get_bias, get_mse = get_mse)
+            prob1_val = control_parms[1], alpha = alpha, get_var = get_var, get_bias = get_bias, get_mse = get_mse, quietly=quietly)
 
     } else if (tolower(outcome_type) == "poisson") {
         poisson_error_checks_simple(effect_vals, control_parms, alpha)
         results <- simple_poisson_sim(trial_reps = trial_reps, subj_per_arm = subj_per_arm, effect_vals = effect_vals,
-            mu1_val = control_parms[1], alpha = alpha, get_var = get_var, get_bias = get_bias, get_mse = get_mse)
+            mu1_val = control_parms[1], alpha = alpha, get_var = get_var, get_bias = get_bias, get_mse = get_mse, quietly=quietly)
     }
 }
 
@@ -653,7 +670,7 @@ simple_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_arm 
 #'                            time_vec = NULL, censor_value = NULL,
 #'                            alpha = 0.05, get_var = TRUE,
 #'                            get_bias = TRUE, get_mse = TRUE,
-#'                            seedval=123)
+#'                            seedval=123, quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
 #' test_table <- print_table(bayes_ctd_array=weibull_test, measure="power",
@@ -692,7 +709,8 @@ simple_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_arm 
 #'                               rand_control_diff = c(0.8, 1, 1.2),
 #'                               hist_control_data = histdata, time_vec = NULL,
 #'                               censor_value = 3, alpha = 0.05, get_var = TRUE,
-#'                               get_bias = TRUE, get_mse = TRUE, seedval=123)
+#'                               get_bias = TRUE, get_mse = TRUE, seedval=123,
+#'                               quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
 #' test_table <- print_table(bayes_ctd_array=weibull_test2, measure="power",
@@ -733,7 +751,8 @@ simple_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_arm 
 #'                               rand_control_diff = c(1.8),
 #'                               hist_control_data = histdata, time_vec = NULL,
 #'                               censor_value = 3, alpha = 0.05, get_var = TRUE,
-#'                               get_bias = TRUE, get_mse = TRUE, seedval=123)
+#'                               get_bias = TRUE, get_mse = TRUE, seedval=123,
+#'                               quietly=TRUE)
 #' test_table <- print_table(bayes_ctd_array=bernoulli_test, measure="power",
 #'                          tab_type=NULL, effect_val=NULL,
 #'                          subj_per_arm_val=NULL)
@@ -889,7 +908,7 @@ print_table <- function(bayes_ctd_array = NULL, measure = "power", tab_type = "W
 #'                            time_vec = NULL, censor_value = NULL,
 #'                            alpha = 0.05, get_var = TRUE,
 #'                            get_bias = TRUE, get_mse = TRUE,
-#'                            seedval=123)
+#'                            seedval=123, quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
 #' test_table <- print_table(bayes_ctd_array=weibull_test, measure="power",
@@ -928,7 +947,8 @@ print_table <- function(bayes_ctd_array = NULL, measure = "power", tab_type = "W
 #'                               rand_control_diff = c(0.8, 1, 1.2),
 #'                               hist_control_data = histdata, time_vec = NULL,
 #'                               censor_value = 3, alpha = 0.05, get_var = TRUE,
-#'                               get_bias = TRUE, get_mse = TRUE, seedval=123)
+#'                               get_bias = TRUE, get_mse = TRUE, seedval=123,
+#'                               quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
 #' test_table <- print_table(bayes_ctd_array=weibull_test2, measure="power",
@@ -969,7 +989,8 @@ print_table <- function(bayes_ctd_array = NULL, measure = "power", tab_type = "W
 #'                               rand_control_diff = c(1.8),
 #'                               hist_control_data = histdata, time_vec = NULL,
 #'                               censor_value = 3, alpha = 0.05, get_var = TRUE,
-#'                               get_bias = TRUE, get_mse = TRUE, seedval=123)
+#'                               get_bias = TRUE, get_mse = TRUE, seedval=123,
+#'                               quietly=TRUE)
 #' test_table <- print_table(bayes_ctd_array=bernoulli_test, measure="power",
 #'                          tab_type=NULL, effect_val=NULL,
 #'                          subj_per_arm_val=NULL)
@@ -1520,7 +1541,7 @@ print_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power
 #'                            control_parms = c(2.82487,3), time_vec = NULL,
 #'                            censor_value = NULL, alpha = 0.05,
 #'                            get_var = TRUE, get_bias = TRUE, get_mse = TRUE,
-#'                            seedval=123)
+#'                            seedval=123, quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
 #' test_table <- print_table(bayes_ctd_array=weibull_test, measure="power",
@@ -1557,7 +1578,8 @@ print_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power
 #'                             effect_vals = c(0.6, 1, 1.4),
 #'                             control_parms = c(2.82487,3), time_vec = NULL,
 #'                             censor_value = NULL, alpha = 0.05, get_var = TRUE,
-#'                             get_bias = TRUE, get_mse = TRUE, seedval=123)
+#'                             get_bias = TRUE, get_mse = TRUE, seedval=123,
+#'                             quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
 #' test_table <- print_table(bayes_ctd_array=weibull_test2, measure="power",
@@ -1590,7 +1612,8 @@ print_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power
 #'                               rand_control_diff = c(0.8, 1, 1.2),
 #'                               hist_control_data = histdata, time_vec = NULL,
 #'                               censor_value = 3, alpha = 0.05, get_var = TRUE,
-#'                               get_bias = TRUE, get_mse = TRUE, seedval=123)
+#'                               get_bias = TRUE, get_mse = TRUE, seedval=123,
+#'                               quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
 #' test_table <- print_table(bayes_ctd_array=weibull_test3, measure="power",
@@ -1621,7 +1644,8 @@ print_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power
 #'                                                    -1.5,-1.0,-0.5,0,0.5,1.0),
 #'                              hist_control_data = histdata, time_vec = NULL,
 #'                              censor_value = 3, alpha = 0.05, get_var = TRUE,
-#'                              get_bias = TRUE, get_mse = TRUE, seedval=123)
+#'                              get_bias = TRUE, get_mse = TRUE, seedval=123,
+#'                              quietly=TRUE)
 #' test_table <- print_table(bayes_ctd_array=gaussian_test, measure="power",
 #'                          tab_type=NULL, effect_val=NULL,
 #'                          subj_per_arm_val=NULL)
@@ -1658,7 +1682,8 @@ print_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power
 #'                         rand_control_diff = c(1.8),
 #'                         hist_control_data = histdata, time_vec = time.vec,
 #'                         censor_value = 3, alpha = 0.05, get_var = TRUE,
-#'                         get_bias = TRUE, get_mse = TRUE, seedval=123)
+#'                         get_bias = TRUE, get_mse = TRUE, seedval=123,
+#'                         quietly=TRUE)
 #'
 #' test_table <- print_table(bayes_ctd_array=pwe_test, measure="power",
 #'                          tab_type=NULL, effect_val=NULL,
@@ -1834,7 +1859,7 @@ plot_table <- function(bayes_ctd_array, measure = "power", tab_type = "WX|YZ", s
 #'                            control_parms = c(2.82487,3), time_vec = NULL,
 #'                            censor_value = NULL, alpha = 0.05,
 #'                            get_var = TRUE, get_bias = TRUE, get_mse = TRUE,
-#'                            seedval=123)
+#'                            seedval=123, quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
 #' test_table <- print_table(bayes_ctd_array=weibull_test, measure="power",
@@ -1871,7 +1896,8 @@ plot_table <- function(bayes_ctd_array, measure = "power", tab_type = "WX|YZ", s
 #'                             effect_vals = c(0.6, 1, 1.4),
 #'                             control_parms = c(2.82487,3), time_vec = NULL,
 #'                             censor_value = NULL, alpha = 0.05, get_var = TRUE,
-#'                             get_bias = TRUE, get_mse = TRUE, seedval=123)
+#'                             get_bias = TRUE, get_mse = TRUE, seedval=123,
+#'                             quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
 #' test_table <- print_table(bayes_ctd_array=weibull_test2, measure="power",
@@ -1904,7 +1930,8 @@ plot_table <- function(bayes_ctd_array, measure = "power", tab_type = "WX|YZ", s
 #'                               rand_control_diff = c(0.8, 1, 1.2),
 #'                               hist_control_data = histdata, time_vec = NULL,
 #'                               censor_value = 3, alpha = 0.05, get_var = TRUE,
-#'                               get_bias = TRUE, get_mse = TRUE, seedval=123)
+#'                               get_bias = TRUE, get_mse = TRUE, seedval=123,
+#'                               quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
 #' test_table <- print_table(bayes_ctd_array=weibull_test3, measure="power",
@@ -1935,7 +1962,8 @@ plot_table <- function(bayes_ctd_array, measure = "power", tab_type = "WX|YZ", s
 #'                                                    -1.5,-1.0,-0.5,0,0.5,1.0),
 #'                              hist_control_data = histdata, time_vec = NULL,
 #'                              censor_value = 3, alpha = 0.05, get_var = TRUE,
-#'                              get_bias = TRUE, get_mse = TRUE, seedval=123)
+#'                              get_bias = TRUE, get_mse = TRUE, seedval=123,
+#'                              quietly=TRUE)
 #' test_table <- print_table(bayes_ctd_array=gaussian_test, measure="power",
 #'                          tab_type=NULL, effect_val=NULL,
 #'                          subj_per_arm_val=NULL)
@@ -1972,7 +2000,8 @@ plot_table <- function(bayes_ctd_array, measure = "power", tab_type = "WX|YZ", s
 #'                         rand_control_diff = c(1.8),
 #'                         hist_control_data = histdata, time_vec = time.vec,
 #'                         censor_value = 3, alpha = 0.05, get_var = TRUE,
-#'                         get_bias = TRUE, get_mse = TRUE, seedval=123)
+#'                         get_bias = TRUE, get_mse = TRUE, seedval=123,
+#'                         quietly=TRUE)
 #'
 #' test_table <- print_table(bayes_ctd_array=pwe_test, measure="power",
 #'                          tab_type=NULL, effect_val=NULL,

@@ -486,14 +486,23 @@ weibulltrialsimulatornohist <- function(sample_size_val, scale1_val, hazard_rati
 #'   estimates will be returned.  Default is \code{FALSE}.
 #' @param get_mse A TRUE/FALSE indicator of whether an array of MSE
 #'   estimates will be returned.  Default is \code{FALSE}.
+#' @param quietly A TRUE/FALSE indicator of whether notes are printed
+#'   to output about simulation progress as the simulation runs.  If
+#'   running interactively in RStudio or running in the R console,
+#'   \code{quietly} can be set to FALSE.  If running in a Notebook or
+#'   knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
+#'   each note will be printed on a separate line and it will take up
+#'   alot of output space.  Default is \code{TRUE}.
 #'
 #' @return \code{weibull_sim()} returns an S3 object of class bayes_ctd_array.
 #'
 #' @examples
 #' #None
 #' @keywords internal
-weibull_sim <- function(trial_reps, subj_per_arm, a0_vals, effect_vals, rand_control_diff, hist_control_data, censor_value,
-    alpha, get_var, get_bias, get_mse) {
+weibull_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
+                        rand_control_diff, hist_control_data, censor_value,
+                        alpha=0.05, get_var=FALSE, get_bias=FALSE,
+                        get_mse=FALSE, quietly=TRUE) {
 
     # --------------------------------------------------------------- #
     # For a set of user specified scenarios (defined by combinations
@@ -534,7 +543,9 @@ weibull_sim <- function(trial_reps, subj_per_arm, a0_vals, effect_vals, rand_con
         for (effvals in 1:length(effect_vals)) {
             for (a0vals in 1:length(a0_vals)) {
                 for (sizes in 1:length(subj_per_arm)) {
-                  cat("\r", c(rand_control_diff[diffs], effect_vals[effvals], a0_vals[a0vals], subj_per_arm[sizes]))
+                  if (!quietly){
+                    cat("\r", c(subj_per_arm[sizes], a0_vals[a0vals], effect_vals[effvals], rand_control_diff[diffs]))
+                  }
                   # For each combination of rand_control_diff, effect_vals, a0_vals, and subj_per_arm, simulate the trial
                   #trial_reps times and then calculate the mean reject rate to estimate power.  For bias, work on the
                   #hazard ratio scale and take the mean of all differences between estimated hazard ratios and the
@@ -566,7 +577,9 @@ weibull_sim <- function(trial_reps, subj_per_arm, a0_vals, effect_vals, rand_con
                   if (get_mse == TRUE) {
                     mse_results[sizes, a0vals, effvals, diffs] <- mean((collect[, 1] - effect_vals[effvals])^2)
                   }
-                  cat("\r", "                                                                                    ")
+                  if (!quietly){
+                    cat("\r", "                                                                                    ")
+                  }
                 }
             }
         }
@@ -925,14 +938,23 @@ weibull_sim <- function(trial_reps, subj_per_arm, a0_vals, effect_vals, rand_con
 #'   estimates will be returned.  Default is \code{FALSE}.
 #' @param get_mse A TRUE/FALSE indicator of whether an array of MSE
 #'   estimates will be returned.  Default is \code{FALSE}.
+#' @param quietly A TRUE/FALSE indicator of whether notes are printed
+#'   to output about simulation progress as the simulation runs.  If
+#'   running interactively in RStudio or running in the R console,
+#'   \code{quietly} can be set to FALSE.  If running in a Notebook or
+#'   knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
+#'   each note will be printed on a separate line and it will take up
+#'   alot of output space.  Default is \code{TRUE}.
 #'
 #' @return \code{simple_weibull_sim()} returns an S3 object of class bayes_ctd_array.
 #'
 #' @examples
 #' #None
 #' @keywords internal
-simple_weibull_sim <- function(trial_reps, subj_per_arm, effect_vals, scale1_value, common_shape_value,
-    censor_value, alpha, get_var, get_bias, get_mse) {
+simple_weibull_sim <- function(trial_reps=100, subj_per_arm, effect_vals, scale1_value,
+                               common_shape_value, censor_value, alpha=0.05,
+                               get_var=FALSE, get_bias=FALSE, get_mse=FALSE,
+                               quietly=TRUE) {
 
   # --------------------------------------------------------------- #
   # For a set of user specified scenarios (defined by combinations
@@ -967,7 +989,9 @@ simple_weibull_sim <- function(trial_reps, subj_per_arm, effect_vals, scale1_val
         for (effvals in 1:length(effect_vals)) {
             for (a0vals in 1:length(a0_vals)) {
                 for (sizes in 1:length(subj_per_arm)) {
-                  cat("\r", c(rand_control_diff[diffs], effect_vals[effvals], a0_vals[a0vals], subj_per_arm[sizes]))
+                  if (!quietly){
+                    cat("\r", c(subj_per_arm[sizes], a0_vals[a0vals], effect_vals[effvals], rand_control_diff[diffs]))
+                  }
                   # For each combination of rand_control_diff, effect_vals, a0_val, and subj_per_arm, simulate the trial
                   # trial_reps times and then calculate the mean reject rate to estimate power.  For bias, work on the
                   #hazard ratio scale and take the mean of all differences between estimated hazard ratios and the
@@ -1000,7 +1024,9 @@ simple_weibull_sim <- function(trial_reps, subj_per_arm, effect_vals, scale1_val
                   if (get_mse == TRUE) {
                     mse_results[sizes, a0vals, effvals, diffs] <- mean((collect[, 1] - effect_vals[effvals])^2)
                   }
-                  cat("\r", "                                                                                    ")
+                  if (!quietly){
+                    cat("\r", "                                                                                    ")
+                  }
                 }
             }
         }

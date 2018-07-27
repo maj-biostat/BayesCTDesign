@@ -8,7 +8,7 @@ simple_sim(trial_reps = 100, outcome_type = "weibull",
   subj_per_arm = c(50, 100, 150, 200, 250), effect_vals = c(0.6, 1, 1.4),
   control_parms = NULL, time_vec = NULL, censor_value = NULL,
   alpha = 0.05, get_var = FALSE, get_bias = FALSE, get_mse = FALSE,
-  seedval = NULL)
+  seedval = NULL, quietly = TRUE)
 }
 \arguments{
 \item{trial_reps}{Number of trials to replicate within each combination of
@@ -59,6 +59,14 @@ estimates will be returned.  Default is \code{FALSE}.}
 estimates will be returned.  Default is \code{FALSE}.}
 
 \item{seedval}{A seed value for pseudo-random number generation.}
+
+\item{quietly}{A TRUE/FALSE indicator of whether notes are printed
+to output about simulation progress as the simulation runs.  If
+running interactively in RStudio or running in the R console,
+\code{quietly} can be set to FALSE.  If running in a Notebook or
+knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
+each note will be printed on a separate line and it will take up
+alot of output space.  Default is \code{TRUE}.}
 }
 \value{
 \code{simple_sim()} returns an S3 object of class \code{bayes_ctd_array}.
@@ -169,7 +177,7 @@ weibull_test <- simple_sim(trial_reps = 2, outcome_type = "weibull",
                            control_parms = c(2.82487,3), time_vec = NULL,
                            censor_value = NULL, alpha = 0.05,
                            get_var = TRUE, get_bias = TRUE, get_mse = TRUE,
-                           seedval=123)
+                           seedval=123, quietly=TRUE)
 
 #Tabulate the simulation results for power.
 test_table <- print_table(bayes_ctd_array=weibull_test, measure="power",

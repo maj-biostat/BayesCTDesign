@@ -182,7 +182,7 @@ weibull_test <- simple_sim(trial_reps = 2, outcome_type = "weibull",
                            control_parms = c(2.82487,3), time_vec = NULL,
                            censor_value = NULL, alpha = 0.05,
                            get_var = TRUE, get_bias = TRUE, get_mse = TRUE,
-                           seedval=123)
+                           seedval=123, quietly=TRUE)
 
 #Tabulate the simulation results for power.
 test_table <- print_table(bayes_ctd_array=weibull_test, measure="power",
@@ -219,7 +219,8 @@ weibull_test2 <- simple_sim(trial_reps = 100, outcome_type = "weibull",
                             effect_vals = c(0.6, 1, 1.4),
                             control_parms = c(2.82487,3), time_vec = NULL,
                             censor_value = NULL, alpha = 0.05, get_var = TRUE,
-                            get_bias = TRUE, get_mse = TRUE, seedval=123)
+                            get_bias = TRUE, get_mse = TRUE, seedval=123,
+                            quietly=TRUE)
 
 #Tabulate the simulation results for power.
 test_table <- print_table(bayes_ctd_array=weibull_test2, measure="power",
@@ -252,7 +253,8 @@ weibull_test3 <- historic_sim(trial_reps = 100, outcome_type = "weibull",
                               rand_control_diff = c(0.8, 1, 1.2),
                               hist_control_data = histdata, time_vec = NULL,
                               censor_value = 3, alpha = 0.05, get_var = TRUE,
-                              get_bias = TRUE, get_mse = TRUE, seedval=123)
+                              get_bias = TRUE, get_mse = TRUE, seedval=123,
+                              quietly=TRUE)
 
 #Tabulate the simulation results for power.
 test_table <- print_table(bayes_ctd_array=weibull_test3, measure="power",
@@ -283,7 +285,8 @@ gaussian_test <- historic_sim(trial_reps = 100, outcome_type = "gaussian",
                                                    -1.5,-1.0,-0.5,0,0.5,1.0),
                              hist_control_data = histdata, time_vec = NULL,
                              censor_value = 3, alpha = 0.05, get_var = TRUE,
-                             get_bias = TRUE, get_mse = TRUE, seedval=123)
+                             get_bias = TRUE, get_mse = TRUE, seedval=123,
+                             quietly=TRUE)
 test_table <- print_table(bayes_ctd_array=gaussian_test, measure="power",
                          tab_type=NULL, effect_val=NULL,
                          subj_per_arm_val=NULL)
@@ -320,7 +323,8 @@ pwe_test <- historic_sim(trial_reps = 100, outcome_type = "pwe",
                         rand_control_diff = c(1.8),
                         hist_control_data = histdata, time_vec = time.vec,
                         censor_value = 3, alpha = 0.05, get_var = TRUE,
-                        get_bias = TRUE, get_mse = TRUE, seedval=123)
+                        get_bias = TRUE, get_mse = TRUE, seedval=123,
+                        quietly=TRUE)
 
 test_table <- print_table(bayes_ctd_array=pwe_test, measure="power",
                          tab_type=NULL, effect_val=NULL,

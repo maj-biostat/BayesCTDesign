@@ -5,8 +5,9 @@
 \title{Repeated Two Arm Bayesian Clinical Trial Simulation with Historical Data and
 Weibull Outcome.}
 \usage{
-weibull_sim(trial_reps, subj_per_arm, a0_vals, effect_vals, rand_control_diff,
-  hist_control_data, censor_value, alpha, get_var, get_bias, get_mse)
+weibull_sim(trial_reps = 100, subj_per_arm, a0_vals, effect_vals,
+  rand_control_diff, hist_control_data, censor_value, alpha = 0.05,
+  get_var = FALSE, get_bias = FALSE, get_mse = FALSE, quietly = TRUE)
 }
 \arguments{
 \item{trial_reps}{Number of trials to replicate within each combination of
@@ -50,6 +51,14 @@ estimates will be returned.  Default is \code{FALSE}.}
 
 \item{get_mse}{A TRUE/FALSE indicator of whether an array of MSE
 estimates will be returned.  Default is \code{FALSE}.}
+
+\item{quietly}{A TRUE/FALSE indicator of whether notes are printed
+to output about simulation progress as the simulation runs.  If
+running interactively in RStudio or running in the R console,
+\code{quietly} can be set to FALSE.  If running in a Notebook or
+knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
+each note will be printed on a separate line and it will take up
+alot of output space.  Default is \code{TRUE}.}
 }
 \value{
 \code{weibull_sim()} returns an S3 object of class bayes_ctd_array.

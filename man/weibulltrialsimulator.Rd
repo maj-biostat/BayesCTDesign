@@ -5,8 +5,8 @@
 \title{Simulate a single randomized trial using a Weibull outcome and information from
 historical controls.}
 \usage{
-weibulltrialsimulator(sample_size_val, histdata, scale1_val, hazard_ratio_val,
-  common_shape_val, censor_value, a0_val, alpha)
+weibulltrialsimulator(sample_size_val, histdata, scale1_val,
+  hazard_ratio_val, common_shape_val, censor_value, a0_val, alpha)
 }
 \arguments{
 \item{sample_size_val}{Number of subjects per arm.}

@@ -5,8 +5,8 @@
 \title{Two Arm Bayesian Clinical Trial Simulation with Historical Data}
 \usage{
 historic_sim(trial_reps = 100, outcome_type = "weibull",
-  subj_per_arm = c(50, 100, 150, 200, 250), a0_vals = c(0, 0.33, 0.67, 1),
-  effect_vals = c(0.6, 1, 1.4), rand_control_diff = c(0.8, 1, 1.2),
+  subj_per_arm = c(50, 100, 150, 200, 250), a0_vals = c(0, 0.33, 0.67,
+  1), effect_vals = c(0.6, 1, 1.4), rand_control_diff = c(0.8, 1, 1.2),
   hist_control_data = NULL, time_vec = NULL, censor_value = NULL,
   alpha = 0.05, get_var = FALSE, get_bias = FALSE, get_mse = FALSE,
   seedval = NULL, quietly = TRUE)

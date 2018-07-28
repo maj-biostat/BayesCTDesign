@@ -7,7 +7,8 @@ Weibull Outcome.}
 \usage{
 weibull_sim(trial_reps = 100, subj_per_arm, a0_vals, effect_vals,
   rand_control_diff, hist_control_data, censor_value, alpha = 0.05,
-  get_var = FALSE, get_bias = FALSE, get_mse = FALSE, quietly = TRUE)
+  get_var = FALSE, get_bias = FALSE, get_mse = FALSE,
+  quietly = TRUE)
 }
 \arguments{
 \item{trial_reps}{Number of trials to replicate within each combination of

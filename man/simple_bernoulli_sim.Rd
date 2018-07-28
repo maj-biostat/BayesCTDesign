@@ -5,9 +5,9 @@
 \title{Repeated Two Arm Bayesian Clinical Trial Simulation with no Historical Data and
 Bernoulli Outcome (Logistic regression model).}
 \usage{
-simple_bernoulli_sim(trial_reps = 100, subj_per_arm, effect_vals, prob1_val,
-  alpha = 0.05, get_var = FALSE, get_bias = FALSE, get_mse = FALSE,
-  quietly = TRUE)
+simple_bernoulli_sim(trial_reps = 100, subj_per_arm, effect_vals,
+  prob1_val, alpha = 0.05, get_var = FALSE, get_bias = FALSE,
+  get_mse = FALSE, quietly = TRUE)
 }
 \arguments{
 \item{trial_reps}{Number of trials to replicate within each combination of

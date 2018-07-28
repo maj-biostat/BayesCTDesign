@@ -5,7 +5,8 @@
 \title{Simulate a single randomized trial using a Poisson outcome but not including any information from
 historical controls.}
 \usage{
-poissontrialsimulatornohist(sample_size_val, mu1_val, mean_ratio_val, alpha)
+poissontrialsimulatornohist(sample_size_val, mu1_val, mean_ratio_val,
+  alpha)
 }
 \arguments{
 \item{sample_size_val}{Number of subjects per arm.}

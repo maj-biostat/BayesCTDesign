@@ -4,7 +4,8 @@
 \alias{bernoulli_error_checks}
 \title{Checks for Errors when Outcome is Bernoulli.}
 \usage{
-bernoulli_error_checks(effect_vals, hist_control_data, rand_control_diff, alpha)
+bernoulli_error_checks(effect_vals, hist_control_data, rand_control_diff,
+  alpha)
 }
 \arguments{
 \item{effect_vals}{See help page for \code{historic_sim()}.}

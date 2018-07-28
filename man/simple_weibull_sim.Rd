@@ -5,9 +5,10 @@
 \title{Two Arm Bayesian Clinical Trial Simulation with no Historical Data and
 Weibull Outcome.}
 \usage{
-simple_weibull_sim(trial_reps = 100, subj_per_arm, effect_vals, scale1_value,
-  common_shape_value, censor_value, alpha = 0.05, get_var = FALSE,
-  get_bias = FALSE, get_mse = FALSE, quietly = TRUE)
+simple_weibull_sim(trial_reps = 100, subj_per_arm, effect_vals,
+  scale1_value, common_shape_value, censor_value, alpha = 0.05,
+  get_var = FALSE, get_bias = FALSE, get_mse = FALSE,
+  quietly = TRUE)
 }
 \arguments{
 \item{trial_reps}{Number of trials to replicate within each combination of

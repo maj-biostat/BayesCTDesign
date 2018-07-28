@@ -4,7 +4,8 @@
 \alias{lognormal_error_checks_simple}
 \title{Checks for Errors when Outcome is Lognormal.}
 \usage{
-lognormal_error_checks_simple(effect_vals, control_parms, censor_value, alpha)
+lognormal_error_checks_simple(effect_vals, control_parms, censor_value,
+  alpha)
 }
 \arguments{
 \item{effect_vals}{See help page for \code{simple_sim()}.}

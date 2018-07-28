@@ -4,7 +4,8 @@
 \alias{gaussian_error_checks}
 \title{Checks for Errors when Outcome is Gaussian.}
 \usage{
-gaussian_error_checks(effect_vals, hist_control_data, rand_control_diff, alpha)
+gaussian_error_checks(effect_vals, hist_control_data, rand_control_diff,
+  alpha)
 }
 \arguments{
 \item{effect_vals}{See help page for \code{historic_sim()}.}

@@ -5,7 +5,8 @@
 \title{Simulate a single randomized trial using a Bernoulli outcome but not including any information from
 historical controls (Logistic regression model).}
 \usage{
-bernoullitrialsimulatornohist(sample_size_val, prob1_val, odds_ratio_val, alpha)
+bernoullitrialsimulatornohist(sample_size_val, prob1_val, odds_ratio_val,
+  alpha)
 }
 \arguments{
 \item{sample_size_val}{Number of subjects per arm.}

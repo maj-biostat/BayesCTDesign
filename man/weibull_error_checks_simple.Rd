@@ -4,7 +4,8 @@
 \alias{weibull_error_checks_simple}
 \title{Checks for Errors when Outcome is Weibull.}
 \usage{
-weibull_error_checks_simple(effect_vals, control_parms, censor_value, alpha)
+weibull_error_checks_simple(effect_vals, control_parms, censor_value,
+  alpha)
 }
 \arguments{
 \item{effect_vals}{See help page for \code{simple_sim()}.}

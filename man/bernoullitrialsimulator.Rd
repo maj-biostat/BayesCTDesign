@@ -5,8 +5,8 @@
 \title{Simulate a single randomized trial using a Bernoulli outcome and information from
 historical controls (Logistic regression model).}
 \usage{
-bernoullitrialsimulator(sample_size_val, histdata, prob1_val, odds_ratio_val,
-  a0_val, alpha)
+bernoullitrialsimulator(sample_size_val, histdata, prob1_val,
+  odds_ratio_val, a0_val, alpha)
 }
 \arguments{
 \item{sample_size_val}{Number of subjects per arm.}

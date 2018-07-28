@@ -5,9 +5,9 @@
 \title{Repeated Two Arm Bayesian Clinical Trial Simulation with Historical Data and
 Poisson Outcome.}
 \usage{
-poisson_sim(trial_reps, subj_per_arm, a0_vals, effect_vals, rand_control_diff,
-  hist_control_data, alpha = 0.05, get_var = FALSE, get_bias = FALSE,
-  get_mse = FALSE, quietly = TRUE)
+poisson_sim(trial_reps, subj_per_arm, a0_vals, effect_vals,
+  rand_control_diff, hist_control_data, alpha = 0.05, get_var = FALSE,
+  get_bias = FALSE, get_mse = FALSE, quietly = TRUE)
 }
 \arguments{
 \item{trial_reps}{Number of trials to replicate within each combination of

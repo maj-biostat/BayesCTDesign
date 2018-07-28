@@ -5,8 +5,8 @@
 \title{Two Arm Bayesian Clinical Trial Simulation without Historical Data}
 \usage{
 simple_sim(trial_reps = 100, outcome_type = "weibull",
-  subj_per_arm = c(50, 100, 150, 200, 250), effect_vals = c(0.6, 1, 1.4),
-  control_parms = NULL, time_vec = NULL, censor_value = NULL,
+  subj_per_arm = c(50, 100, 150, 200, 250), effect_vals = c(0.6, 1,
+  1.4), control_parms = NULL, time_vec = NULL, censor_value = NULL,
   alpha = 0.05, get_var = FALSE, get_bias = FALSE, get_mse = FALSE,
   seedval = NULL, quietly = TRUE)
 }

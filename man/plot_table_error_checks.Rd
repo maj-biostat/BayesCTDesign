@@ -4,8 +4,9 @@
 \alias{plot_table_error_checks}
 \title{Checks \code{plot_table()} Function Call for Errors.}
 \usage{
-plot_table_error_checks(bayes_ctd_robj, measure, tab_type, smooth, plot_out,
-  subj_per_arm_val, a0_val, effect_val, rand_control_diff_val, span)
+plot_table_error_checks(bayes_ctd_robj, measure, tab_type, smooth,
+  plot_out, subj_per_arm_val, a0_val, effect_val, rand_control_diff_val,
+  span)
 }
 \arguments{
 \item{bayes_ctd_robj}{See help page for \code{plot_table()}.}

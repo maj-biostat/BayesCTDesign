@@ -227,7 +227,7 @@ Now, a clinical trialist may want to simply design a two-arm Bayesian trial and 
 ``` r
 #Define control group pwe distribution parameters.
 #Note: as with the call to historic_sim(), running this code takes a good while
-#to run, on an i7 it took about .  Also, notice that with results from simple_sim(), only the object from simple_sim() and the measure needs to be specified in the call to print_table().
+#to run, on an i7 it took about 6 hours.  Also, notice that with results from simple_sim(), only the object from simple_sim() and the measure needs to be specified in the call to print_table().
 set.seed(2250)
 time.vec <- c(0.3,0.9,1.5,2.1,2.4)
 lambdaHC.vec <- c(0.19,0.35,0.56,0.47,0.38,0.34)

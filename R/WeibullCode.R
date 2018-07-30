@@ -450,7 +450,7 @@ weibulltrialsimulatornohist <- function(sample_size_val, scale1_val, hazard_rati
 #' used to generate a set of trial scenarios.  Each scenario is simulated multiple
 #' times and then means are taken to calculate estimates of power, hazard ratios,
 #' and other user requested study summary statistics like variance of hazard
-#' ratio, bias (on hazard ratio scale), and mse (on hazard ratrio scale).
+#' ratio, bias (on hazard ratio scale), and mse (on hazard ratio scale).
 #' The number of repeated simulations is defined by the user.
 #'
 #' \code{weibull_sim()} should not be called directly by user.
@@ -910,8 +910,8 @@ weibull_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
 #' parameters are used to generate a set of trial scenarios.  Each scenario is
 #' simulated multiple times and then means are taken to calculate estimates
 #' of power, hazard ratios, and other user requested study summary statistics
-#' like variance of hazard ratio, bias (on hazard ratrio scale), and
-#' mse (on hazard ratrio scale).  The number of repeated simulations is
+#' like variance of hazard ratio, bias (on hazard ratio scale), and
+#' mse (on hazard ratio scale).  The number of repeated simulations is
 #' defined by the user.
 #'
 #' \code{simple_weibull_sim()} should not be called directly by user.

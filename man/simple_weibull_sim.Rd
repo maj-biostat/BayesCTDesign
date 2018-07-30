@@ -61,8 +61,8 @@ historical control data and a Weibull outcome.  User defined simulation
 parameters are used to generate a set of trial scenarios.  Each scenario is
 simulated multiple times and then means are taken to calculate estimates
 of power, hazard ratios, and other user requested study summary statistics
-like variance of hazard ratio, bias (on hazard ratrio scale), and
-mse (on hazard ratrio scale).  The number of repeated simulations is
+like variance of hazard ratio, bias (on hazard ratio scale), and
+mse (on hazard ratio scale).  The number of repeated simulations is
 defined by the user.
 }
 \details{

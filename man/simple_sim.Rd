@@ -66,7 +66,7 @@ running interactively in RStudio or running in the R console,
 \code{quietly} can be set to FALSE.  If running in a Notebook or
 knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
 each note will be printed on a separate line and it will take up
-alot of output space.  Default is \code{TRUE}.}
+a lot of output space.  Default is \code{TRUE}.}
 }
 \value{
 \code{simple_sim()} returns an S3 object of class \code{bayes_ctd_array}.

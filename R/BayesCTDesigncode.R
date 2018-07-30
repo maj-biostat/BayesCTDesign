@@ -112,7 +112,7 @@
 #'   \code{quietly} can be set to FALSE.  If running in a Notebook or
 #'   knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
 #'   each note will be printed on a separate line and it will take up
-#'   alot of output space.  Default is \code{TRUE}.
+#'   a lot of output space.  Default is \code{TRUE}.
 #'
 #' @return \code{historic_sim()} returns an S3 object of class \code{bayes_ctd_array}.
 #'   As noted in details, an object of class \code{bayes_ctd_array }has 6 elements: a
@@ -443,7 +443,7 @@ historic_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_ar
 #'   \code{quietly} can be set to FALSE.  If running in a Notebook or
 #'   knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
 #'   each note will be printed on a separate line and it will take up
-#'   alot of output space.  Default is \code{TRUE}.
+#'   a lot of output space.  Default is \code{TRUE}.
 #'
 #' @return \code{simple_sim()} returns an S3 object of class \code{bayes_ctd_array}.
 #'   As noted in Details, an object of class \code{bayes_ctd_array} has 6 elements: a

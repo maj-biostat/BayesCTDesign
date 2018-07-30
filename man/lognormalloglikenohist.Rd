@@ -27,7 +27,7 @@ The values of status must be 0 (right censored event) or 1 (observed event).}
 \code{lognormalloglikenohist()} function only used internally by
 \code{lognormaltrialsimulatornohist()} function to estimate Lognormal model parameters
 when clinical trial involves experimental and control groups but no historical control
-data.  The lognormal log-likelihood is calculated by modelling \code{log(data)} as
+data.  The lognormal log-likelihood is calculated by modeling \code{log(data)} as
 a Gaussian random variable. Not to be called directly by user.
 }
 \examples{

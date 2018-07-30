@@ -8,7 +8,7 @@ distribution.}
 gaussianloglike(params, randdata, histdata, a0)
 }
 \arguments{
-\item{params}{Three element vecter of Gaussian parameters.  Third element is log(sd),
+\item{params}{Three element vector of Gaussian parameters.  Third element is log(sd),
 where sd is a parameter required by dnorm().  The first and second elements
 are the intercept and treatment effect parameter, where the treatment effect is
 a mean difference (experimental group minus control group).  The mu parameter required by
@@ -36,7 +36,7 @@ all information in historical data is used.}
 \code{gaussianloglike()} function used only used internally by
 \code{gaussiantrialsimulator()} function to estimate Gaussian model parameters
 when clinical trial involves experimental and control groups as well as historical
-control data.  The Gaussian log-likelihood is calculated by modelling \code{data}
+control data.  The Gaussian log-likelihood is calculated by modeling \code{data}
 as a Gaussian random variable. Not to be called directly by user.
 }
 \examples{

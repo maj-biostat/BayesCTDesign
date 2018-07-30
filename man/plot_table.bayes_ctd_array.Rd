@@ -129,11 +129,11 @@ difference dimension.  To plot a slice of the 4-dimensional array, these letters
 are put into an AB|CD pattern just like in \code{print_table}.  The two letters
 to the right of the vertical bar define which variables are held constant.  The two
 letters to the left of the vertical bar define which variables are going to show up
-in the plot.  The first letter defines the x-axis varible and the second letter
+in the plot.  The first letter defines the x-axis variable and the second letter
 defines the stratification variable.  The result is a plot of power, estimate,
 variance, bias, or mse by the trial characteristic represented by the first letter.
 On this plot, one line will be created for each value of the trial characteristic
-represented by the second leter.  For example if tab_type equals \code{WX|YZ},
+represented by the second letter.  For example if tab_type equals \code{WX|YZ},
 then effect and control differences will be held constant, while sample size will be
 represented along the horizontal axis and a0 values will be represented by separate
 lines.  The actual values that are plotted on the y-axis depend on what measure is

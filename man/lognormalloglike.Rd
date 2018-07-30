@@ -8,7 +8,7 @@ distribution.}
 lognormalloglike(params, randdata, histdata, a0)
 }
 \arguments{
-\item{params}{Three element vecter of Lornormal parameters.  Third element is log(sd),
+\item{params}{Three element vector of Lognormal parameters.  Third element is log(sd),
 where sd is a parameter required by dnorm().  The first and second elements
 are the intercept (beta0) and treatment effect parameter (beta1), where the treatment effect is
 a log mean ratio (experimental group over control group).  The mu parameter required by
@@ -38,7 +38,7 @@ all information in historical data is used.}
 \code{lognormalloglike()} function only used internally by
 \code{lognormaltrialsimulator()} function to estimate Lognormal model parameters
 when clinical trial involves experimental and control groups as well as historical
-control data.  The lognormal log-likelihood is calculated by modelling \code{log(data)}
+control data.  The lognormal log-likelihood is calculated by modeling \code{log(data)}
 as a Gaussian random variable. Not to be called directly by user.
 }
 \examples{

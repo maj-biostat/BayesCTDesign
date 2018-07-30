@@ -112,7 +112,7 @@ genpwedata <- function(sample_size, lambda_vec, hazard_ratio, time_vec, censor_v
 #' control data.  The pwe log-likelihood is calculated by using \code{eha::dpch()}.
 #' pwe_loglike() should not be called directly by user.
 #'
-#' @param params  A vecter of p + 1 parameters.  The last element is
+#' @param params  A vector of p + 1 parameters.  The last element is
 #'   the log hazard ratio.  The first p elements are the estimated log hazards
 #'   within each section created by \code{time_vec}.  If \code{time_vec} has
 #'   m elements, then p = m + 1.
@@ -523,7 +523,7 @@ pwetrialsimulatornohist <- function(sample_size_val, lambda_vec_val, time_vec_va
 #'   a0_val, subj_per_arm, effect_vals, and rand_control_diff.  As the number
 #'   of trials increases, the precision of the estimate will increase. Default is
 #'   100.
-#' @param subj_per_arm A vector of sample sizes, all of which must be positve
+#' @param subj_per_arm A vector of sample sizes, all of which must be positive
 #'   integers.
 #' @param a0_vals A vector of power prior parameters ranging from 0 to 1, where 0
 #'   implies no information from historical data should be used, 1 implies all of
@@ -534,7 +534,7 @@ pwetrialsimulatornohist <- function(sample_size_val, lambda_vec_val, time_vec_va
 #' @param rand_control_diff For piece-wise exponential outcomes this is a vector of hazard ratios
 #'   (randomized controls over historical controls) that represent differences
 #'   between randomized and historical controls.
-#' @param hist_control_data A datset of historical data.  Default is \code{NULL}.
+#' @param hist_control_data A dataset of historical data.  Default is \code{NULL}.
 #'   Historical datasets must have 4 columns: id, treatment, event_time, status, and
 #'   indicator.  The value of treatment should be 0.  The values of event_time must
 #'   be positive.  The values of status must be 0 (right censored event) or
@@ -559,7 +559,7 @@ pwetrialsimulatornohist <- function(sample_size_val, lambda_vec_val, time_vec_va
 #'   \code{quietly} can be set to FALSE.  If running in a Notebook or
 #'   knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
 #'   each note will be printed on a separate line and it will take up
-#'   alot of output space.  Default is \code{TRUE}.
+#'   a lot of output space.  Default is \code{TRUE}.
 #'
 #' @return \code{pwe_sim()} returns an S3 object of class bayes_ctd_array.
 #'
@@ -985,7 +985,7 @@ pwe_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
 #'   a0_val, subj_per_arm, effect_vals, and rand_control_diff.  As the number
 #'   of trials increases, the precision of the estimate will increase. Default is
 #'   100.
-#' @param subj_per_arm A vector of sample sizes, all of which must be positve
+#' @param subj_per_arm A vector of sample sizes, all of which must be positive
 #'   integers.
 #' @param effect_vals A vector of hazard ratios (randomized experimental over control),
 #'   all of which must be positive.
@@ -1010,7 +1010,7 @@ pwe_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
 #'   \code{quietly} can be set to FALSE.  If running in a Notebook or
 #'   knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
 #'   each note will be printed on a separate line and it will take up
-#'   alot of output space.  Default is \code{TRUE}.
+#'   a lot of output space.  Default is \code{TRUE}.
 #'
 #' @return \code{simple_pwe_sim()} returns an S3 object of class bayes_ctd_array.
 #'

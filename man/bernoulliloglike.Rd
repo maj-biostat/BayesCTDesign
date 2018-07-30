@@ -8,7 +8,7 @@ distribution.}
 bernoulliloglike(params, randdata, histdata, a0)
 }
 \arguments{
-\item{params}{Two element vecter of Bernoulli parameters.  The first and second elements
+\item{params}{Two element vector of Bernoulli parameters.  The first and second elements
 are the intercept (beta0) and treatment effect parameter (beta1), where the treatment effect is
 a log odds ratio (experimental group over control group).  The prob parameter required by
 dbinom() is equal to exp(params[1] + params[2]*treatment) / (1 + exp(params[1] + params[2]*treatment)).
@@ -35,7 +35,7 @@ all information in historical data is used.}
 \code{bernoulliloglike()} function only used internally by
 \code{bernoullitrialsimulator()} function to estimate Bernoulli model parameters
 when clinical trial involves experimental and control groups as well as historical
-control data.  The Bernoulli log-likelihood is calculated by modelling \code{data}
+control data.  The Bernoulli log-likelihood is calculated by modeling \code{data}
 as a Bernoulli random variable. Not to be called directly by user.
 }
 \examples{

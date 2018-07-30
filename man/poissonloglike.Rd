@@ -8,7 +8,7 @@ distribution.}
 poissonloglike(params, randdata, histdata, a0)
 }
 \arguments{
-\item{params}{Two element vecter of Poisson parameters.  The first and second elements
+\item{params}{Two element vector of Poisson parameters.  The first and second elements
 are the intercept (beta0) and treatment effect parameter (beta1), where the treatment effect is
 a log mean ratio (experimental group over control group).  The lambda parameter required by
 dpois() is equal to exp(params[1] + params[2]*treatment).  It is assumed that the params[1]
@@ -35,7 +35,7 @@ all information in historical data is used.}
 \code{poissonloglike()} function only used internally by
 \code{poissontrialsimulator()} function to estimate Poisson model parameters
 when clinical trial involves experimental and control groups as well as historical
-control data.  The Poisson log-likelihood is calculated by modelling \code{data}
+control data.  The Poisson log-likelihood is calculated by modeling \code{data}
 as a Poisson random variable. Not to be called directly by user.
 }
 \examples{

@@ -1,5 +1,5 @@
 
-#' Checks for Errors when Outcome is PieceWise Exponential.
+#' Checks for Errors when Outcome is Piece-wise Exponential.
 #'
 #' \code{pwe_error_checks()} function used only used internally by
 #' \code{historic_sim()} function to check for proper input.  Not to be called
@@ -112,7 +112,7 @@ pwe_error_checks <- function(effect_vals, hist_control_data, rand_control_diff, 
 }
 
 
-#' Checks for Errors when Outcome is PieceWise Exponential.
+#' Checks for Errors when Outcome is Piece-wise Exponential.
 #'
 #' \code{pwe_error_checks_simple()} function used only used internally by
 #' \code{simple_sim()} function to check for proper input.  Not to be called

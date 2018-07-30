@@ -94,7 +94,7 @@ genweibulldata <- function(sample_size, scale1, hazard_ratio, common_shape, cens
 #' control data.
 #'
 #' The Weibull log-likelihood is calculated by using \code{dweibull()}.  The following
-#' derivation was used to reparameterize the model parameters so that \code{dweibull()}
+#' derivation was used to reparametrize the model parameters so that \code{dweibull()}
 #' could be used in the log-likelihood function and still estimate the hazard ratio as a
 #' parameter.
 #'
@@ -107,18 +107,18 @@ genweibulldata <- function(sample_size, scale1, hazard_ratio, common_shape, cens
 #' function of \eqn{scale0}, \eqn{scale1}, and the shape parameter \eqn{HR = (scale0/scale1)^shape}.
 #'
 #' Substituting for \eqn{scale0} and eqn{scale1} using functions of \eqn{beta0}, \eqn{beta1}, and
-#' \eqn{shape}, we can espress the hazard ratio in terms of \eqn{beta0} and \eqn{beta1}. When
+#' \eqn{shape}, we can express the hazard ratio in terms of \eqn{beta0} and \eqn{beta1}. When
 #' we do this we have \deqn{HR = (exp(-beta0/shape)/exp(-beta0/shape - beta1/shape))^shape}
 #' After reducing terms we have a simply formula for the hazard ratio,
 #' \eqn{HR = (exp(beta1/shape))^shape}, which reduces further to \eqn{exp(beta1)}.
 #'
 #' Therefore, \eqn{beta1} is the log hazard ratio of experimental over control.  Similarly
-#' \eqn{log(scale0) = -beta0/shape} so the nusance parameter \eqn{beta0} is equal to
+#' \eqn{log(scale0) = -beta0/shape} so the nuisance parameter \eqn{beta0} is equal to
 #' \eqn{(-shape)log(scale0)}.
 #'
 #' \code{weibullloglike()} should not be called directly by user.
 #'
-#' @param params  Three element vecter of Weibull parameters.  The third element is
+#' @param params  Three element vector of Weibull parameters.  The third element is
 #'   the shape parameter used in \code{dweibull()}.  The first and second elements
 #'   are the intercept (beta0), and treatment effect (beta1), parameters as defined in
 #'   details section.  The beta1 parameter is the log hazard ratio.
@@ -196,7 +196,7 @@ weibullloglike <- function(params, randdata, histdata, a0) {
 #' data.
 #'
 #' The Weibull log-likelihood is calculated by using \code{dweibull()}.  The following
-#' derivation was used to reparameterize the model parameters so that \code{dweibull()}
+#' derivation was used to reparametrize the model parameters so that \code{dweibull()}
 #' could be used in the log-likelihood function and still estimate the hazard ratio as a
 #' parameter.
 #'
@@ -209,18 +209,18 @@ weibullloglike <- function(params, randdata, histdata, a0) {
 #' function of \eqn{scale0}, \eqn{scale1}, and the shape parameter \eqn{HR = (scale0/scale1)^shape}.
 #'
 #' Substituting for \eqn{scale0} and eqn{scale1} using functions of \eqn{beta0}, \eqn{beta1}, and
-#' \eqn{shape}, we can espress the hazard ratio in terms of \eqn{beta0} and \eqn{beta1}. When
+#' \eqn{shape}, we can express the hazard ratio in terms of \eqn{beta0} and \eqn{beta1}. When
 #' we do this we have \deqn{HR = (exp(-beta0/shape)/exp(-beta0/shape - beta1/shape))^shape}
 #' After reducing terms we have a simply formula for the hazard ratio,
 #' \eqn{HR = (exp(beta1/shape))^shape}, which reduces further to \eqn{exp(beta1)}.
 #'
 #' Therefore, \eqn{beta1} is the log hazard ratio of experimental over control.  Similarly
-#' \eqn{log(scale0) = -beta0/shape} so the nusance parameter \eqn{beta0} is equal to
+#' \eqn{log(scale0) = -beta0/shape} so the nuisance parameter \eqn{beta0} is equal to
 #' \eqn{(-shape)log(scale0)}.
 #'
 #' \code{weibullloglike()} should not be called directly by user.
 #'
-#' @param params  Three element vecter of Weibull parameters.  The third element is
+#' @param params  Three element vector of Weibull parameters.  The third element is
 #'   the shape parameter used in \code{dweibull()}.  The first and second elements
 #'   are the intercept (beta0), and treatment effect (beta1), parameters as defined in
 #'   details section.  The beta1 parameter is the log hazard ratio.
@@ -450,7 +450,7 @@ weibulltrialsimulatornohist <- function(sample_size_val, scale1_val, hazard_rati
 #' used to generate a set of trial scenarios.  Each scenario is simulated multiple
 #' times and then means are taken to calculate estimates of power, hazard ratios,
 #' and other user requested study summary statistics like variance of hazard
-#' ratio, bias (on hazard ratrio scale), and mse (on hazard ratrio scale).
+#' ratio, bias (on hazard ratio scale), and mse (on hazard ratrio scale).
 #' The number of repeated simulations is defined by the user.
 #'
 #' \code{weibull_sim()} should not be called directly by user.
@@ -459,7 +459,7 @@ weibulltrialsimulatornohist <- function(sample_size_val, scale1_val, hazard_rati
 #'   a0_val, subj_per_arm, effect_vals, and rand_control_diff.  As the number
 #'   of trials increases, the precision of the estimate will increase. Default is
 #'   100.
-#' @param subj_per_arm A vector of sample sizes, all of which must be positve
+#' @param subj_per_arm A vector of sample sizes, all of which must be positive
 #'   integers.
 #' @param a0_vals A vector of power prior parameters ranging from 0 to 1, where 0
 #'   implies no information from historical data should be used, 1 implies all of
@@ -470,7 +470,7 @@ weibulltrialsimulatornohist <- function(sample_size_val, scale1_val, hazard_rati
 #' @param rand_control_diff A vector of hazard ratios (randomized controls over
 #'   historical controls) representing differences between historical and randomized
 #'   controls.
-#' @param hist_control_data A datset of historical data.  Default is \code{NULL}.
+#' @param hist_control_data A dataset of historical data.  Default is \code{NULL}.
 #'   Historical datasets must have 4 columns: id, treatment, event_time, and
 #'   status.  The value of treatment should be 0.  The values of event_time must
 #'   be positive.  The values of status must be 0 (right censored event) or
@@ -492,7 +492,7 @@ weibulltrialsimulatornohist <- function(sample_size_val, scale1_val, hazard_rati
 #'   \code{quietly} can be set to FALSE.  If running in a Notebook or
 #'   knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
 #'   each note will be printed on a separate line and it will take up
-#'   alot of output space.  Default is \code{TRUE}.
+#'   a lot of output space.  Default is \code{TRUE}.
 #'
 #' @return \code{weibull_sim()} returns an S3 object of class bayes_ctd_array.
 #'
@@ -919,7 +919,7 @@ weibull_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
 #' @param trial_reps Number of trials to replicate within each combination of
 #'   subj_per_arm and effect_vals.  As the number of trials increases, the
 #'   precision of the estimate will increase. Default is 100.
-#' @param subj_per_arm A vector of sample sizes, all of which must be positve
+#' @param subj_per_arm A vector of sample sizes, all of which must be positive
 #'   integers.
 #' @param effect_vals A vector of hazard ratios (randomized experimental over control),
 #'   all of which must be positive.
@@ -944,7 +944,7 @@ weibull_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
 #'   \code{quietly} can be set to FALSE.  If running in a Notebook or
 #'   knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
 #'   each note will be printed on a separate line and it will take up
-#'   alot of output space.  Default is \code{TRUE}.
+#'   a lot of output space.  Default is \code{TRUE}.
 #'
 #' @return \code{simple_weibull_sim()} returns an S3 object of class bayes_ctd_array.
 #'

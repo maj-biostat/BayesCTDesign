@@ -14,7 +14,7 @@ simple_poisson_sim(trial_reps = 100, subj_per_arm, effect_vals, mu1_val,
 subj_per_arm and effect_vals.  As the number of trials increases, the
 precision of the estimate will increase. Default is 100.}
 
-\item{subj_per_arm}{A vector of sample sizes, all of which must be positve
+\item{subj_per_arm}{A vector of sample sizes, all of which must be positive
 integers.}
 
 \item{effect_vals}{A vector of mean ratios (randomized experimental over control),
@@ -40,7 +40,7 @@ running interactively in RStudio or running in the R console,
 \code{quietly} can be set to FALSE.  If running in a Notebook or
 knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
 each note will be printed on a separate line and it will take up
-alot of output space.  Default is \code{TRUE}.}
+a lot of output space.  Default is \code{TRUE}.}
 }
 \value{
 \code{simple_poisson_sim()} returns an S3 object of class bayes_ctd_array.

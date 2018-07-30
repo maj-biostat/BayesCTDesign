@@ -15,7 +15,7 @@ a0_val, subj_per_arm, effect_vals, and rand_control_diff.  As the number
 of trials increases, the precision of the estimate will increase. Default is
 100.}
 
-\item{subj_per_arm}{A vector of sample sizes, all of which must be positve
+\item{subj_per_arm}{A vector of sample sizes, all of which must be positive
 integers.}
 
 \item{a0_vals}{A vector of power prior parameters ranging from 0 to 1, where 0
@@ -30,7 +30,7 @@ all of which must be positive.}
 (randomized controls over historical controls) that represent odds ratios
 between randomized and historical controls.}
 
-\item{hist_control_data}{A datset of historical data.  Default is \code{NULL}.
+\item{hist_control_data}{A dataset of historical data.  Default is \code{NULL}.
 Historical datasets must have 3 columns: id, treatment, and y.  The value of
 treatment should be 0.  The values of y must be 0 or 1.}
 
@@ -52,7 +52,7 @@ running interactively in RStudio or running in the R console,
 \code{quietly} can be set to FALSE.  If running in a Notebook or
 knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
 each note will be printed on a separate line and it will take up
-alot of output space.  Default is \code{TRUE}.}
+a lot of output space.  Default is \code{TRUE}.}
 }
 \value{
 \code{bernoulli_sim()} returns an S3 object of class bayes_ctd_array.

@@ -59,10 +59,10 @@ gengaussiandata <- function(sample_size, mu1, mean_diff, common_sd) {
 #' \code{gaussianloglike()} function used only used internally by
 #' \code{gaussiantrialsimulator()} function to estimate Gaussian model parameters
 #' when clinical trial involves experimental and control groups as well as historical
-#' control data.  The Gaussian log-likelihood is calculated by modelling \code{data}
+#' control data.  The Gaussian log-likelihood is calculated by modeling \code{data}
 #' as a Gaussian random variable. Not to be called directly by user.
 #'
-#' @param params  Three element vecter of Gaussian parameters.  Third element is log(sd),
+#' @param params  Three element vector of Gaussian parameters.  Third element is log(sd),
 #'   where sd is a parameter required by dnorm().  The first and second elements
 #'   are the intercept and treatment effect parameter, where the treatment effect is
 #'   a mean difference (experimental group minus control group).  The mu parameter required by
@@ -305,7 +305,7 @@ gaussiantrialsimulatornohist <- function(sample_size_val, mu1_val, mean_diff_val
 #'   a0_val, subj_per_arm, effect_vals, and rand_control_diff.  As the number
 #'   of trials increases, the precision of the estimate will increase. Default is
 #'   100.
-#' @param subj_per_arm A vector of sample sizes, all of which must be positve
+#' @param subj_per_arm A vector of sample sizes, all of which must be positive
 #'   integers.
 #' @param a0_vals A vector of power prior parameters ranging from 0 to 1, where 0
 #'   implies no information from historical data should be used, 1 implies all of
@@ -315,7 +315,7 @@ gaussiantrialsimulatornohist <- function(sample_size_val, mu1_val, mean_diff_val
 #' @param rand_control_diff For Gaussian outcomes this is a vector of mean differences
 #'   (randomized controls minus historical controls) that represent differences
 #'   between randomized and historical controls.
-#' @param hist_control_data A datset of historical data.  Default is \code{NULL}.
+#' @param hist_control_data A dataset of historical data.  Default is \code{NULL}.
 #'   Historical datasets must have 3 columns: id, treatment, and y.  The value of
 #'   treatment should be 0.  The values of y must be numeric.
 #' @param alpha A number ranging between 0 and 1 that defines the acceptable Type 1
@@ -332,7 +332,7 @@ gaussiantrialsimulatornohist <- function(sample_size_val, mu1_val, mean_diff_val
 #'   \code{quietly} can be set to FALSE.  If running in a Notebook or
 #'   knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
 #'   each note will be printed on a separate line and it will take up
-#'   alot of output space.  Default is \code{TRUE}.
+#'   a lot of output space.  Default is \code{TRUE}.
 #'
 #' @return \code{gaussian_sim()} returns an S3 object of class bayes_ctd_array.
 #'
@@ -758,7 +758,7 @@ gaussian_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
 #' @param trial_reps Number of trials to replicate within each combination of
 #'   subj_per_arm and effect_vals.  As the number of trials increases, the
 #'   precision of the estimate will increase. Default is 100.
-#' @param subj_per_arm A vector of sample sizes, all of which must be positve
+#' @param subj_per_arm A vector of sample sizes, all of which must be positive
 #'   integers.
 #' @param effect_vals A vector of mean differences (randomized experimental minus
 #'   controls).
@@ -780,7 +780,7 @@ gaussian_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
 #'   \code{quietly} can be set to FALSE.  If running in a Notebook or
 #'   knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
 #'   each note will be printed on a separate line and it will take up
-#'   alot of output space.  Default is \code{TRUE}.
+#'   a lot of output space.  Default is \code{TRUE}.
 #'
 #' @return \code{simple_gaussian_sim()} returns an S3 object of class bayes_ctd_array.
 #'

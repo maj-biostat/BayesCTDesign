@@ -2,7 +2,7 @@
 % Please edit documentation in R/PWEErrorChecks.R
 \name{pwe_error_checks}
 \alias{pwe_error_checks}
-\title{Checks for Errors when Outcome is PieceWise Exponential.}
+\title{Checks for Errors when Outcome is Piece-wise Exponential.}
 \usage{
 pwe_error_checks(effect_vals, hist_control_data, rand_control_diff,
   time_vec, censor_value, alpha)

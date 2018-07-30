@@ -7,7 +7,7 @@
 lognormalloglikenohist(params, randdata)
 }
 \arguments{
-\item{params}{Three element vecter of Lornormal parameters.  Third element is log(sd),
+\item{params}{Three element vector of Lognormal parameters.  Third element is log(sd),
 where sd is a parameter required by dnorm().  The first and second elements
 are the intercept (beta0) and treatment effect parameter (beta1), where the treatment effect is
 a log mean ratio (experimental group over control group).  The mu parameter required by

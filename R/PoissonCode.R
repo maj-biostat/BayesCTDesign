@@ -58,10 +58,10 @@ genpoissondata <- function(sample_size, mu1, mean_ratio) {
 #' \code{poissonloglike()} function only used internally by
 #' \code{poissontrialsimulator()} function to estimate Poisson model parameters
 #' when clinical trial involves experimental and control groups as well as historical
-#' control data.  The Poisson log-likelihood is calculated by modelling \code{data}
+#' control data.  The Poisson log-likelihood is calculated by modeling \code{data}
 #' as a Poisson random variable. Not to be called directly by user.
 #'
-#' @param params  Two element vecter of Poisson parameters.  The first and second elements
+#' @param params  Two element vector of Poisson parameters.  The first and second elements
 #'   are the intercept (beta0) and treatment effect parameter (beta1), where the treatment effect is
 #'   a log mean ratio (experimental group over control group).  The lambda parameter required by
 #'   dpois() is equal to exp(params[1] + params[2]*treatment).  It is assumed that the params[1]
@@ -285,7 +285,7 @@ poissontrialsimulatornohist <- function(sample_size_val, mu1_val, mean_ratio_val
 #'   a0_val, subj_per_arm, effect_vals, and rand_control_diff.  As the number
 #'   of trials increases, the precision of the estimate will increase. Default is
 #'   100.
-#' @param subj_per_arm A vector of sample sizes, all of which must be positve
+#' @param subj_per_arm A vector of sample sizes, all of which must be positive
 #'   integers.
 #' @param a0_vals A vector of power prior parameters ranging from 0 to 1, where 0
 #'   implies no information from historical data should be used, 1 implies all of
@@ -296,7 +296,7 @@ poissontrialsimulatornohist <- function(sample_size_val, mu1_val, mean_ratio_val
 #' @param rand_control_diff For Poisson outcomes this is a vector of mean ratios
 #'   (randomized controls over historical controls) that represent ratios
 #'   between randomized and historical controls.
-#' @param hist_control_data A datset of historical data.  Default is \code{NULL}.
+#' @param hist_control_data A dataset of historical data.  Default is \code{NULL}.
 #'   Historical datasets must have 3 columns: id, treatment, and y.  The value of
 #'   treatment should be 0.  The values of y must be non negative.
 #' @param alpha A number ranging between 0 and 1 that defines the acceptable Type 1
@@ -313,7 +313,7 @@ poissontrialsimulatornohist <- function(sample_size_val, mu1_val, mean_ratio_val
 #'   \code{quietly} can be set to FALSE.  If running in a Notebook or
 #'   knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
 #'   each note will be printed on a separate line and it will take up
-#'   alot of output space.  Default is \code{TRUE}.
+#'   a lot of output space.  Default is \code{TRUE}.
 #'
 #' @return \code{poisson_sim()} returns an S3 object of class bayes_ctd_array.
 #'
@@ -738,7 +738,7 @@ poisson_sim <- function(trial_reps, subj_per_arm, a0_vals, effect_vals,
 #' @param trial_reps Number of trials to replicate within each combination of
 #'   subj_per_arm and effect_vals.  As the number of trials increases, the
 #'   precision of the estimate will increase. Default is 100.
-#' @param subj_per_arm A vector of sample sizes, all of which must be positve
+#' @param subj_per_arm A vector of sample sizes, all of which must be positive
 #'   integers.
 #' @param effect_vals A vector of mean ratios (randomized experimental over control),
 #'   all of which must be positive.
@@ -757,7 +757,7 @@ poisson_sim <- function(trial_reps, subj_per_arm, a0_vals, effect_vals,
 #'   \code{quietly} can be set to FALSE.  If running in a Notebook or
 #'   knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
 #'   each note will be printed on a separate line and it will take up
-#'   alot of output space.  Default is \code{TRUE}.
+#'   a lot of output space.  Default is \code{TRUE}.
 #'
 #' @return \code{simple_poisson_sim()} returns an S3 object of class bayes_ctd_array.
 #'

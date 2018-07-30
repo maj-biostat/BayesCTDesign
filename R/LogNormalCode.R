@@ -94,10 +94,10 @@ genlognormaldata <- function(sample_size, mu1, mean_ratio, common_sd, censor_val
 #' \code{lognormalloglike()} function only used internally by
 #' \code{lognormaltrialsimulator()} function to estimate Lognormal model parameters
 #' when clinical trial involves experimental and control groups as well as historical
-#' control data.  The lognormal log-likelihood is calculated by modelling \code{log(data)}
+#' control data.  The lognormal log-likelihood is calculated by modeling \code{log(data)}
 #' as a Gaussian random variable. Not to be called directly by user.
 #'
-#' @param params  Three element vecter of Lornormal parameters.  Third element is log(sd),
+#' @param params  Three element vector of Lognormal parameters.  Third element is log(sd),
 #'   where sd is a parameter required by dnorm().  The first and second elements
 #'   are the intercept (beta0) and treatment effect parameter (beta1), where the treatment effect is
 #'   a log mean ratio (experimental group over control group).  The mu parameter required by
@@ -178,7 +178,7 @@ lognormalloglike <- function(params, randdata, histdata, a0) {
 #' data.  The lognormal log-likelihood is calculated by modelling \code{log(data)} as
 #' a Gaussian random variable. Not to be called directly by user.
 #'
-#' @param params  Three element vecter of Lornormal parameters.  Third element is log(sd),
+#' @param params  Three element vector of Lognormal parameters.  Third element is log(sd),
 #'   where sd is a parameter required by dnorm().  The first and second elements
 #'   are the intercept (beta0) and treatment effect parameter (beta1), where the treatment effect is
 #'   a log mean ratio (experimental group over control group).  The mu parameter required by
@@ -408,7 +408,7 @@ lognormaltrialsimulatornohist <- function(sample_size_val, mu1_val, mean_ratio_v
 #'   a0_val, subj_per_arm, effect_vals, and rand_control_diff.  As the number
 #'   of trials increases, the precision of the estimate will increase. Default is
 #'   100.
-#' @param subj_per_arm A vector of sample sizes, all of which must be positve
+#' @param subj_per_arm A vector of sample sizes, all of which must be positive
 #'   integers.
 #' @param a0_vals A vector of power prior parameters ranging from 0 to 1, where 0
 #'   implies no information from historical data should be used, 1 implies all of
@@ -419,7 +419,7 @@ lognormaltrialsimulatornohist <- function(sample_size_val, mu1_val, mean_ratio_v
 #' @param rand_control_diff For Lognormal outcomes this is a vector of mean ratios
 #'   (randomized controls over historical controls) that represent differences
 #'   between randomized and historical controls.
-#' @param hist_control_data A datset of historical data.  Default is \code{NULL}.
+#' @param hist_control_data A dataset of historical data.  Default is \code{NULL}.
 #'   Historical datasets must have 4 columns: id, treatment, event_time, and
 #'   status.  The value of treatment should be 0.  The values of event_time must
 #'   be positive.  The values of status must be 0 (right censored event) or
@@ -441,7 +441,7 @@ lognormaltrialsimulatornohist <- function(sample_size_val, mu1_val, mean_ratio_v
 #'   \code{quietly} can be set to FALSE.  If running in a Notebook or
 #'   knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
 #'   each note will be printed on a separate line and it will take up
-#'   alot of output space.  Default is \code{TRUE}.
+#'   a lot of output space.  Default is \code{TRUE}.
 #'
 #' @return \code{lognormal_sim()} returns an S3 object of class bayes_ctd_array.
 #'
@@ -879,7 +879,7 @@ lognormal_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
 #' @param trial_reps Number of trials to replicate within each combination of
 #'   subj_per_arm and effect_vals.  As the number of trials increases, the
 #'   precision of the estimate will increase. Default is 100.
-#' @param subj_per_arm A vector of sample sizes, all of which must be positve
+#' @param subj_per_arm A vector of sample sizes, all of which must be positive
 #'   integers.
 #' @param effect_vals A vector of mean ratios (randomized experimental over control),
 #'   all of which must be positive.
@@ -904,7 +904,7 @@ lognormal_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
 #'   \code{quietly} can be set to FALSE.  If running in a Notebook or
 #'   knitr document, \code{quietly} needs to be set to TRUE.  Otherwise
 #'   each note will be printed on a separate line and it will take up
-#'   alot of output space.  Default is \code{TRUE}.
+#'   a lot of output space.  Default is \code{TRUE}.
 #'
 #' @return \code{simple_lognormal_sim()} returns an S3 object of class bayes_ctd_array.
 #'

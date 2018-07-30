@@ -7,7 +7,7 @@
 weibullloglike(params, randdata, histdata, a0)
 }
 \arguments{
-\item{params}{Three element vecter of Weibull parameters.  The third element is
+\item{params}{Three element vector of Weibull parameters.  The third element is
 the shape parameter used in \code{dweibull()}.  The first and second elements
 are the intercept (beta0), and treatment effect (beta1), parameters as defined in
 details section.  The beta1 parameter is the log hazard ratio.}
@@ -39,7 +39,7 @@ control data.
 }
 \details{
 The Weibull log-likelihood is calculated by using \code{dweibull()}.  The following
-derivation was used to reparameterize the model parameters so that \code{dweibull()}
+derivation was used to reparametrize the model parameters so that \code{dweibull()}
 could be used in the log-likelihood function and still estimate the hazard ratio as a
 parameter.
 
@@ -52,13 +52,13 @@ From this equation, we can derive the Weibull hazard ratio, HR, (experimental ov
 function of \eqn{scale0}, \eqn{scale1}, and the shape parameter \eqn{HR = (scale0/scale1)^shape}.
 
 Substituting for \eqn{scale0} and eqn{scale1} using functions of \eqn{beta0}, \eqn{beta1}, and
-\eqn{shape}, we can espress the hazard ratio in terms of \eqn{beta0} and \eqn{beta1}. When
+\eqn{shape}, we can express the hazard ratio in terms of \eqn{beta0} and \eqn{beta1}. When
 we do this we have \deqn{HR = (exp(-beta0/shape)/exp(-beta0/shape - beta1/shape))^shape}
 After reducing terms we have a simply formula for the hazard ratio,
 \eqn{HR = (exp(beta1/shape))^shape}, which reduces further to \eqn{exp(beta1)}.
 
 Therefore, \eqn{beta1} is the log hazard ratio of experimental over control.  Similarly
-\eqn{log(scale0) = -beta0/shape} so the nusance parameter \eqn{beta0} is equal to
+\eqn{log(scale0) = -beta0/shape} so the nuisance parameter \eqn{beta0} is equal to
 \eqn{(-shape)log(scale0)}.
 
 \code{weibullloglike()} should not be called directly by user.

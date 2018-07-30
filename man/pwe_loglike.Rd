@@ -8,7 +8,7 @@ Exponential (pwe) distribution.}
 pwe_loglike(params, time_vec, randdata, hist_data, a0)
 }
 \arguments{
-\item{params}{A vecter of p + 1 parameters.  The last element is
+\item{params}{A vector of p + 1 parameters.  The last element is
 the log hazard ratio.  The first p elements are the estimated log hazards
 within each section created by \code{time_vec}.  If \code{time_vec} has
 m elements, then p = m + 1.}

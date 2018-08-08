@@ -2,6 +2,8 @@
 Submission failed CRAN pretests because rth was used as a role
 in the DESCRIPTION file.  I removed this role and the only
 note in the revised package is the new submission note.
+I also reduced the version number to 0.5.0 to reflect the
+early development state of this package.
 
 ## Test environments
 * local Windows 7 Professional development and install, R 3.5.1

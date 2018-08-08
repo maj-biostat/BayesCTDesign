@@ -1,3 +1,8 @@
+## Resubmission
+Submission failed CRAN pretests because rth was used as a role
+in the DESCRIPTION file.  I removed this role and the only
+note in the revised package is the new submission note.
+
 ## Test environments
 * local Windows 7 Professional development and install, R 3.5.1
 * local 0S X install, R 3.5.0

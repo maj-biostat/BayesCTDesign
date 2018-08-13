@@ -1,3 +1,23 @@
+## Resubmission 2
+Per CRAN review, I have added the rth role back into the
+DESCRIPTION file to cover a role for Diane Catellier.
+
+I removed the \code{} elements from the DESCRIPTION file
+as requested by CRAN.
+
+Presently, we do not have a reference for the method being 
+used. We are working on the paper that will compare our 
+method to MCMC methods and plan to add that paper to the 
+package when published.
+
+The Rd files that had '#None' were all helper files which 
+when the package is installed are not directly acceptable to 
+the user.  At some point in the future as the package matures, 
+we may start exporting these functions. For now, I have 
+removed these Rd files using the, #' @noRd, element in 
+roxygen2.
+
+
 ## Resubmission
 Submission failed CRAN pretests because rth was used as a role
 in the DESCRIPTION file.  I removed this role and the only

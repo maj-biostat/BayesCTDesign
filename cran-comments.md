@@ -11,7 +11,7 @@ method to MCMC methods and plan to add that paper to the
 package when published.
 
 The Rd files that had '#None' were all helper files which 
-when the package is installed are not directly acceptable to 
+when the package is installed are not directly accessible to 
 the user.  At some point in the future as the package matures, 
 we may start exporting these functions. For now, I have 
 removed these Rd files using the, #' @noRd, element in 

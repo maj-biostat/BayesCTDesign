@@ -85,6 +85,7 @@ gengaussiandata <- function(sample_size, mu1, mean_diff, common_sd) {
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 gaussianloglike <- function(params, randdata, histdata, a0) {
 
     # --------------------------------------------------------------- #
@@ -169,6 +170,7 @@ gaussianloglike <- function(params, randdata, histdata, a0) {
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 gaussiantrialsimulator <- function(sample_size_val, histdata, mu1_val, mean_diff_val, common_sd_val, a0_val, alpha) {
 
     # --------------------------------------------------------------- #
@@ -242,6 +244,7 @@ gaussiantrialsimulator <- function(sample_size_val, histdata, mu1_val, mean_diff
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 gaussiantrialsimulatornohist <- function(sample_size_val, mu1_val, mean_diff_val, common_sd_val, alpha) {
 
     # --------------------------------------------------------------- #
@@ -339,6 +342,7 @@ gaussiantrialsimulatornohist <- function(sample_size_val, mu1_val, mean_diff_val
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 gaussian_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
                          rand_control_diff, hist_control_data, alpha=0.05,
                          get_var=FALSE, get_bias=FALSE, get_mse=FALSE,
@@ -787,6 +791,7 @@ gaussian_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 simple_gaussian_sim <- function(trial_reps=100, subj_per_arm, effect_vals, mu1_val,
                                 common_sd_val, alpha=0.05, get_var=FALSE,
                                 get_bias=FALSE, get_mse=FALSE, quietly=TRUE) {

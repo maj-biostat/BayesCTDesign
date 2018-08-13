@@ -18,6 +18,7 @@
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 gaussian_error_checks <- function(effect_vals, hist_control_data, rand_control_diff, alpha) {
 
     hist_chk <- class(hist_control_data)
@@ -85,6 +86,7 @@ gaussian_error_checks <- function(effect_vals, hist_control_data, rand_control_d
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 gaussian_error_checks_simple <- function(effect_vals, control_parms, alpha) {
 
     chk_parmlgth <- length(control_parms)

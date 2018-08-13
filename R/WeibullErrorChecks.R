@@ -18,6 +18,7 @@
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 weibull_error_checks <- function(effect_vals, hist_control_data, rand_control_diff, censor_value, alpha) {
 
     hist_chk <- class(hist_control_data)
@@ -111,6 +112,7 @@ weibull_error_checks <- function(effect_vals, hist_control_data, rand_control_di
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 weibull_error_checks_simple <- function(effect_vals, control_parms, censor_value, alpha) {
 
     chk_parm_lgth <- length(control_parms)

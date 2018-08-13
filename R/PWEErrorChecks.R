@@ -20,6 +20,7 @@
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 pwe_error_checks <- function(effect_vals, hist_control_data, rand_control_diff, time_vec, censor_value, alpha) {
 
     hist_chk <- class(hist_control_data)
@@ -132,6 +133,7 @@ pwe_error_checks <- function(effect_vals, hist_control_data, rand_control_diff, 
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 pwe_error_checks_simple <- function(effect_vals, time_vec, control_parms, censor_value, alpha) {
 
     tv_chk <- is.null(time_vec)

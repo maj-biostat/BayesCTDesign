@@ -86,6 +86,7 @@ genbernoullidata <- function(sample_size, prob1, odds_ratio) {
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 bernoulliloglike <- function(params, randdata, histdata, a0) {
 
     # --------------------------------------------------------------- #
@@ -169,6 +170,7 @@ bernoulliloglike <- function(params, randdata, histdata, a0) {
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 bernoullitrialsimulator <- function(sample_size_val, histdata, prob1_val, odds_ratio_val, a0_val, alpha) {
 
     # --------------------------------------------------------------- #
@@ -239,6 +241,7 @@ bernoullitrialsimulator <- function(sample_size_val, histdata, prob1_val, odds_r
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 bernoullitrialsimulatornohist <- function(sample_size_val, prob1_val, odds_ratio_val, alpha) {
 
     # --------------------------------------------------------------- #
@@ -327,6 +330,7 @@ bernoullitrialsimulatornohist <- function(sample_size_val, prob1_val, odds_ratio
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 bernoulli_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
                           rand_control_diff, hist_control_data, alpha=0.05,
                           get_var=FALSE, get_bias=FALSE, get_mse=FALSE,
@@ -772,6 +776,7 @@ bernoulli_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 simple_bernoulli_sim <- function(trial_reps=100, subj_per_arm, effect_vals, prob1_val,
                                  alpha=0.05, get_var=FALSE, get_bias=FALSE,
                                  get_mse=FALSE, quietly=TRUE) {

@@ -130,6 +130,7 @@ genpwedata <- function(sample_size, lambda_vec, hazard_ratio, time_vec, censor_v
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 pwe_loglike <- function(params, time_vec, randdata, hist_data, a0) {
 
     # --------------------------------------------------------------- #
@@ -224,6 +225,7 @@ pwe_loglike <- function(params, time_vec, randdata, hist_data, a0) {
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 pwetrialsimulator <- function(sample_size_val, hist_data, lambda_vec_val, time_vec_val, hazard_ratio_val, censor_value,
     a0_val, alpha) {
 
@@ -386,6 +388,7 @@ pwetrialsimulator <- function(sample_size_val, hist_data, lambda_vec_val, time_v
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 pwetrialsimulatornohist <- function(sample_size_val, lambda_vec_val, time_vec_val, hazard_ratio_val, censor_value, alpha) {
 
     # --------------------------------------------------------------- #
@@ -566,6 +569,7 @@ pwetrialsimulatornohist <- function(sample_size_val, lambda_vec_val, time_vec_va
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 pwe_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
                     rand_control_diff, hist_control_data, time_vec_val,
                     censor_value, alpha=0.05, get_var=FALSE, get_bias=FALSE,
@@ -1017,6 +1021,7 @@ pwe_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 simple_pwe_sim <- function(trial_reps=100, subj_per_arm, effect_vals, time_vec_val,
                            rc_hazards, censor_value, alpha=0.05, get_var=FALSE,
                            get_bias=FALSE, get_mse=FALSE, quietly=TRUE) {

@@ -23,10 +23,10 @@
 #' @export
 genlognormaldata <- function(sample_size, mu1, mean_ratio, common_sd, censor_value) {
 
-    # --------------------------------------------------------------- #
+  # --------------------------------------------------------------- #
 	# The function genlognormaldata simulates a balanced clinical trial
 	# with 'sample_size' subjects per arm using a lognormal distribution.
-    # 'm1' is the lognormal location parameter, and 'common_sd' is the
+  # 'm1' is the lognormal location parameter, and 'common_sd' is the
 	# lognormal scale parameter for both arms.  'censor_value' is the
 	# value when right censoring occurs.  As of 9/5/2016,
 	# genlognormaldata only generates data with right censoring.
@@ -40,16 +40,16 @@ genlognormaldata <- function(sample_size, mu1, mean_ratio, common_sd, censor_val
 	# --------------------------------------------------------------- #
 
     # mu1 is the lognormal distribution mu parameter for the control group.
-	# The lognormal mean for control group is:
+	  # The lognormal mean for control group is:
     lnmean1 <- exp(mu1 + 0.5 * common_sd^2)
     # given user specified mean_ratio, the lognormal mean for experimental
-	# group is:
+	  # group is:
     lnmean2 <- mean_ratio * lnmean1
     # Now, I need to transform the lognormal mean in the experimental group
-	# to the mu parameter for experimental group.
+	  # to the mu parameter for experimental group.
     mu2 <- log(lnmean2) - 0.5 * common_sd^2
 
-	# Create event times for both groups
+	  # Create event times for both groups
     time1 <- stats::rlnorm(sample_size, meanlog = mu1, sdlog = common_sd)
     time2 <- stats::rlnorm(sample_size, meanlog = mu2, sdlog = common_sd)
 
@@ -68,15 +68,15 @@ genlognormaldata <- function(sample_size, mu1, mean_ratio, common_sd, censor_val
         status1[test1] <- 0
         status2[test2] <- 0
     }
-	#Create status variable if censor_value is not specified (in such a case
-	# status = 1 for all observeations.)
+	  #Create status variable if censor_value is not specified (in such a case
+	  # status = 1 for all observeations.)
     if (is.null(censor_value) == TRUE) {
         status1 <- rep(1, sample_size)
         status2 <- rep(1, sample_size)
     }
 
-	#Take all data created above and put into a data frame that contains
-	# the required variables.
+	  #Take all data created above and put into a data frame that contains
+	  # the required variables.
     subjid <- seq(from = 1, to = 2 * sample_size)
     trt <- c(rep(0, sample_size), rep(1, sample_size))
     time <- c(time1, time2)
@@ -122,8 +122,9 @@ genlognormaldata <- function(sample_size, mu1, mean_ratio, common_sd, censor_val
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 lognormalloglike <- function(params, randdata, histdata, a0) {
-    # --------------------------------------------------------------- #
+  # --------------------------------------------------------------- #
 	#  This function calculates the Lognormal log-likelihood given
 	#  a vector of parameter values, a dataset of randomized trial
 	#  data (two arms, no covariates beyond treatment), and a dataset
@@ -139,34 +140,34 @@ lognormalloglike <- function(params, randdata, histdata, a0) {
 	#  mu, via the identity link.  beta1 is the log mean ratio
 	#  (experimental group over control group), while beta0 is the
 	#  location parameter for controls.
-    # --------------------------------------------------------------- #
+  # --------------------------------------------------------------- #
 
     # Get params.  Note that the scale parameter is on the log scale.
-	# To calculate the lognormal standard deviation value one must use exp(logs).
+	  # To calculate the lognormal standard deviation value one must use exp(logs).
     beta0 <- params[1]
     beta1 <- params[2]
     logs <- params[3]
 
     # Calculate the lognormal mu parameter vector for all randomized observations.
     mu_i <- beta0 + beta1 * randdata$treatment
-	# Calculate the log-likelihood values for all randomized observations.
-	# Note that I am modeling the lognormal by taking the log of event_time and then
-	# using the Gaussian distribution for the log transformed values.  Could have used
-	# lnorm(), but did it this way just because it is what I am used to doing.
+	  # Calculate the log-likelihood values for all randomized observations.
+	  # Note that I am modeling the lognormal by taking the log of event_time and then
+	  # using the Gaussian distribution for the log transformed values.  Could have used
+	  # lnorm(), but did it this way just because it is what I am used to doing.
     ll_R <- randdata$status * stats::dnorm(log(randdata$event_time), mean = mu_i, sd = exp(logs), log = TRUE) + (1 - randdata$status) *
       stats::pnorm(log(randdata$event_time), mean = mu_i, sd = exp(logs), log.p = TRUE, lower.tail = FALSE)
 
-	# Calculate the loglikelihood values for all historical control observations.
-	# Note that the lognormal mu parameter is equal to beta0.
+	  # Calculate the loglikelihood values for all historical control observations.
+	  # Note that the lognormal mu parameter is equal to beta0.
     ll_H <- histdata$status * stats::dnorm(log(histdata$event_time), mean = beta0, sd = exp(logs), log = TRUE) + (1 - histdata$status) *
       stats::pnorm(log(histdata$event_time), mean = beta0, sd = exp(logs), log.p = TRUE, lower.tail = FALSE)
 
-	# Calculate the overall log likelihood by adding the randomized log-likelihood to the historical control
-	# log-likelihood by a0, where a0 is the power prior parameter.  This a0 value is defined by the
-	# user and not estimated via object function optimization.
+	  # Calculate the overall log likelihood by adding the randomized log-likelihood to the historical control
+	  # log-likelihood by a0, where a0 is the power prior parameter.  This a0 value is defined by the
+	  # user and not estimated via object function optimization.
     ll <- sum(ll_R) + a0 * sum(ll_H)
 
-	# Return the sum of all individual elements to the negative log-likelihood
+	  # Return the sum of all individual elements to the negative log-likelihood
     return(-ll)
 }
 
@@ -195,6 +196,7 @@ lognormalloglike <- function(params, randdata, histdata, a0) {
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 lognormalloglikenohist <- function(params, randdata) {
     # --------------------------------------------------------------- #
 	#  This function calculates the Lognormal log-likelihood given
@@ -272,6 +274,7 @@ lognormalloglikenohist <- function(params, randdata) {
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 lognormaltrialsimulator <- function(sample_size_val, histdata, mu1_val, mean_ratio_val, common_sd_val, censor_value,
     a0_val, alpha) {
     # --------------------------------------------------------------- #
@@ -351,6 +354,7 @@ lognormaltrialsimulator <- function(sample_size_val, histdata, mu1_val, mean_rat
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 lognormaltrialsimulatornohist <- function(sample_size_val, mu1_val, mean_ratio_val, common_sd_val, censor_value, alpha) {
 
   # --------------------------------------------------------------- #
@@ -448,6 +452,7 @@ lognormaltrialsimulatornohist <- function(sample_size_val, mu1_val, mean_ratio_v
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 lognormal_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
                           rand_control_diff, hist_control_data, censor_value,
                           alpha=0.05, get_var=FALSE, get_bias=FALSE, get_mse=FALSE,
@@ -911,6 +916,7 @@ lognormal_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 simple_lognormal_sim <- function(trial_reps, subj_per_arm, effect_vals, mu1_val, common_sd_val, censor_value, alpha,
     get_var, get_bias, get_mse, quietly=TRUE) {
 

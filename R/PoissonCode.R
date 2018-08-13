@@ -83,6 +83,7 @@ genpoissondata <- function(sample_size, mu1, mean_ratio) {
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 poissonloglike <- function(params, randdata, histdata, a0) {
 
     # --------------------------------------------------------------- #
@@ -161,6 +162,7 @@ poissonloglike <- function(params, randdata, histdata, a0) {
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 poissontrialsimulator <- function(sample_size_val, histdata, mu1_val, mean_ratio_val, a0_val, alpha) {
     # --------------------------------------------------------------- #
     #  This function simulates a two-arm Bayesian trial where
@@ -231,6 +233,7 @@ poissontrialsimulator <- function(sample_size_val, histdata, mu1_val, mean_ratio
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 poissontrialsimulatornohist <- function(sample_size_val, mu1_val, mean_ratio_val, alpha) {
 
     # --------------------------------------------------------------- #
@@ -320,6 +323,7 @@ poissontrialsimulatornohist <- function(sample_size_val, mu1_val, mean_ratio_val
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 poisson_sim <- function(trial_reps, subj_per_arm, a0_vals, effect_vals,
                         rand_control_diff, hist_control_data, alpha=0.05,
                         get_var=FALSE, get_bias=FALSE, get_mse=FALSE,
@@ -764,6 +768,7 @@ poisson_sim <- function(trial_reps, subj_per_arm, a0_vals, effect_vals,
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 simple_poisson_sim <- function(trial_reps=100, subj_per_arm, effect_vals, mu1_val,
                                alpha=0.05, get_var=FALSE, get_bias=FALSE,
                                get_mse=FALSE, quietly=TRUE) {

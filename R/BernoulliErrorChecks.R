@@ -18,6 +18,7 @@
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 bernoulli_error_checks <- function(effect_vals, hist_control_data, rand_control_diff, alpha) {
 
     hist_chk <- class(hist_control_data)
@@ -89,6 +90,7 @@ bernoulli_error_checks <- function(effect_vals, hist_control_data, rand_control_
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 bernoulli_error_checks_simple <- function(effect_vals, control_parms, alpha) {
 
     chk_parm_lgth <- length(control_parms)

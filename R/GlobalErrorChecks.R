@@ -19,6 +19,7 @@
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 global_error_checks <- function(outcome_type, a0_vals, subj_per_arm, hist_control_data, rand_control_diff, get_var, get_bias,
     get_mse) {
 
@@ -98,6 +99,7 @@ global_error_checks <- function(outcome_type, a0_vals, subj_per_arm, hist_contro
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 global_error_checks_simple <- function(outcome_type, subj_per_arm, get_var, get_bias, get_mse) {
 
     if (!(tolower(outcome_type) %in% c("weibull", "lognormal", "pwe", "gaussian", "bernoulli", "poisson"))) {
@@ -154,6 +156,7 @@ global_error_checks_simple <- function(outcome_type, subj_per_arm, get_var, get_
 #' @examples
 #' #None.
 #' @keywords internal
+#' @noRd
 print_table_error_checks <- function(bayes_ctd_robj, measure, tab_type, subj_per_arm_val, a0_val, effect_val, rand_control_diff_val) {
 
     if (!(tolower(measure) %in% c("power", "est", "var", "bias", "mse"))) {
@@ -324,6 +327,7 @@ print_table_error_checks <- function(bayes_ctd_robj, measure, tab_type, subj_per
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 plot_table_error_checks <- function(bayes_ctd_robj, measure, tab_type, smooth, plot_out, subj_per_arm_val, a0_val, effect_val,
     rand_control_diff_val, span) {
 

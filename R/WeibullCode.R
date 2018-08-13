@@ -141,6 +141,7 @@ genweibulldata <- function(sample_size, scale1, hazard_ratio, common_shape, cens
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 weibullloglike <- function(params, randdata, histdata, a0) {
 
   # --------------------------------------------------------------- #
@@ -235,6 +236,7 @@ weibullloglike <- function(params, randdata, histdata, a0) {
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 weibullloglikenohist <- function(params, randdata) {
 
   # --------------------------------------------------------------- #
@@ -309,6 +311,7 @@ weibullloglikenohist <- function(params, randdata) {
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 weibulltrialsimulator <- function(sample_size_val, histdata, scale1_val, hazard_ratio_val, common_shape_val, censor_value,
     a0_val, alpha) {
 
@@ -389,6 +392,7 @@ weibulltrialsimulator <- function(sample_size_val, histdata, scale1_val, hazard_
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 weibulltrialsimulatornohist <- function(sample_size_val, scale1_val, hazard_ratio_val, common_shape_val, censor_value,
     alpha) {
 
@@ -499,6 +503,7 @@ weibulltrialsimulatornohist <- function(sample_size_val, scale1_val, hazard_rati
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 weibull_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
                         rand_control_diff, hist_control_data, censor_value,
                         alpha=0.05, get_var=FALSE, get_bias=FALSE,
@@ -951,6 +956,7 @@ weibull_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
 #' @examples
 #' #None
 #' @keywords internal
+#' @noRd
 simple_weibull_sim <- function(trial_reps=100, subj_per_arm, effect_vals, scale1_value,
                                common_shape_value, censor_value, alpha=0.05,
                                get_var=FALSE, get_bias=FALSE, get_mse=FALSE,

@@ -1,7 +1,7 @@
 
 #' Two Arm Bayesian Clinical Trial Simulation with Historical Data
 #'
-#' \code{historic_sim()} returns an object of class \code{bayes_ctd_array}, which
+#' \code{historic_sim()} returns an S3 object of class \code{bayes_ctd_array}, which
 #' will contain simulation results for power, statistic estimation, bias,
 #' variance, and mse as requested by user.
 #'
@@ -30,12 +30,17 @@
 #' \code{var}, and \code{mse} are on the scale of the values returned in
 #' \code{est}.
 #'
-#' The object \code{bayes_ctd_array} has two methods, \code{print_table()} and
-#' \code{plot_table()}, for printing and plotting slices of the arrays contained in
-#' \code{bayes_ctd_array$data}. As dimensions of the four dimensional array increases,
-#' the time required to complete the simulation will increase; however, it will be
-#' faster than a similar simulation based on repeated calls to MCMC routines to
-#' analyze each simulated trial.
+#' The object \code{bayes_ctd_array} has two primary methods, \code{print()} and
+#' \code{plot()}, for printing and plotting slices of the arrays contained in
+#' \code{bayes_ctd_array$data}.  The object \code{bayes_ctd_array} also has two
+#' additional methods carried over from the first package release: \code{print_table()},
+#' which is the same as \code{print()}, and \code{plot_table()}, which is the same as
+#' \code{print_table()}.  All four methods allow a user to print and plot slices of
+#' the data arrays contained in \code{bayes_ctd_array$data}.
+#'
+#' As dimensions of the four dimensional array increases, the time required to complete
+#' the simulation will increase; however, it will be faster than a similar simulation
+#' based on repeated calls to MCMC routines to analyze each simulated trial.
 #'
 #' The meaning of the estimation results, and the test used to generate power results,
 #' depends on the outcome used. In all cases, power is based on a two-sided test
@@ -121,7 +126,8 @@
 #'   \code{rand_control_diff}, and finally \code{objtype} indicating that \code{historic_sim()}
 #'   was used. See details for a discussion about the contents of
 #'   \code{data}. Results from the simulation contained in the \code{bayes_ctd_array}
-#'   object can be printed or plotted using the \code{print_table()} and
+#'   object can be printed or plotted using the \code{print()} and
+#'   \code{plot()} methods or the older \code{print_table()} and
 #'   \code{plot_table()} methods. The results can also be accessed using basic list
 #'   element identification and array slicing. For example, to get the 4-dimensional
 #'   array of power results from a simulation, one could use the code
@@ -155,49 +161,49 @@
 #'                              quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
-#' test_table <- print_table(bayes_ctd_array=weibull_test, measure="power",
-#'                           tab_type="WX|YZ", effect_val=0.6,
-#'                           rand_control_diff_val=1.0)
+#' test_table <- print(bayes_ctd_array=weibull_test, measure="power",
+#'                     tab_type="WX|YZ", effect_val=0.6,
+#'                     rand_control_diff_val=1.0)
 #' print(test_table)
 #'
 #' \donttest{
 #' #Create a plot of the power simulation results.
-#' plot_table(bayes_ctd_array=weibull_test, measure="power", tab_type="WX|YZ",
-#'            smooth=FALSE, plot_out=TRUE, effect_val=0.6,
-#'            rand_control_diff_val=1.0)
+#' plot(bayes_ctd_array=weibull_test, measure="power", tab_type="WX|YZ",
+#'      smooth=FALSE, plot_out=TRUE, effect_val=0.6,
+#'      rand_control_diff_val=1.0)
 #' #Create a plot of the estimated hazard ratio simulation results.
-#' plot_table(bayes_ctd_array=weibull_test, measure="est", tab_type="WX|YZ",
-#'            smooth=FALSE, plot_out=TRUE, effect_val=0.6,
-#'            rand_control_diff_val=1.0)
+#' plot(bayes_ctd_array=weibull_test, measure="est", tab_type="WX|YZ",
+#'      smooth=FALSE, plot_out=TRUE, effect_val=0.6,
+#'      rand_control_diff_val=1.0)
 #' #Create a plot of the hazard ratio variance simulation results.
-#' plot_table(bayes_ctd_array=weibull_test, measure="var", tab_type="WX|YZ",
-#'            smooth=FALSE, plot_out=TRUE, effect_val=0.6,
-#'            rand_control_diff_val=1.0)
+#' plot(bayes_ctd_array=weibull_test, measure="var", tab_type="WX|YZ",
+#'      smooth=FALSE, plot_out=TRUE, effect_val=0.6,
+#'      rand_control_diff_val=1.0)
 #' #Create a plot of the hazard ratio bias simulation results.
-#' plot_table(bayes_ctd_array=weibull_test, measure="bias", tab_type="WX|YZ",
-#'            smooth=FALSE, plot_out=TRUE, effect_val=0.6,
-#'            rand_control_diff_val=1.0)
+#' plot(bayes_ctd_array=weibull_test, measure="bias", tab_type="WX|YZ",
+#'      smooth=FALSE, plot_out=TRUE, effect_val=0.6,
+#'      rand_control_diff_val=1.0)
 #' #Create a plot of the hazard ratio mse simulation results.
-#' plot_table(bayes_ctd_array=weibull_test, measure="mse", tab_type="WX|YZ",
-#'            smooth=FALSE, plot_out=TRUE, effect_val=0.6,
-#'            rand_control_diff_val=1.0)
+#' plot(bayes_ctd_array=weibull_test, measure="mse", tab_type="WX|YZ",
+#'      smooth=FALSE, plot_out=TRUE, effect_val=0.6,
+#'      rand_control_diff_val=1.0)
 #'
 #' #Create other power plots using different values for tab_type
-#' plot_table(bayes_ctd_array=weibull_test, measure="power", tab_type="XY|WZ",
-#'            smooth=FALSE, plot_out=TRUE, subj_per_arm_val=150,
-#'            rand_control_diff_val=1.0)
+#' plot(bayes_ctd_array=weibull_test, measure="power", tab_type="XY|WZ",
+#'      smooth=FALSE, plot_out=TRUE, subj_per_arm_val=150,
+#'      rand_control_diff_val=1.0)
 #'
-#' plot_table(bayes_ctd_array=weibull_test, measure="power", tab_type="XZ|WY",
-#'            smooth=FALSE, plot_out=TRUE, subj_per_arm_val=150, effect_val=0.6)
+#' plot(bayes_ctd_array=weibull_test, measure="power", tab_type="XZ|WY",
+#'      smooth=FALSE, plot_out=TRUE, subj_per_arm_val=150, effect_val=0.6)
 #'
-#' plot_table(bayes_ctd_array=weibull_test, measure="power", tab_type="YZ|WX",
-#'            smooth=FALSE, plot_out=TRUE, subj_per_arm_val=150, a0_val=0.5)
+#' plot(bayes_ctd_array=weibull_test, measure="power", tab_type="YZ|WX",
+#'      smooth=FALSE, plot_out=TRUE, subj_per_arm_val=150, a0_val=0.5)
 #'
-#' plot_table(bayes_ctd_array=weibull_test, measure="power", tab_type="WY|XZ",
-#'            smooth=FALSE, plot_out=TRUE, rand_control_diff_val=1, a0_val=0.5)
+#' plot(bayes_ctd_array=weibull_test, measure="power", tab_type="WY|XZ",
+#'      smooth=FALSE, plot_out=TRUE, rand_control_diff_val=1, a0_val=0.5)
 #'
-#' plot_table(bayes_ctd_array=weibull_test, measure="power", tab_type="WZ|XY",
-#'            smooth=FALSE, plot_out=TRUE, effect_val=0.6, a0_val=0.5)
+#' plot(bayes_ctd_array=weibull_test, measure="power", tab_type="WZ|XY",
+#'      smooth=FALSE, plot_out=TRUE, effect_val=0.6, a0_val=0.5)
 #' }
 #'
 #' \donttest{
@@ -222,13 +228,13 @@
 #'                               quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
-#' test_table <- print_table(bayes_ctd_array=poisson_test, measure="power",
-#'                           tab_type=NULL)
+#' test_table <- print(bayes_ctd_array=poisson_test, measure="power",
+#'                     tab_type=NULL)
 #' print(test_table)
 #'
 #' #Create a plot of the power simulation results.
-#' plot_table(bayes_ctd_array=poisson_test, measure="power", tab_type=NULL,
-#'            smooth=FALSE, plot_out=TRUE)
+#' plot(bayes_ctd_array=poisson_test, measure="power", tab_type=NULL,
+#'      smooth=FALSE, plot_out=TRUE)
 #' }
 #'
 #' \donttest{
@@ -253,12 +259,12 @@
 #'                                get_bias = TRUE, get_mse = TRUE, seedval=123,
 #'                                quietly=TRUE)
 #'
-#' test_table <- print_table(bayes_ctd_array=lognormal_test, measure="power",
-#'                           tab_type=NULL)
+#' test_table <- print(bayes_ctd_array=lognormal_test, measure="power",
+#'                     tab_type=NULL)
 #' print(test_table)
 #' #Create a plot of the power simulation results.
-#' plot_table(bayes_ctd_array=lognormal_test, measure="power", tab_type=NULL,
-#'            smooth=TRUE, plot_out=TRUE)
+#' plot(bayes_ctd_array=lognormal_test, measure="power", tab_type=NULL,
+#'      smooth=TRUE, plot_out=TRUE)
 #' }
 #'
 #' @export
@@ -321,7 +327,7 @@ historic_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_ar
 
 #' Two Arm Bayesian Clinical Trial Simulation without Historical Data
 #'
-#' \code{simple_sim()} returns an object of class \code{bayes_ctd_array}, which
+#' \code{simple_sim()} returns an S3 object of class \code{bayes_ctd_array}, which
 #' will contain simulation results for power, statistic estimation, bias, variance,
 #' and mse as requested by user.
 #'
@@ -350,12 +356,17 @@ historic_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_ar
 #' control group).  The values returned in \code{bias}, \code{var}, and \code{mse} are
 #' on the scale of the values returned in \code{est}.
 #'
-#' The object \code{bayes_ctd_array} has two methods, \code{print_table()} and
-#' \code{plot_table()}, for printing and plotting slices of the arrays contained in
-#' \code{bayes_ctd_array$data}. As dimensions of the four dimensional array increases,
-#' the time required to complete the simulation will increase; however, it will be
-#' faster than a similar simulation based on repeated calls to MCMC routines to
-#' analyze each simulated trial.
+#' The object \code{bayes_ctd_array} has two primary methods, \code{print()} and
+#' \code{plot()}, for printing and plotting slices of the arrays contained in
+#' \code{bayes_ctd_array$data}.  The object \code{bayes_ctd_array} also has two
+#' additional methods carried over from the first package release: \code{print_table()},
+#' which is the same as \code{print()}, and \code{plot_table()}, which is the same as
+#' \code{print_table()}.  All four methods allow a user to print and plot slices of
+#' the data arrays contained in \code{bayes_ctd_array$data}.
+#'
+#' As dimensions of the four dimensional array increases, the time required to complete
+#' the simulation will increase; however, it will be faster than a similar simulation
+#' based on repeated calls to MCMC routines to analyze each simulated trial.
 #'
 #' The meaning of the estimation results, and the test used to generate power results,
 #' depends on the outcome used. In all cases, power is based on a two-sided test
@@ -452,7 +463,8 @@ historic_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_ar
 #'   \code{rand_control_diff}, and finally \code{objtype} indicating that \code{simple_sim()}
 #'   was used. See Details for a discussion about the contents of
 #'   \code{data}. Results from the simulation contained in the \code{bayes_ctd_array}
-#'   object can be printed or plotted using the \code{print_table()} and
+#'   object can be printed or plotted using the \code{print()} and
+#'   \code{plot()} methods or the older \code{print_table()} and
 #'   \code{plot_table()} methods. The results can also be accessed using basic list
 #'   element identification and array slicing. For example, to get the power results
 #'   from a simulation, one could use the code \code{bayes_ctd_array$data$power}, where
@@ -475,26 +487,26 @@ historic_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_ar
 #'                            seedval=123, quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
-#' test_table <- print_table(bayes_ctd_array=weibull_test, measure="power",
-#'                           tab_type=NULL, subj_per_arm_val=NULL, a0_val=NULL,
-#'                           effect_val=NULL, rand_control_diff_val=NULL)
+#' test_table <- print(bayes_ctd_array=weibull_test, measure="power",
+#'                     tab_type=NULL, subj_per_arm_val=NULL, a0_val=NULL,
+#'                     effect_val=NULL, rand_control_diff_val=NULL)
 #' print(test_table)
 #'
 #' #Create a plot of the power simulation results.
-#' plot_table(bayes_ctd_array=weibull_test, measure="power", tab_type=NULL,
-#'            smooth=FALSE, plot_out=TRUE)
+#' plot(bayes_ctd_array=weibull_test, measure="power", tab_type=NULL,
+#'      smooth=FALSE, plot_out=TRUE)
 #' #Create a plot of the estimated hazard ratio simulation results.
-#' plot_table(bayes_ctd_array=weibull_test, measure="est", tab_type=NULL,
-#'            smooth=FALSE, plot_out=TRUE)
+#' plot(bayes_ctd_array=weibull_test, measure="est", tab_type=NULL,
+#'      smooth=FALSE, plot_out=TRUE)
 #' #Create a plot of the hazard ratio variance simulation results.
-#' plot_table(bayes_ctd_array=weibull_test, measure="var", tab_type=NULL,
-#'            smooth=FALSE, plot_out=TRUE)
+#' plot(bayes_ctd_array=weibull_test, measure="var", tab_type=NULL,
+#'      smooth=FALSE, plot_out=TRUE)
 #' #Create a plot of the hazard ratio bias simulation results.
-#' plot_table(bayes_ctd_array=weibull_test, measure="bias", tab_type=NULL,
-#'            smooth=FALSE, plot_out=TRUE)
+#' plot(bayes_ctd_array=weibull_test, measure="bias", tab_type=NULL,
+#'      smooth=FALSE, plot_out=TRUE)
 #' #Create a plot of the hazard ratio mse simulation results.
-#' plot_table(bayes_ctd_array=weibull_test, measure="mse", tab_type=NULL,
-#'            smooth=FALSE, plot_out=TRUE)
+#' plot(bayes_ctd_array=weibull_test, measure="mse", tab_type=NULL,
+#'      smooth=FALSE, plot_out=TRUE)
 #' @export
 simple_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_arm = c(50, 100, 150, 200, 250), effect_vals = c(0.6,1,
     1.4), control_parms = NULL, time_vec = NULL, censor_value = NULL, alpha = 0.05, get_var = FALSE, get_bias = FALSE,
@@ -546,9 +558,11 @@ simple_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_arm 
 
 #' Print Data from Two Arm Bayesian Clinical Trial Simulation.
 #'
-#' \code{print_table()} takes an object of class \code{bayes_ctd_array}, and prints
+#' \code{print_table()} takes an S3 object of class \code{bayes_ctd_array}, and prints
 #' a two dimensional slice from the data generated by a clinical trial simulation
-#' using \code{historic_sim()} or \code{simple_sim()}.
+#' using \code{historic_sim()} or \code{simple_sim()}.  This method has been replaced
+#' with \code{print()}.  The method \code{print_table()} has been retained for
+#' continuity with original release of \code{BayesCTDesign}.
 #'
 #' If the object of class \code{bayes_ctd_array} is created by \code{historic_sim()},
 #' then the function \code{print_table()} allows the user to print user-specified 1- and 2-
@@ -656,7 +670,7 @@ simple_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_arm 
 #'   \code{bayes_ctd_array} is generated by \code{simple_sim()},
 #'   \code{rand_control_diff_val} is ignored.
 #' @param print_chg_warn A parameter not used by the user, but is used by
-#'   \code{plot_table} to ensure warnings are not printed twice.
+#'   \code{plot_table()} to ensure warnings are not printed twice.
 #'
 #' @return \code{print_table()} returns a two dimensional array of simulation results.
 #'
@@ -784,9 +798,11 @@ print_table <- function(bayes_ctd_array = NULL, measure = "power", tab_type = "W
 
 #' Print Data from Two Arm Bayesian Clinical Trial Simulation.
 #'
-#' \code{print_table()} takes an object of class \code{bayes_ctd_array}, and prints
+#' \code{print_table()} takes an S3 object of class \code{bayes_ctd_array}, and prints
 #' a two dimensional slice from the data generated by a clinical trial simulation
-#' using \code{historic_sim()} or \code{simple_sim()}.
+#' using \code{historic_sim()} or \code{simple_sim()}.  This method has been replaced
+#' with \code{print()}.  The method \code{print_table()} has been retained for
+#' continuity with original release of \code{BayesCTDesign}.
 #'
 #' If the object of class \code{bayes_ctd_array} is created by \code{historic_sim()},
 #' then the function \code{print_table()} allows the user to print user-specified 1- and 2-
@@ -894,7 +910,7 @@ print_table <- function(bayes_ctd_array = NULL, measure = "power", tab_type = "W
 #'   \code{bayes_ctd_array} is generated by \code{simple_sim()},
 #'   \code{rand_control_diff_val} is ignored.
 #' @param print_chg_warn A parameter not used by the user, but is used by
-#'   \code{plot_table} to ensure warnings are not printed twice.
+#'   \code{plot_table()} to ensure warnings are not printed twice.
 #'
 #' @return \code{print_table()} returns a two dimensional array of simulation results.
 #'
@@ -1386,12 +1402,12 @@ print_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power
 
 #' Print Data from Two Arm Bayesian Clinical Trial Simulation.
 #'
-#' \code{print.bayes_ctd_array()} takes an object of class \code{bayes_ctd_array}, and prints
-#' a two dimensional slice from the data generated by a clinical trial simulation
+#' \code{print.bayes_ctd_array()} takes an S3 object of class \code{bayes_ctd_array}, and
+#' prints a two dimensional slice from the data generated by a clinical trial simulation
 #' using \code{historic_sim()} or \code{simple_sim()}.
 #'
 #' If the object of class \code{bayes_ctd_array} is created by \code{historic_sim()},
-#' then the function \code{print_table()} allows the user to print user-specified 1- and 2-
+#' then the function \code{print_()} allows the user to print user-specified 1- and 2-
 #' dimensional slices of the simulation results based on slicing code described
 #' below.  If the object of class \code{bayes_ctd_array} is created by
 #' \code{simple_sim()}, a basic table of characteristic by sample size and effect is created.
@@ -1400,11 +1416,11 @@ print_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power
 #' all four trial characteristics (\code{subj_per_arm_val}, \code{a0_vals},
 #' \code{effect_val}, and \code{rand_control_diff_val}) can be ignored, as can the
 #' parameter defining what type of table to print, \code{tab_type}.  A call to
-#' \code{print_table()} will require the user to specify a measure (power, est, var, bias,
+#' \code{print()} will require the user to specify a measure (power, est, var, bias,
 #' or mse).
 #'
 #' If the object of class \code{bayes_ctd_array} is created by \code{historic_sim()},
-#' a call to \code{print_table()} will require the user to specify a measure
+#' a call to \code{print()} will require the user to specify a measure
 #' (power, est, var, bias, or mse) and may require the user to specify a table type.
 #' A table type, \code{tab_type}, will be required if 3 of the 4 trial characteristics
 #' are equal to a vector of 2 or more values.  The table type specification
@@ -1496,9 +1512,9 @@ print_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power
 #'   \code{bayes_ctd_array} is generated by \code{simple_sim()},
 #'   \code{rand_control_diff_val} is ignored.
 #' @param print_chg_warn A parameter not used by the user, but is used by
-#'   \code{plot_table} to ensure warnings are not printed twice.
+#'   \code{plot()} to ensure warnings are not printed twice.
 #'
-#' @return \code{print_table()} returns a two dimensional array of simulation results.
+#' @return \code{print()} returns a two dimensional array of simulation results.
 #'
 #' @examples
 #' #Run a Weibull simulation, using simple_sim().
@@ -1513,22 +1529,22 @@ print_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power
 #'                            seedval=123, quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
-#' test_table <- print_table(bayes_ctd_array=weibull_test, measure="power",
-#'                           tab_type=NULL, subj_per_arm_val=NULL, a0_val=NULL,
-#'                           effect_val=NULL, rand_control_diff_val=NULL)
+#' test_table <- print(bayes_ctd_array=weibull_test, measure="power",
+#'                     tab_type=NULL, subj_per_arm_val=NULL, a0_val=NULL,
+#'                     effect_val=NULL, rand_control_diff_val=NULL)
 #' print(test_table)
 #'
 #' #Tabulate the simulation results for estimates.
-#' print_table(bayes_ctd_array=weibull_test, measure="est")
+#' print(bayes_ctd_array=weibull_test, measure="est")
 #'
 #' #Tabulate the simulation results for variance.
-#' print_table(bayes_ctd_array=weibull_test, measure="var")
+#' print(bayes_ctd_array=weibull_test, measure="var")
 #'
 #' #Tabulate the simulation results for bias.
-#' print_table(bayes_ctd_array=weibull_test, measure="bias")
+#' print(bayes_ctd_array=weibull_test, measure="bias")
 #'
 #' #Tabulate the simulation results for mse.
-#' print_table(bayes_ctd_array=weibull_test, measure="mse")
+#' print(bayes_ctd_array=weibull_test, measure="mse")
 #'
 #' \donttest{
 #' #Run another weibull simulation, using historic_sim().
@@ -1553,26 +1569,26 @@ print_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power
 #'                               quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
-#' test_table <- print_table(bayes_ctd_array=weibull_test2, measure="power",
-#'                           tab_type="WX|YZ", effect_val=0.6,
-#'                           rand_control_diff_val=1.0)
+#' test_table <- print(bayes_ctd_array=weibull_test2, measure="power",
+#'                     tab_type="WX|YZ", effect_val=0.6,
+#'                     rand_control_diff_val=1.0)
 #' print(test_table)
 #'
 #' #Tabulate the simulation results for estimates.
-#' print_table(bayes_ctd_array=weibull_test2, measure="est", tab_type="WX|YZ",
-#'             effect_val=0.6, rand_control_diff_val=1.0)
+#' print(bayes_ctd_array=weibull_test2, measure="est", tab_type="WX|YZ",
+#'       effect_val=0.6, rand_control_diff_val=1.0)
 #'
 #' #Tabulate the simulation results for variance.
-#' print_table(bayes_ctd_array=weibull_test2, measure="var", tab_type="WX|YZ",
-#'             effect_val=0.6, rand_control_diff_val=1.0)
+#' print(bayes_ctd_array=weibull_test2, measure="var", tab_type="WX|YZ",
+#'       effect_val=0.6, rand_control_diff_val=1.0)
 #'
 #' #Tabulate the simulation results for bias.
-#' print_table(bayes_ctd_array=weibull_test2, measure="bias", tab_type="WX|YZ",
-#'             effect_val=0.6, rand_control_diff_val=1.0)
+#' print(bayes_ctd_array=weibull_test2, measure="bias", tab_type="WX|YZ",
+#'       effect_val=0.6, rand_control_diff_val=1.0)
 #'
 #' #Tabulate the simulation results for mse.
-#' print_table(bayes_ctd_array=weibull_test2, measure="mse", tab_type="WX|YZ",
-#'             effect_val=0.6, rand_control_diff_val=1.0)
+#' print(bayes_ctd_array=weibull_test2, measure="mse", tab_type="WX|YZ",
+#'       effect_val=0.6, rand_control_diff_val=1.0)
 #' }
 #'
 #' \donttest{
@@ -1593,25 +1609,25 @@ print_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power
 #'                               censor_value = 3, alpha = 0.05, get_var = TRUE,
 #'                               get_bias = TRUE, get_mse = TRUE, seedval=123,
 #'                               quietly=TRUE)
-#' test_table <- print_table(bayes_ctd_array=bernoulli_test, measure="power",
-#'                          tab_type=NULL, effect_val=NULL,
-#'                          subj_per_arm_val=NULL)
+#' test_table <- print(bayes_ctd_array=bernoulli_test, measure="power",
+#'                     tab_type=NULL, effect_val=NULL,
+#'                     subj_per_arm_val=NULL)
 #' print(test_table)
 #'
 #' #If only one or two of the subj_per_arm, a0_vals, effect_vals, or
 #' #rand_control_diff parameters have length greater than 1, then
 #' #only bayes_ctd_array and measure parameters are needed.
 #' #Tabulate the simulation results for estimates.
-#' print_table(bayes_ctd_array=bernoulli_test, measure="est")
+#' print(bayes_ctd_array=bernoulli_test, measure="est")
 #'
 #' #Tabulate the simulation results for variance.
-#' print_table(bayes_ctd_array=bernoulli_test, measure="var")
+#' print(bayes_ctd_array=bernoulli_test, measure="var")
 #'
 #' #Tabulate the simulation results for bias.
-#' print_table(bayes_ctd_array=bernoulli_test, measure="bias")
+#' print(bayes_ctd_array=bernoulli_test, measure="bias")
 #'
 #' #Tabulate the simulation results for mse.
-#' print_table(bayes_ctd_array=bernoulli_test, measure="mse")
+#' print(bayes_ctd_array=bernoulli_test, measure="mse")
 #' }
 #'
 #' @export
@@ -1987,9 +2003,11 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
 
 #' Plot Data from Two Arm Bayesian Clinical Trial Simulation.
 #'
-#' \code{plot_table()} takes an object of class \code{bayes_ctd_array}, and creates
+#' \code{plot_table()} takes an S3 object of class \code{bayes_ctd_array}, and creates
 #' a line plot from a one or two dimensional slice of the data generated by a clinical
-#' trial simulation using \code{historic_sim()} or \code{simple_sim()}.  The plotted
+#' trial simulation using \code{historic_sim()} or \code{simple_sim()}.   This method
+#' has been replaced with \code{plot()}.  The method \code{plot_table()} has been
+#' retained for continuity with original release of \code{BayesCTDesign}.The plotted
 #' results can be smoothed or unsmoothed.
 #'
 #' If the object of class \code{bayes_ctd_array} is created by \code{historic_sim()},
@@ -2006,7 +2024,7 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
 #' var, bias, or mse).
 #'
 #' If the object of class \code{bayes_ctd_array} is created by \code{historic_sim()},
-#' in a call to \code{plot_table()} the user must specify a measure to plot
+#' when calling \code{plot_table()} the user must specify a measure to plot
 #' (power, est, var, bias, or mse) and may be required to specify a plot type through
 #' the \code{tab_type} parameter.  A plot type, \code{tab_type}, will be required if
 #' 3 of the 4 trial characteristics are equal to a vector of 2 or more values.  This
@@ -2014,18 +2032,18 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
 #' the subject per arm dimension.  The letter X represents the a0 dimension.  The
 #' letter Y represents the effect dimension.  The letter Z represents the control
 #' difference dimension.  To plot a slice of the 4-dimensional array, these letters
-#' are put into an AB|CD pattern just like in \code{print_table}.  The two letters
-#' to the right of the vertical bar define which variables are held constant.  The two
-#' letters to the left of the vertical bar define which variables are going to show up
-#' in the plot.  The first letter defines the x-axis variable and the second letter
-#' defines the stratification variable.  The result is a plot of power, estimate,
-#' variance, bias, or mse by the trial characteristic represented by the first letter.
-#' On this plot, one line will be created for each value of the trial characteristic
-#' represented by the second letter.  For example if tab_type equals \code{WX|YZ},
-#' then effect and control differences will be held constant, while sample size will be
-#' represented along the horizontal axis and a0 values will be represented by separate
-#' lines.  The actual values that are plotted on the y-axis depend on what measure is
-#' requested in the parameter \code{measure}.
+#' are put into an AB|CD pattern just like in \code{print()} or \code{print_table()}.
+#' The two letters to the right of the vertical bar define which variables are held
+#' constant.  The two letters to the left of the vertical bar define which variables
+#' are going to show up in the plot.  The first letter defines the x-axis variable
+#' and the second letter defines the stratification variable.  The result is a plot
+#' of power, estimate, variance, bias, or mse by the trial characteristic represented
+#' by the first letter.  On this plot, one line will be created for each value of the
+#' trial characteristic represented by the second letter.  For example if tab_type
+#' equals \code{WX|YZ}, then effect and control differences will be held constant,
+#' while sample size will be represented along the horizontal axis and a0 values will
+#' be represented by separate lines.  The actual values that are plotted on the y-axis
+#' depend on what measure is requested in the parameter \code{measure}.
 #'
 #' \itemize{
 #'   \item \code{tab_type='WX|YZ'}, Sample Size by a0
@@ -2124,7 +2142,7 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
 #' @return \code{plot_table()} returns a plot for a two dimensional array of simulation
 #'   results.  If \code{smooth} is \code{TRUE}, then the plot is based on a smoothed
 #'   version of the simulation results. If \code{smooth} is \code{FALSE}, then the plot
-#'   is based on the raw data from the simulation results.  What actually is printed
+#'   is based on the raw data from the simulation results.  What actually is plotted
 #'   depends on the value of \code{measure}.  If \code{plot_out} is \code{FALSE}, the
 #'   plot is not created.  This option is useful when the user wants a table of smoothed
 #'   simulation results but does not want the plot. Smoothing of simulation results
@@ -2143,12 +2161,6 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
 #'                            censor_value = NULL, alpha = 0.05,
 #'                            get_var = TRUE, get_bias = TRUE, get_mse = TRUE,
 #'                            seedval=123, quietly=TRUE)
-#'
-#' #Tabulate the simulation results for power.
-#' test_table <- print_table(bayes_ctd_array=weibull_test, measure="power",
-#'                           tab_type=NULL, subj_per_arm_val=NULL, a0_val=NULL,
-#'                           effect_val=NULL, rand_control_diff_val=NULL)
-#' print(test_table)
 #'
 #' #Create a plot of the power simulation results.
 #' plot_table(bayes_ctd_array=weibull_test, measure="power", tab_type=NULL,
@@ -2182,12 +2194,6 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
 #'                             get_bias = TRUE, get_mse = TRUE, seedval=123,
 #'                             quietly=TRUE)
 #'
-#' #Tabulate the simulation results for power.
-#' test_table <- print_table(bayes_ctd_array=weibull_test2, measure="power",
-#'                           tab_type=NULL, subj_per_arm_val=NULL, a0_val=NULL,
-#'                           effect_val=NULL, rand_control_diff_val=NULL)
-#' print(test_table)
-#'
 #' #Create a plot of the power simulation results.
 #' plot_table(bayes_ctd_array=weibull_test2, measure="power", tab_type=NULL,
 #'            smooth=TRUE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
@@ -2216,12 +2222,6 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
 #'                               get_bias = TRUE, get_mse = TRUE, seedval=123,
 #'                               quietly=TRUE)
 #'
-#' #Tabulate the simulation results for power.
-#' test_table <- print_table(bayes_ctd_array=weibull_test3, measure="power",
-#'                           tab_type="WX|YZ", effect_val=0.6,
-#'                           rand_control_diff_val=1.0)
-#' print(test_table)
-#'
 #' #Create a plot of the power simulation results.
 #' plot_table(bayes_ctd_array=weibull_test3, measure="power", tab_type="WX|YZ",
 #'            smooth=FALSE, plot_out=TRUE, effect_val=0.6,
@@ -2247,10 +2247,7 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
 #'                              censor_value = 3, alpha = 0.05, get_var = TRUE,
 #'                              get_bias = TRUE, get_mse = TRUE, seedval=123,
 #'                              quietly=TRUE)
-#' test_table <- print_table(bayes_ctd_array=gaussian_test, measure="power",
-#'                          tab_type=NULL, effect_val=NULL,
-#'                          subj_per_arm_val=NULL)
-#' print(test_table)
+#'
 #' #Create a plot of the power simulation results.
 #' plot_table(bayes_ctd_array=gaussian_test, measure="power", tab_type=NULL,
 #'           smooth=TRUE, plot_out=TRUE, effect_val=NULL,
@@ -2285,11 +2282,6 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
 #'                         censor_value = 3, alpha = 0.05, get_var = TRUE,
 #'                         get_bias = TRUE, get_mse = TRUE, seedval=123,
 #'                         quietly=TRUE)
-#'
-#' test_table <- print_table(bayes_ctd_array=pwe_test, measure="power",
-#'                          tab_type=NULL, effect_val=NULL,
-#'                          subj_per_arm_val=NULL)
-#' print(test_table)
 #'
 #' #Create a plot of the power simulation results.
 #' plot_table(bayes_ctd_array=pwe_test, measure="power", tab_type=NULL,
@@ -2305,9 +2297,11 @@ plot_table <- function(bayes_ctd_array, measure = "power", tab_type = "WX|YZ", s
 
 #' Plot Data from Two Arm Bayesian Clinical Trial Simulation.
 #'
-#' \code{plot_table()} takes an object of class \code{bayes_ctd_array}, and creates
+#' \code{plot_table()} takes an S3 object of class \code{bayes_ctd_array}, and creates
 #' a line plot from a one or two dimensional slice of the data generated by a clinical
-#' trial simulation using \code{historic_sim()} or \code{simple_sim()}.  The plotted
+#' trial simulation using \code{historic_sim()} or \code{simple_sim()}. This method
+#' has been replaced with \code{plot()}.  The method \code{plot_table()} has been
+#' retained for continuity with original release of \code{BayesCTDesign}.The plotted
 #' results can be smoothed or unsmoothed.
 #'
 #' If the object of class \code{bayes_ctd_array} is created by \code{historic_sim()},
@@ -2324,7 +2318,7 @@ plot_table <- function(bayes_ctd_array, measure = "power", tab_type = "WX|YZ", s
 #' var, bias, or mse).
 #'
 #' If the object of class \code{bayes_ctd_array} is created by \code{historic_sim()},
-#' in a call to \code{plot_table()} the user must specify a measure to plot
+#' when calling \code{plot_table()} the user must specify a measure to plot
 #' (power, est, var, bias, or mse) and may be required to specify a plot type through
 #' the \code{tab_type} parameter.  A plot type, \code{tab_type}, will be required if
 #' 3 of the 4 trial characteristics are equal to a vector of 2 or more values.  This
@@ -2332,18 +2326,18 @@ plot_table <- function(bayes_ctd_array, measure = "power", tab_type = "WX|YZ", s
 #' the subject per arm dimension.  The letter X represents the a0 dimension.  The
 #' letter Y represents the effect dimension.  The letter Z represents the control
 #' difference dimension.  To plot a slice of the 4-dimensional array, these letters
-#' are put into an AB|CD pattern just like in \code{print_table}.  The two letters
-#' to the right of the vertical bar define which variables are held constant.  The two
-#' letters to the left of the vertical bar define which variables are going to show up
-#' in the plot.  The first letter defines the x-axis variable and the second letter
-#' defines the stratification variable.  The result is a plot of power, estimate,
-#' variance, bias, or mse by the trial characteristic represented by the first letter.
-#' On this plot, one line will be created for each value of the trial characteristic
-#' represented by the second letter.  For example if tab_type equals \code{WX|YZ},
-#' then effect and control differences will be held constant, while sample size will be
-#' represented along the horizontal axis and a0 values will be represented by separate
-#' lines.  The actual values that are plotted on the y-axis depend on what measure is
-#' requested in the parameter \code{measure}.
+#' are put into an AB|CD pattern just like in \code{print()} or \code{print_table()}.
+#' The two letters to the right of the vertical bar define which variables are held
+#' constant.  The two letters to the left of the vertical bar define which variables
+#' are going to show up in the plot.  The first letter defines the x-axis variable
+#' and the second letter defines the stratification variable.  The result is a plot
+#' of power, estimate, variance, bias, or mse by the trial characteristic represented
+#' by the first letter.  On this plot, one line will be created for each value of the
+#' trial characteristic represented by the second letter.  For example if tab_type
+#' equals \code{WX|YZ}, then effect and control differences will be held constant,
+#' while sample size will be represented along the horizontal axis and a0 values will
+#' be represented by separate lines.  The actual values that are plotted on the y-axis
+#' depend on what measure is requested in the parameter \code{measure}.
 #'
 #' \itemize{
 #'   \item \code{tab_type='WX|YZ'}, Sample Size by a0
@@ -2442,7 +2436,7 @@ plot_table <- function(bayes_ctd_array, measure = "power", tab_type = "WX|YZ", s
 #' @return \code{plot_table()} returns a plot for a two dimensional array of simulation
 #'   results.  If \code{smooth} is \code{TRUE}, then the plot is based on a smoothed
 #'   version of the simulation results. If \code{smooth} is \code{FALSE}, then the plot
-#'   is based on the raw data from the simulation results.  What actually is printed
+#'   is based on the raw data from the simulation results.  What actually is plotted
 #'   depends on the value of \code{measure}.  If \code{plot_out} is \code{FALSE}, the
 #'   plot is not created.  This option is useful when the user wants a table of smoothed
 #'   simulation results but does not want the plot. Smoothing of simulation results
@@ -2461,12 +2455,6 @@ plot_table <- function(bayes_ctd_array, measure = "power", tab_type = "WX|YZ", s
 #'                            censor_value = NULL, alpha = 0.05,
 #'                            get_var = TRUE, get_bias = TRUE, get_mse = TRUE,
 #'                            seedval=123, quietly=TRUE)
-#'
-#' #Tabulate the simulation results for power.
-#' test_table <- print_table(bayes_ctd_array=weibull_test, measure="power",
-#'                           tab_type=NULL, subj_per_arm_val=NULL, a0_val=NULL,
-#'                           effect_val=NULL, rand_control_diff_val=NULL)
-#' print(test_table)
 #'
 #' #Create a plot of the power simulation results.
 #' plot_table(bayes_ctd_array=weibull_test, measure="power", tab_type=NULL,
@@ -2500,12 +2488,6 @@ plot_table <- function(bayes_ctd_array, measure = "power", tab_type = "WX|YZ", s
 #'                             get_bias = TRUE, get_mse = TRUE, seedval=123,
 #'                             quietly=TRUE)
 #'
-#' #Tabulate the simulation results for power.
-#' test_table <- print_table(bayes_ctd_array=weibull_test2, measure="power",
-#'                           tab_type=NULL, subj_per_arm_val=NULL, a0_val=NULL,
-#'                           effect_val=NULL, rand_control_diff_val=NULL)
-#' print(test_table)
-#'
 #' #Create a plot of the power simulation results.
 #' plot_table(bayes_ctd_array=weibull_test2, measure="power", tab_type=NULL,
 #'            smooth=TRUE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
@@ -2534,11 +2516,6 @@ plot_table <- function(bayes_ctd_array, measure = "power", tab_type = "WX|YZ", s
 #'                               get_bias = TRUE, get_mse = TRUE, seedval=123,
 #'                               quietly=TRUE)
 #'
-#' #Tabulate the simulation results for power.
-#' test_table <- print_table(bayes_ctd_array=weibull_test3, measure="power",
-#'                           tab_type="WX|YZ", effect_val=0.6,
-#'                           rand_control_diff_val=1.0)
-#' print(test_table)
 #'
 #' #Create a plot of the power simulation results.
 #' plot_table(bayes_ctd_array=weibull_test3, measure="power", tab_type="WX|YZ",
@@ -2565,10 +2542,7 @@ plot_table <- function(bayes_ctd_array, measure = "power", tab_type = "WX|YZ", s
 #'                              censor_value = 3, alpha = 0.05, get_var = TRUE,
 #'                              get_bias = TRUE, get_mse = TRUE, seedval=123,
 #'                              quietly=TRUE)
-#' test_table <- print_table(bayes_ctd_array=gaussian_test, measure="power",
-#'                          tab_type=NULL, effect_val=NULL,
-#'                          subj_per_arm_val=NULL)
-#' print(test_table)
+#'
 #' #Create a plot of the power simulation results.
 #' plot_table(bayes_ctd_array=gaussian_test, measure="power", tab_type=NULL,
 #'           smooth=TRUE, plot_out=TRUE, effect_val=NULL,
@@ -2603,11 +2577,6 @@ plot_table <- function(bayes_ctd_array, measure = "power", tab_type = "WX|YZ", s
 #'                         censor_value = 3, alpha = 0.05, get_var = TRUE,
 #'                         get_bias = TRUE, get_mse = TRUE, seedval=123,
 #'                         quietly=TRUE)
-#'
-#' test_table <- print_table(bayes_ctd_array=pwe_test, measure="power",
-#'                          tab_type=NULL, effect_val=NULL,
-#'                          subj_per_arm_val=NULL)
-#' print(test_table)
 #'
 #' #Create a plot of the power simulation results.
 #' plot_table(bayes_ctd_array=pwe_test, measure="power", tab_type=NULL,
@@ -2945,7 +2914,7 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
             }
             if (measure == "var") {
                 p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'sample_size', y = 'var', group = 'a0_val', color = 'a0_val')) + ggplot2::geom_line() +
-                     ggplot2::geom_point() + ggplot2::labs(color='a0 Value', x='Sample Size', y='Standard Deviation') +
+                     ggplot2::geom_point() + ggplot2::labs(color='a0 Value', x='Sample Size', y='Variance') +
                      ggplot2::ggtitle(title)
                 if (!is.null(ylim)){
                   p <- p + ggplot2::ylim(ylim)
@@ -3035,7 +3004,7 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
             }
             if (measure == "var") {
                 p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'sample_size', y = 'var', group = 'effect_val', color = 'effect_val')) +
-                     ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Effect Value', x='Sample Size', y='Standard Deviation') +
+                     ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Effect Value', x='Sample Size', y='Variance') +
                      ggplot2::ggtitle(title)
                 if (!is.null(ylim)){
                   p <- p + ggplot2::ylim(ylim)
@@ -3129,7 +3098,7 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
             }
             if (measure == "var") {
                 p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'sample_size', y = 'var', group = 'control_differences', color = 'control_differences')) +
-                     ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Control\nDifferences', x='Sample Size', y='Standard Deviation')+
+                     ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Control\nDifferences', x='Sample Size', y='Variance')+
                      ggplot2::ggtitle(title)
                 if (!is.null(ylim)){
                   p <- p + ggplot2::ylim(ylim)
@@ -3221,7 +3190,7 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
             }
             if (measure == "var") {
                 p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'a0_val', y = 'var', group = 'effect_val', color = 'effect_val')) + ggplot2::geom_line() +
-                     ggplot2::geom_point() + ggplot2::labs(color='Effect Value', x='a0 Value', y='Standard Deviation') +
+                     ggplot2::geom_point() + ggplot2::labs(color='Effect Value', x='a0 Value', y='Variance') +
                      ggplot2::ggtitle(title)
                 if (!is.null(ylim)){
                   p <- p + ggplot2::ylim(ylim)
@@ -3312,7 +3281,7 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
             }
             if (measure == "var") {
                 p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'a0_val', y = 'var', group = 'control_differences', color = 'control_differences')) +
-                     ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Control\nDifferences', x='a0 Value', y='Standard Deviation') +
+                     ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Control\nDifferences', x='a0 Value', y='Variance') +
                      ggplot2::ggtitle(title)
                 if (!is.null(ylim)){
                   p <- p + ggplot2::ylim(ylim)
@@ -3408,7 +3377,7 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
             }
             if (measure == "var") {
                 p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'effect_val', y = 'var', group = 'control_differences', color = 'control_differences')) +
-                     ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Control\nDifferences', x='Effect Value', y='Standard Deviation') +
+                     ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Control\nDifferences', x='Effect Value', y='Variance') +
                      ggplot2::ggtitle(title)
                 if (!is.null(ylim)){
                   p <- p + ggplot2::ylim(ylim)
@@ -3513,7 +3482,7 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
         }
         if (measure == "var") {
           p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'control_differences', y = 'var', group = 'a0_val', color = 'a0_val')) +
-            ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='a0 Value', x='Control Differences', y='Standard Deviation') +
+            ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='a0 Value', x='Control Differences', y='Variance') +
             ggplot2::ggtitle(title)
           if (!is.null(ylim)){
             p <- p + ggplot2::ylim(ylim)
@@ -3618,7 +3587,7 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
         }
         if (measure == "var") {
           p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'a0_val', y = 'var', group = 'subj_per_arm', color = 'subj_per_arm')) +
-            ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Subjects per Arm', x='a0_val', y='Standard Deviation') +
+            ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Subjects per Arm', x='a0_val', y='Variance') +
             ggplot2::ggtitle(title)
           if (!is.null(ylim)){
             p <- p + ggplot2::ylim(ylim)
@@ -3723,7 +3692,7 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
         }
         if (measure == "var") {
           p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'effect_val', y = 'var', group = 'subj_per_arm', color = 'subj_per_arm')) +
-            ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Subjects per Arm', x='Effect Value', y='Standard Deviation') +
+            ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Subjects per Arm', x='Effect Value', y='Variance') +
             ggplot2::ggtitle(title)
           if (!is.null(ylim)){
             p <- p + ggplot2::ylim(ylim)
@@ -3828,7 +3797,7 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
         }
         if (measure == "var") {
           p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'control_differences', y = 'var', group = 'subj_per_arm', color = 'subj_per_arm')) +
-            ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Subjects per Arm', x='Control Differences', y='Standard Deviation') +
+            ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Subjects per Arm', x='Control Differences', y='Variance') +
             ggplot2::ggtitle(title)
           if (!is.null(ylim)){
             p <- p + ggplot2::ylim(ylim)
@@ -3929,7 +3898,7 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
         }
         if (measure == "var") {
           p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'control_differences', y = 'var', group = 'effect_val', color = 'effect_val')) + ggplot2::geom_line() +
-            ggplot2::geom_point() + ggplot2::labs(color='Effect Value', x='Control Differences', y='Standard Deviation') +
+            ggplot2::geom_point() + ggplot2::labs(color='Effect Value', x='Control Differences', y='Variance') +
             ggplot2::ggtitle(title)
           if (!is.null(ylim)){
             p <- p + ggplot2::ylim(ylim)
@@ -4034,7 +4003,7 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
         }
         if (measure == "var") {
           p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'effect_val', y = 'var', group = 'a0_val', color = 'a0_val')) +
-            ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='a0 Value', x='Effect Value', y='Standard Deviation') +
+            ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='a0 Value', x='Effect Value', y='Variance') +
             ggplot2::ggtitle(title)
           if (!is.null(ylim)){
             p <- p + ggplot2::ylim(ylim)
@@ -4069,13 +4038,13 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
 
 #' Plot Data from Two Arm Bayesian Clinical Trial Simulation.
 #'
-#' \code{plot.bayes_ctd_array()} takes an object of class \code{bayes_ctd_array}, and creates
-#' a line plot from a one or two dimensional slice of the data generated by a clinical
-#' trial simulation using \code{historic_sim()} or \code{simple_sim()}.  The plotted
-#' results can be smoothed or unsmoothed.
+#' \code{plot.bayes_ctd_array()} takes an S3 object of class \code{bayes_ctd_array}, and
+#' creates a line plot from a one or two dimensional slice of the data generated by a
+#' clinical trial simulation using \code{historic_sim()} or \code{simple_sim()}.  The
+#' plotted results can be smoothed or unsmoothed.
 #'
 #' If the object of class \code{bayes_ctd_array} is created by \code{historic_sim()},
-#' the function \code{plot_table()} allows the user to create line plots of user-specified
+#' the function \code{plot()} allows the user to create line plots of user-specified
 #' 1- or 2- dimensional slices of the simulation results based on slicing code
 #' described below. If the object of class \code{bayes_ctd_array} is created by
 #' \code{simple_sim()}, a basic plot of characteristic by sample size and effect is created.
@@ -4084,11 +4053,11 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
 #' all four trial characteristics (\code{subj_per_arm_val}, \code{a0_vals},
 #' \code{effect_val}, and \code{rand_control_diff_val}) can be ignored as can the
 #' parameter defining what type of plot to create through the parameter \code{tab_type}.
-#' A call to \code{plot_table()} will require the user to specify a measure (power, est,
+#' A call to \code{plot()} will require the user to specify a measure (power, est,
 #' var, bias, or mse).
 #'
 #' If the object of class \code{bayes_ctd_array} is created by \code{historic_sim()},
-#' in a call to \code{plot_table()} the user must specify a measure to plot
+##' when calling \code{plot()} the user must specify a measure to plot
 #' (power, est, var, bias, or mse) and may be required to specify a plot type through
 #' the \code{tab_type} parameter.  A plot type, \code{tab_type}, will be required if
 #' 3 of the 4 trial characteristics are equal to a vector of 2 or more values.  This
@@ -4096,7 +4065,7 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
 #' the subject per arm dimension.  The letter X represents the a0 dimension.  The
 #' letter Y represents the effect dimension.  The letter Z represents the control
 #' difference dimension.  To plot a slice of the 4-dimensional array, these letters
-#' are put into an AB|CD pattern just like in \code{print_table}.  The two letters
+#' are put into an AB|CD pattern just like in \code{print()}.  The two letters
 #' to the right of the vertical bar define which variables are held constant.  The two
 #' letters to the left of the vertical bar define which variables are going to show up
 #' in the plot.  The first letter defines the x-axis variable and the second letter
@@ -4203,10 +4172,10 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
 #' @param title Title for the plot.
 #' @param ylim Lower and upper limits for y-axis of plot.
 #'
-#' @return \code{plot_table()} returns a plot for a two dimensional array of simulation
+#' @return \code{plot()} returns a plot for a two dimensional array of simulation
 #'   results.  If \code{smooth} is \code{TRUE}, then the plot is based on a smoothed
 #'   version of the simulation results. If \code{smooth} is \code{FALSE}, then the plot
-#'   is based on the raw data from the simulation results.  What actually is printed
+#'   is based on the raw data from the simulation results.  What actually is plotted
 #'   depends on the value of \code{measure}.  If \code{plot_out} is \code{FALSE}, the
 #'   plot is not created.  This option is useful when the user wants a table of smoothed
 #'   simulation results but does not want the plot. Smoothing of simulation results
@@ -4226,32 +4195,26 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
 #'                            get_var = TRUE, get_bias = TRUE, get_mse = TRUE,
 #'                            seedval=123, quietly=TRUE)
 #'
-#' #Tabulate the simulation results for power.
-#' test_table <- print_table(bayes_ctd_array=weibull_test, measure="power",
-#'                           tab_type=NULL, subj_per_arm_val=NULL, a0_val=NULL,
-#'                           effect_val=NULL, rand_control_diff_val=NULL)
-#' print(test_table)
-#'
 #' #Create a plot of the power simulation results.
-#' plot_table(bayes_ctd_array=weibull_test, measure="power", tab_type=NULL,
-#'            smooth=FALSE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
-#'            effect_val=NULL, rand_control_diff_val=NULL)
+#' plot(bayes_ctd_array=weibull_test, measure="power", tab_type=NULL,
+#'      smooth=FALSE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
+#'      effect_val=NULL, rand_control_diff_val=NULL)
 #' #Create a plot of the hazard ratio simulation results.
-#' plot_table(bayes_ctd_array=weibull_test, measure="est", tab_type=NULL,
-#'            smooth=FALSE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
-#'            effect_val=NULL, rand_control_diff_val=NULL)
+#' plot(bayes_ctd_array=weibull_test, measure="est", tab_type=NULL,
+#'      smooth=FALSE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
+#'      effect_val=NULL, rand_control_diff_val=NULL)
 #' #Create a plot of the hazard ratio variance simulation results.
-#' plot_table(bayes_ctd_array=weibull_test, measure="var", tab_type=NULL,
-#'            smooth=FALSE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
-#'            effect_val=NULL, rand_control_diff_val=NULL)
+#' plot(bayes_ctd_array=weibull_test, measure="var", tab_type=NULL,
+#'      smooth=FALSE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
+#'      effect_val=NULL, rand_control_diff_val=NULL)
 #' #Create a plot of the hazard ratio bias simulation results.
-#' plot_table(bayes_ctd_array=weibull_test, measure="bias", tab_type=NULL,
-#'            smooth=FALSE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
-#'            effect_val=NULL, rand_control_diff_val=NULL)
+#' plot(bayes_ctd_array=weibull_test, measure="bias", tab_type=NULL,
+#'      smooth=FALSE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
+#'      effect_val=NULL, rand_control_diff_val=NULL)
 #' #Create a plot of the hazard ratio mse simulation results.
-#' plot_table(bayes_ctd_array=weibull_test, measure="mse", tab_type=NULL,
-#'            smooth=FALSE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
-#'            effect_val=NULL, rand_control_diff_val=NULL)
+#' plot(bayes_ctd_array=weibull_test, measure="mse", tab_type=NULL,
+#'      smooth=FALSE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
+#'      effect_val=NULL, rand_control_diff_val=NULL)
 #'
 #' \donttest{
 #' #Run a second Weibull simulation, using simple_sim() and smooth the plot.
@@ -4264,16 +4227,10 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
 #'                             get_bias = TRUE, get_mse = TRUE, seedval=123,
 #'                             quietly=TRUE)
 #'
-#' #Tabulate the simulation results for power.
-#' test_table <- print_table(bayes_ctd_array=weibull_test2, measure="power",
-#'                           tab_type=NULL, subj_per_arm_val=NULL, a0_val=NULL,
-#'                           effect_val=NULL, rand_control_diff_val=NULL)
-#' print(test_table)
-#'
 #' #Create a plot of the power simulation results.
-#' plot_table(bayes_ctd_array=weibull_test2, measure="power", tab_type=NULL,
-#'            smooth=TRUE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
-#'            effect_val=NULL, rand_control_diff_val=NULL, span=c(1,1,1))
+#' plot(bayes_ctd_array=weibull_test2, measure="power", tab_type=NULL,
+#'      smooth=TRUE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
+#'      effect_val=NULL, rand_control_diff_val=NULL, span=c(1,1,1))
 #' }
 #'
 #' \donttest{
@@ -4298,16 +4255,10 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
 #'                               get_bias = TRUE, get_mse = TRUE, seedval=123,
 #'                               quietly=TRUE)
 #'
-#' #Tabulate the simulation results for power.
-#' test_table <- print_table(bayes_ctd_array=weibull_test3, measure="power",
-#'                           tab_type="WX|YZ", effect_val=0.6,
-#'                           rand_control_diff_val=1.0)
-#' print(test_table)
-#'
 #' #Create a plot of the power simulation results.
-#' plot_table(bayes_ctd_array=weibull_test3, measure="power", tab_type="WX|YZ",
-#'            smooth=FALSE, plot_out=TRUE, effect_val=0.6,
-#'            rand_control_diff_val=1.0)
+#' plot(bayes_ctd_array=weibull_test3, measure="power", tab_type="WX|YZ",
+#'      smooth=FALSE, plot_out=TRUE, effect_val=0.6,
+#'      rand_control_diff_val=1.0)
 #' }
 #'
 #' \donttest{
@@ -4334,9 +4285,9 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
 #'                          subj_per_arm_val=NULL)
 #' print(test_table)
 #' #Create a plot of the power simulation results.
-#' plot_table(bayes_ctd_array=gaussian_test, measure="power", tab_type=NULL,
-#'           smooth=TRUE, plot_out=TRUE, effect_val=NULL,
-#'           rand_control_diff_val=NULL)
+#' plot(bayes_ctd_array=gaussian_test, measure="power", tab_type=NULL,
+#'      smooth=TRUE, plot_out=TRUE, effect_val=NULL,
+#'      rand_control_diff_val=NULL)
 #' }
 #'
 #' \donttest{
@@ -4368,15 +4319,10 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
 #'                         get_bias = TRUE, get_mse = TRUE, seedval=123,
 #'                         quietly=TRUE)
 #'
-#' test_table <- print_table(bayes_ctd_array=pwe_test, measure="power",
-#'                          tab_type=NULL, effect_val=NULL,
-#'                          subj_per_arm_val=NULL)
-#' print(test_table)
-#'
 #' #Create a plot of the power simulation results.
-#' plot_table(bayes_ctd_array=pwe_test, measure="power", tab_type=NULL,
-#'           smooth=TRUE, plot_out=TRUE, effect_val=NULL,
-#'           rand_control_diff_val=NULL)
+#' plot(bayes_ctd_array=pwe_test, measure="power", tab_type=NULL,
+#'      smooth=TRUE, plot_out=TRUE, effect_val=NULL,
+#'      rand_control_diff_val=NULL)
 #' }
 #'
 #' @export
@@ -4709,7 +4655,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       }
       if (measure == "var") {
         p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'sample_size', y = 'var', group = 'a0_val', color = 'a0_val')) + ggplot2::geom_line() +
-          ggplot2::geom_point() + ggplot2::labs(color='a0 Value', x='Sample Size', y='Standard Deviation') +
+          ggplot2::geom_point() + ggplot2::labs(color='a0 Value', x='Sample Size', y='Variance') +
           ggplot2::ggtitle(title)
         if (!is.null(ylim)){
           p <- p + ggplot2::ylim(ylim)
@@ -4799,7 +4745,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       }
       if (measure == "var") {
         p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'sample_size', y = 'var', group = 'effect_val', color = 'effect_val')) +
-          ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Effect Value', x='Sample Size', y='Standard Deviation') +
+          ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Effect Value', x='Sample Size', y='Variance') +
           ggplot2::ggtitle(title)
         if (!is.null(ylim)){
           p <- p + ggplot2::ylim(ylim)
@@ -4893,7 +4839,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       }
       if (measure == "var") {
         p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'sample_size', y = 'var', group = 'control_differences', color = 'control_differences')) +
-          ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Control\nDifferences', x='Sample Size', y='Standard Deviation')+
+          ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Control\nDifferences', x='Sample Size', y='Variance')+
           ggplot2::ggtitle(title)
         if (!is.null(ylim)){
           p <- p + ggplot2::ylim(ylim)
@@ -4985,7 +4931,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       }
       if (measure == "var") {
         p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'a0_val', y = 'var', group = 'effect_val', color = 'effect_val')) + ggplot2::geom_line() +
-          ggplot2::geom_point() + ggplot2::labs(color='Effect Value', x='a0 Value', y='Standard Deviation') +
+          ggplot2::geom_point() + ggplot2::labs(color='Effect Value', x='a0 Value', y='Variance') +
           ggplot2::ggtitle(title)
         if (!is.null(ylim)){
           p <- p + ggplot2::ylim(ylim)
@@ -5076,7 +5022,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       }
       if (measure == "var") {
         p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'a0_val', y = 'var', group = 'control_differences', color = 'control_differences')) +
-          ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Control\nDifferences', x='a0 Value', y='Standard Deviation') +
+          ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Control\nDifferences', x='a0 Value', y='Variance') +
           ggplot2::ggtitle(title)
         if (!is.null(ylim)){
           p <- p + ggplot2::ylim(ylim)
@@ -5172,7 +5118,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       }
       if (measure == "var") {
         p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'effect_val', y = 'var', group = 'control_differences', color = 'control_differences')) +
-          ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Control\nDifferences', x='Effect Value', y='Standard Deviation') +
+          ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Control\nDifferences', x='Effect Value', y='Variance') +
           ggplot2::ggtitle(title)
         if (!is.null(ylim)){
           p <- p + ggplot2::ylim(ylim)
@@ -5277,7 +5223,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       }
       if (measure == "var") {
         p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'control_differences', y = 'var', group = 'a0_val', color = 'a0_val')) +
-          ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='a0 Value', x='Control Differences', y='Standard Deviation') +
+          ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='a0 Value', x='Control Differences', y='Variance') +
           ggplot2::ggtitle(title)
         if (!is.null(ylim)){
           p <- p + ggplot2::ylim(ylim)
@@ -5382,7 +5328,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       }
       if (measure == "var") {
         p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'a0_val', y = 'var', group = 'subj_per_arm', color = 'subj_per_arm')) +
-          ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Subjects per Arm', x='a0_val', y='Standard Deviation') +
+          ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Subjects per Arm', x='a0_val', y='Variance') +
           ggplot2::ggtitle(title)
         if (!is.null(ylim)){
           p <- p + ggplot2::ylim(ylim)
@@ -5487,7 +5433,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       }
       if (measure == "var") {
         p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'effect_val', y = 'var', group = 'subj_per_arm', color = 'subj_per_arm')) +
-          ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Subjects per Arm', x='Effect Value', y='Standard Deviation') +
+          ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Subjects per Arm', x='Effect Value', y='Variance') +
           ggplot2::ggtitle(title)
         if (!is.null(ylim)){
           p <- p + ggplot2::ylim(ylim)
@@ -5592,7 +5538,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       }
       if (measure == "var") {
         p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'control_differences', y = 'var', group = 'subj_per_arm', color = 'subj_per_arm')) +
-          ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Subjects per Arm', x='Control Differences', y='Standard Deviation') +
+          ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='Subjects per Arm', x='Control Differences', y='Variance') +
           ggplot2::ggtitle(title)
         if (!is.null(ylim)){
           p <- p + ggplot2::ylim(ylim)
@@ -5693,7 +5639,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       }
       if (measure == "var") {
         p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'control_differences', y = 'var', group = 'effect_val', color = 'effect_val')) + ggplot2::geom_line() +
-          ggplot2::geom_point() + ggplot2::labs(color='Effect Value', x='Control Differences', y='Standard Deviation') +
+          ggplot2::geom_point() + ggplot2::labs(color='Effect Value', x='Control Differences', y='Variance') +
           ggplot2::ggtitle(title)
         if (!is.null(ylim)){
           p <- p + ggplot2::ylim(ylim)
@@ -5798,7 +5744,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       }
       if (measure == "var") {
         p <- ggplot2::ggplot(data = table_dat, ggplot2::aes_string(x = 'effect_val', y = 'var', group = 'a0_val', color = 'a0_val')) +
-          ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='a0 Value', x='Effect Value', y='Standard Deviation') +
+          ggplot2::geom_line() + ggplot2::geom_point() + ggplot2::labs(color='a0 Value', x='Effect Value', y='Variance') +
           ggplot2::ggtitle(title)
         if (!is.null(ylim)){
           p <- p + ggplot2::ylim(ylim)

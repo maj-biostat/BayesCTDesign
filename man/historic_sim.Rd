@@ -93,7 +93,8 @@ a lot of output space.  Default is \code{TRUE}.}
   \code{rand_control_diff}, and finally \code{objtype} indicating that \code{historic_sim()}
   was used. See details for a discussion about the contents of
   \code{data}. Results from the simulation contained in the \code{bayes_ctd_array}
-  object can be printed or plotted using the \code{print_table()} and
+  object can be printed or plotted using the \code{print()} and
+  \code{plot()} methods or the older \code{print_table()} and
   \code{plot_table()} methods. The results can also be accessed using basic list
   element identification and array slicing. For example, to get the 4-dimensional
   array of power results from a simulation, one could use the code
@@ -106,7 +107,7 @@ a lot of output space.  Default is \code{TRUE}.}
   \code{bayes_ctd_array} object.
 }
 \description{
-\code{historic_sim()} returns an object of class \code{bayes_ctd_array}, which
+\code{historic_sim()} returns an S3 object of class \code{bayes_ctd_array}, which
 will contain simulation results for power, statistic estimation, bias,
 variance, and mse as requested by user.
 }
@@ -136,12 +137,17 @@ ratios (experimental group over control group).  The values returned in \code{bi
 \code{var}, and \code{mse} are on the scale of the values returned in
 \code{est}.
 
-The object \code{bayes_ctd_array} has two methods, \code{print_table()} and
-\code{plot_table()}, for printing and plotting slices of the arrays contained in
-\code{bayes_ctd_array$data}. As dimensions of the four dimensional array increases,
-the time required to complete the simulation will increase; however, it will be
-faster than a similar simulation based on repeated calls to MCMC routines to
-analyze each simulated trial.
+The object \code{bayes_ctd_array} has two primary methods, \code{print()} and
+\code{plot()}, for printing and plotting slices of the arrays contained in
+\code{bayes_ctd_array$data}.  The object \code{bayes_ctd_array} also has two
+additional methods carried over from the first package release: \code{print_table()},
+which is the same as \code{print()}, and \code{plot_table()}, which is the same as
+\code{print_table()}.  All four methods allow a user to print and plot slices of
+the data arrays contained in \code{bayes_ctd_array$data}.
+
+As dimensions of the four dimensional array increases, the time required to complete
+the simulation will increase; however, it will be faster than a similar simulation
+based on repeated calls to MCMC routines to analyze each simulated trial.
 
 The meaning of the estimation results, and the test used to generate power results,
 depends on the outcome used. In all cases, power is based on a two-sided test
@@ -183,49 +189,49 @@ weibull_test <- historic_sim(trial_reps = 2, outcome_type = "weibull",
                              quietly=TRUE)
 
 #Tabulate the simulation results for power.
-test_table <- print_table(bayes_ctd_array=weibull_test, measure="power",
-                          tab_type="WX|YZ", effect_val=0.6,
-                          rand_control_diff_val=1.0)
+test_table <- print(bayes_ctd_array=weibull_test, measure="power",
+                    tab_type="WX|YZ", effect_val=0.6,
+                    rand_control_diff_val=1.0)
 print(test_table)
 
 \donttest{
 #Create a plot of the power simulation results.
-plot_table(bayes_ctd_array=weibull_test, measure="power", tab_type="WX|YZ",
-           smooth=FALSE, plot_out=TRUE, effect_val=0.6,
-           rand_control_diff_val=1.0)
+plot(bayes_ctd_array=weibull_test, measure="power", tab_type="WX|YZ",
+     smooth=FALSE, plot_out=TRUE, effect_val=0.6,
+     rand_control_diff_val=1.0)
 #Create a plot of the estimated hazard ratio simulation results.
-plot_table(bayes_ctd_array=weibull_test, measure="est", tab_type="WX|YZ",
-           smooth=FALSE, plot_out=TRUE, effect_val=0.6,
-           rand_control_diff_val=1.0)
+plot(bayes_ctd_array=weibull_test, measure="est", tab_type="WX|YZ",
+     smooth=FALSE, plot_out=TRUE, effect_val=0.6,
+     rand_control_diff_val=1.0)
 #Create a plot of the hazard ratio variance simulation results.
-plot_table(bayes_ctd_array=weibull_test, measure="var", tab_type="WX|YZ",
-           smooth=FALSE, plot_out=TRUE, effect_val=0.6,
-           rand_control_diff_val=1.0)
+plot(bayes_ctd_array=weibull_test, measure="var", tab_type="WX|YZ",
+     smooth=FALSE, plot_out=TRUE, effect_val=0.6,
+     rand_control_diff_val=1.0)
 #Create a plot of the hazard ratio bias simulation results.
-plot_table(bayes_ctd_array=weibull_test, measure="bias", tab_type="WX|YZ",
-           smooth=FALSE, plot_out=TRUE, effect_val=0.6,
-           rand_control_diff_val=1.0)
+plot(bayes_ctd_array=weibull_test, measure="bias", tab_type="WX|YZ",
+     smooth=FALSE, plot_out=TRUE, effect_val=0.6,
+     rand_control_diff_val=1.0)
 #Create a plot of the hazard ratio mse simulation results.
-plot_table(bayes_ctd_array=weibull_test, measure="mse", tab_type="WX|YZ",
-           smooth=FALSE, plot_out=TRUE, effect_val=0.6,
-           rand_control_diff_val=1.0)
+plot(bayes_ctd_array=weibull_test, measure="mse", tab_type="WX|YZ",
+     smooth=FALSE, plot_out=TRUE, effect_val=0.6,
+     rand_control_diff_val=1.0)
 
 #Create other power plots using different values for tab_type
-plot_table(bayes_ctd_array=weibull_test, measure="power", tab_type="XY|WZ",
-           smooth=FALSE, plot_out=TRUE, subj_per_arm_val=150,
-           rand_control_diff_val=1.0)
+plot(bayes_ctd_array=weibull_test, measure="power", tab_type="XY|WZ",
+     smooth=FALSE, plot_out=TRUE, subj_per_arm_val=150,
+     rand_control_diff_val=1.0)
 
-plot_table(bayes_ctd_array=weibull_test, measure="power", tab_type="XZ|WY",
-           smooth=FALSE, plot_out=TRUE, subj_per_arm_val=150, effect_val=0.6)
+plot(bayes_ctd_array=weibull_test, measure="power", tab_type="XZ|WY",
+     smooth=FALSE, plot_out=TRUE, subj_per_arm_val=150, effect_val=0.6)
 
-plot_table(bayes_ctd_array=weibull_test, measure="power", tab_type="YZ|WX",
-           smooth=FALSE, plot_out=TRUE, subj_per_arm_val=150, a0_val=0.5)
+plot(bayes_ctd_array=weibull_test, measure="power", tab_type="YZ|WX",
+     smooth=FALSE, plot_out=TRUE, subj_per_arm_val=150, a0_val=0.5)
 
-plot_table(bayes_ctd_array=weibull_test, measure="power", tab_type="WY|XZ",
-           smooth=FALSE, plot_out=TRUE, rand_control_diff_val=1, a0_val=0.5)
+plot(bayes_ctd_array=weibull_test, measure="power", tab_type="WY|XZ",
+     smooth=FALSE, plot_out=TRUE, rand_control_diff_val=1, a0_val=0.5)
 
-plot_table(bayes_ctd_array=weibull_test, measure="power", tab_type="WZ|XY",
-           smooth=FALSE, plot_out=TRUE, effect_val=0.6, a0_val=0.5)
+plot(bayes_ctd_array=weibull_test, measure="power", tab_type="WZ|XY",
+     smooth=FALSE, plot_out=TRUE, effect_val=0.6, a0_val=0.5)
 }
 
 \donttest{
@@ -250,13 +256,13 @@ poisson_test <- historic_sim(trial_reps = 100, outcome_type = "poisson",
                               quietly=TRUE)
 
 #Tabulate the simulation results for power.
-test_table <- print_table(bayes_ctd_array=poisson_test, measure="power",
-                          tab_type=NULL)
+test_table <- print(bayes_ctd_array=poisson_test, measure="power",
+                    tab_type=NULL)
 print(test_table)
 
 #Create a plot of the power simulation results.
-plot_table(bayes_ctd_array=poisson_test, measure="power", tab_type=NULL,
-           smooth=FALSE, plot_out=TRUE)
+plot(bayes_ctd_array=poisson_test, measure="power", tab_type=NULL,
+     smooth=FALSE, plot_out=TRUE)
 }
 
 \donttest{
@@ -281,12 +287,12 @@ lognormal_test <- historic_sim(trial_reps = 100, outcome_type = "lognormal",
                                get_bias = TRUE, get_mse = TRUE, seedval=123,
                                quietly=TRUE)
 
-test_table <- print_table(bayes_ctd_array=lognormal_test, measure="power",
-                          tab_type=NULL)
+test_table <- print(bayes_ctd_array=lognormal_test, measure="power",
+                    tab_type=NULL)
 print(test_table)
 #Create a plot of the power simulation results.
-plot_table(bayes_ctd_array=lognormal_test, measure="power", tab_type=NULL,
-           smooth=TRUE, plot_out=TRUE)
+plot(bayes_ctd_array=lognormal_test, measure="power", tab_type=NULL,
+     smooth=TRUE, plot_out=TRUE)
 }
 
 }

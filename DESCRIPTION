@@ -1,7 +1,7 @@
 Package: BayesCTDesign
 Type: Package
 Title: Two Arm Bayesian Clinical Trial Design with and Without Historical Control Data
-Version: 0.5.0
+Version: 0.6.0
 Authors@R: c(
     person("Barry", "Eggleston", email = "beggleston@rti.org", role = c("cre", "aut")),
 	person("Doug", "Wilson", email = "doug.roy.wilson@gmail.com", role = c("aut")),

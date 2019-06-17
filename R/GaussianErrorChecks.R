@@ -27,26 +27,26 @@ gaussian_error_checks <- function(effect_vals, hist_control_data, rand_control_d
     # Need to check that EffectSize is a list of positive numbers
     for (eff_val in effect_vals) {
         if (!is.numeric(eff_val))
-            stop("historic_sim requires effect_vals to be numeric.")
+            stop("historic_sim() requires effect_vals to be numeric.")
     }
     # Need to check that hist_control_data is a data frame and has the correct columns.
     if (hist_chk == "data.frame") {
         colnamevals <- colnames(hist_control_data)
         colnamechk <- (colnamevals == c("id", "treatment", "y"))
         if (sum(colnamechk) != 3) {
-            stop("historic_sim requires hist_control_data to have columns: id, treatment, and y.")
+            stop("historic_sim() requires hist_control_data to have columns: id, treatment, and y.")
         }
         if (sum(colnamechk) == 3) {
             if (!is.numeric(hist_control_data$y)) {
-                stop("historic_sim requires hist_control_data$y to be numeric.")
+                stop("historic_sim() requires hist_control_data$y to be numeric.")
             }
             if (!is.numeric(hist_control_data$treatment)) {
-                stop("historic_sim requires hist_control_data$treatment to be numeric 0/1 data.")
+                stop("historic_sim() requires hist_control_data$treatment to be numeric 0/1 data.")
             }
             if (is.numeric(hist_control_data$treatment)) {
                 trt_levels <- names(table(hist_control_data$treatment))
                 if (length(trt_levels) > 2 | (trt_levels[1] != "0" & trt_levels[2] != "1")) {
-                  stop("historic_sim requires hist_control_data$treatment to be numeric 0/1 data.")
+                  stop("historic_sim() requires hist_control_data$treatment to be numeric 0/1 data.")
                 }
             }
         }
@@ -55,15 +55,15 @@ gaussian_error_checks <- function(effect_vals, hist_control_data, rand_control_d
     if (rcp_chk == FALSE) {
         for (rand_cp in rand_control_diff) {
             if (!is.numeric(rand_cp))
-                stop("historic_sim requires rand_control_diff to be numeric.")
+                stop("historic_sim() requires rand_control_diff to be numeric.")
         }
     }
     # Need to check that alpha ranges between 0 and 1
     if (!is.null(alpha) == TRUE) {
         if (!is.numeric(alpha))
-            stop("historic_sim requires alpha to be numeric.")
+            stop("historic_sim() requires alpha to be numeric.")
         if (alpha <= 0 | alpha >= 1)
-            stop("historic_sim requires alpha to be between 0 and 1 but not equal to 0 or 1.")
+            stop("historic_sim() requires alpha to be between 0 and 1 but not equal to 0 or 1.")
     }
 }
 
@@ -94,24 +94,24 @@ gaussian_error_checks_simple <- function(effect_vals, control_parms, alpha) {
     # Need to check that EffectSize is a list of positive numbers
     for (eff_val in effect_vals) {
         if (!is.numeric(eff_val))
-            stop("simple_sim requires effect_vals to be numeric.")
+            stop("simple_sim() requires effect_vals to be numeric.")
     }
     if (chk_parmlgth != 2) {
-        stop("simple_sim requires two elements in control_parms, first=Gaussian mean parameter for rnorm(), second = Gaussian sd parameter for rnorm()")
+        stop("simple_sim() requires two elements in control_parms, first=Gaussian mean parameter for rnorm(), second = Gaussian sd parameter for rnorm()")
     }
     if (chk_parmlgth == 2) {
         if (!is.numeric(control_parms[1]))
-            stop("simple_sim requires Gaussian mean parameter for controls to be numeric.")
+            stop("simple_sim() requires Gaussian mean parameter for controls to be numeric.")
         if (!is.numeric(control_parms[2]))
-            stop("simple_sim requires Gaussian sd parameter for controls to be numeric.")
+            stop("simple_sim() requires Gaussian sd parameter for controls to be numeric.")
         if (control_parms[2] <= 0)
-            stop("simple_sim requires Gaussian sd parameter for controls to be positive.")
+            stop("simple_sim() requires Gaussian sd parameter for controls to be positive.")
     }
     # Need to check that alpha ranges between 0 and 1
     if (!is.null(alpha) == TRUE) {
         if (!is.numeric(alpha))
-            stop("simple_sim requires alpha to be numeric.")
+            stop("simple_sim() requires alpha to be numeric.")
         if (alpha <= 0 | alpha >= 1)
-            stop("simple_sim requires alpha to be between 0 and 1 but not equal to 0 or 1.")
+            stop("simple_sim() requires alpha to be between 0 and 1 but not equal to 0 or 1.")
     }
 }

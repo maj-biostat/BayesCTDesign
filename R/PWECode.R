@@ -641,7 +641,7 @@ pwe_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
                     bias_results[sizes, a0vals, effvals, diffs] <- mean(collect[, 1] - effect_vals[effvals])
                   }
                   if (get_var == TRUE) {
-                    var_results[sizes, a0vals, effvals, diffs] <- mean(exp(collect[, 2]))
+                    var_results[sizes, a0vals, effvals, diffs] <- mean((collect[, 1]*sqrt(collect[, 2]))^2)
                   }
                   if (get_mse == TRUE) {
                     mse_results[sizes, a0vals, effvals, diffs] <- mean((collect[, 1] - effect_vals[effvals])^2)
@@ -965,7 +965,7 @@ pwe_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
     #Create an list of results and apply the bayes_ctd_array class to the list, then
     # return the output object.
     class_out <- list(data = output, subj_per_arm = subj_per_arm, a0_vals = a0_vals, effect_vals = effect_vals, rand_control_diff = rand_control_diff, objtype= 'historic')
-    class(class_out) <- append(class(class_out), "bayes_ctd_array")
+    class(class_out) <- append("bayes_ctd_array", class(class_out))
     return(class_out)
 
 }
@@ -1089,7 +1089,7 @@ simple_pwe_sim <- function(trial_reps=100, subj_per_arm, effect_vals, time_vec_v
                     bias_results[sizes, a0vals, effvals, diffs] <- mean(collect[, 1] - effect_vals[effvals])
                   }
                   if (get_var == TRUE) {
-                    var_results[sizes, a0vals, effvals, diffs] <- mean(exp(collect[, 2]))
+                    var_results[sizes, a0vals, effvals, diffs] <- mean((collect[, 1]*sqrt(collect[, 2]))^2)
                   }
                   if (get_mse == TRUE) {
                     mse_results[sizes, a0vals, effvals, diffs] <- mean((collect[, 1] - effect_vals[effvals])^2)
@@ -1413,7 +1413,7 @@ simple_pwe_sim <- function(trial_reps=100, subj_per_arm, effect_vals, time_vec_v
     #Create an list of results and apply the bayes_ctd_array class to the list, then
     # return the output object.
     class_out <- list(data = output, subj_per_arm = subj_per_arm, a0_vals = 0, effect_vals = effect_vals, rand_control_diff = 1, objtype= 'simple')
-    class(class_out) <- append(class(class_out), "bayes_ctd_array")
+    class(class_out) <- append("bayes_ctd_array", class(class_out))
     return(class_out)
 
 }

@@ -403,7 +403,7 @@ bernoulli_sim <- function(trial_reps=100, subj_per_arm, a0_vals, effect_vals,
                     bias_results[sizes, a0vals, effvals, diffs] <- mean(collect[, 1] - effect_vals[effvals])
                   }
                   if (get_var == TRUE) {
-                    var_results[sizes, a0vals, effvals, diffs] <- mean(collect[, 1]*sqrt(collect[, 2]))
+                    var_results[sizes, a0vals, effvals, diffs] <- mean((collect[, 1]*sqrt(collect[, 2]))^2)
                   }
                   if (get_mse == TRUE) {
                     mse_results[sizes, a0vals, effvals, diffs] <- mean((collect[, 1] - effect_vals[effvals])^2)
@@ -842,7 +842,7 @@ simple_bernoulli_sim <- function(trial_reps=100, subj_per_arm, effect_vals, prob
                     bias_results[sizes, a0vals, effvals, diffs] <- mean(collect[, 1] - effect_vals[effvals])
                   }
                   if (get_var == TRUE) {
-                    var_results[sizes, a0vals, effvals, diffs] <- mean(collect[, 1]*sqrt(collect[, 2]))
+                    var_results[sizes, a0vals, effvals, diffs] <- mean((collect[, 1]*sqrt(collect[, 2]))^2)
                   }
                   if (get_mse == TRUE) {
                     mse_results[sizes, a0vals, effvals, diffs] <- mean((collect[, 1] - effect_vals[effvals])^2)

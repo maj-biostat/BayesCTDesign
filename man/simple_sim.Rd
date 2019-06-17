@@ -76,7 +76,8 @@ a lot of output space.  Default is \code{TRUE}.}
   \code{rand_control_diff}, and finally \code{objtype} indicating that \code{simple_sim()}
   was used. See Details for a discussion about the contents of
   \code{data}. Results from the simulation contained in the \code{bayes_ctd_array}
-  object can be printed or plotted using the \code{print_table()} and
+  object can be printed or plotted using the \code{print()} and
+  \code{plot()} methods or the older \code{print_table()} and
   \code{plot_table()} methods. The results can also be accessed using basic list
   element identification and array slicing. For example, to get the power results
   from a simulation, one could use the code \code{bayes_ctd_array$data$power}, where
@@ -88,7 +89,7 @@ a lot of output space.  Default is \code{TRUE}.}
   \code{bayes_ctd_array} object.
 }
 \description{
-\code{simple_sim()} returns an object of class \code{bayes_ctd_array}, which
+\code{simple_sim()} returns an S3 object of class \code{bayes_ctd_array}, which
 will contain simulation results for power, statistic estimation, bias, variance,
 and mse as requested by user.
 }
@@ -118,12 +119,17 @@ Weibull outcome, the estimation results are hazard ratios (experimental group ov
 control group).  The values returned in \code{bias}, \code{var}, and \code{mse} are
 on the scale of the values returned in \code{est}.
 
-The object \code{bayes_ctd_array} has two methods, \code{print_table()} and
-\code{plot_table()}, for printing and plotting slices of the arrays contained in
-\code{bayes_ctd_array$data}. As dimensions of the four dimensional array increases,
-the time required to complete the simulation will increase; however, it will be
-faster than a similar simulation based on repeated calls to MCMC routines to
-analyze each simulated trial.
+The object \code{bayes_ctd_array} has two primary methods, \code{print()} and
+\code{plot()}, for printing and plotting slices of the arrays contained in
+\code{bayes_ctd_array$data}.  The object \code{bayes_ctd_array} also has two
+additional methods carried over from the first package release: \code{print_table()},
+which is the same as \code{print()}, and \code{plot_table()}, which is the same as
+\code{print_table()}.  All four methods allow a user to print and plot slices of
+the data arrays contained in \code{bayes_ctd_array$data}.
+
+As dimensions of the four dimensional array increases, the time required to complete
+the simulation will increase; however, it will be faster than a similar simulation
+based on repeated calls to MCMC routines to analyze each simulated trial.
 
 The meaning of the estimation results, and the test used to generate power results,
 depends on the outcome used. In all cases, power is based on a two-sided test
@@ -180,24 +186,24 @@ weibull_test <- simple_sim(trial_reps = 2, outcome_type = "weibull",
                            seedval=123, quietly=TRUE)
 
 #Tabulate the simulation results for power.
-test_table <- print_table(bayes_ctd_array=weibull_test, measure="power",
-                          tab_type=NULL, subj_per_arm_val=NULL, a0_val=NULL,
-                          effect_val=NULL, rand_control_diff_val=NULL)
+test_table <- print(bayes_ctd_array=weibull_test, measure="power",
+                    tab_type=NULL, subj_per_arm_val=NULL, a0_val=NULL,
+                    effect_val=NULL, rand_control_diff_val=NULL)
 print(test_table)
 
 #Create a plot of the power simulation results.
-plot_table(bayes_ctd_array=weibull_test, measure="power", tab_type=NULL,
-           smooth=FALSE, plot_out=TRUE)
+plot(bayes_ctd_array=weibull_test, measure="power", tab_type=NULL,
+     smooth=FALSE, plot_out=TRUE)
 #Create a plot of the estimated hazard ratio simulation results.
-plot_table(bayes_ctd_array=weibull_test, measure="est", tab_type=NULL,
-           smooth=FALSE, plot_out=TRUE)
+plot(bayes_ctd_array=weibull_test, measure="est", tab_type=NULL,
+     smooth=FALSE, plot_out=TRUE)
 #Create a plot of the hazard ratio variance simulation results.
-plot_table(bayes_ctd_array=weibull_test, measure="var", tab_type=NULL,
-           smooth=FALSE, plot_out=TRUE)
+plot(bayes_ctd_array=weibull_test, measure="var", tab_type=NULL,
+     smooth=FALSE, plot_out=TRUE)
 #Create a plot of the hazard ratio bias simulation results.
-plot_table(bayes_ctd_array=weibull_test, measure="bias", tab_type=NULL,
-           smooth=FALSE, plot_out=TRUE)
+plot(bayes_ctd_array=weibull_test, measure="bias", tab_type=NULL,
+     smooth=FALSE, plot_out=TRUE)
 #Create a plot of the hazard ratio mse simulation results.
-plot_table(bayes_ctd_array=weibull_test, measure="mse", tab_type=NULL,
-           smooth=FALSE, plot_out=TRUE)
+plot(bayes_ctd_array=weibull_test, measure="mse", tab_type=NULL,
+     smooth=FALSE, plot_out=TRUE)
 }

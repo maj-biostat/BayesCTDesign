@@ -186,24 +186,24 @@ weibull_test <- simple_sim(trial_reps = 2, outcome_type = "weibull",
                            seedval=123, quietly=TRUE)
 
 #Tabulate the simulation results for power.
-test_table <- print(bayes_ctd_array=weibull_test, measure="power",
+test_table <- print(x=weibull_test, measure="power",
                     tab_type=NULL, subj_per_arm_val=NULL, a0_val=NULL,
                     effect_val=NULL, rand_control_diff_val=NULL)
 print(test_table)
 
 #Create a plot of the power simulation results.
-plot(bayes_ctd_array=weibull_test, measure="power", tab_type=NULL,
+plot(x=weibull_test, measure="power", tab_type=NULL,
      smooth=FALSE, plot_out=TRUE)
 #Create a plot of the estimated hazard ratio simulation results.
-plot(bayes_ctd_array=weibull_test, measure="est", tab_type=NULL,
+plot(x=weibull_test, measure="est", tab_type=NULL,
      smooth=FALSE, plot_out=TRUE)
 #Create a plot of the hazard ratio variance simulation results.
-plot(bayes_ctd_array=weibull_test, measure="var", tab_type=NULL,
+plot(x=weibull_test, measure="var", tab_type=NULL,
      smooth=FALSE, plot_out=TRUE)
 #Create a plot of the hazard ratio bias simulation results.
-plot(bayes_ctd_array=weibull_test, measure="bias", tab_type=NULL,
+plot(x=weibull_test, measure="bias", tab_type=NULL,
      smooth=FALSE, plot_out=TRUE)
 #Create a plot of the hazard ratio mse simulation results.
-plot(bayes_ctd_array=weibull_test, measure="mse", tab_type=NULL,
+plot(x=weibull_test, measure="mse", tab_type=NULL,
      smooth=FALSE, plot_out=TRUE)
 }

@@ -21,8 +21,8 @@ knitr::opts_chunk$set(
 
 The `historic_sim()` function allows a clinical trialist to study trial designs that incorporate historical control data. The `simple_sim()` function allows a clinical trialist to study trial designs that are simply two-arm Bayesian clinical trials.  These two primary functions are simulation functions and they output a list containing simulation results.  The first element of the returned list is a list that has at least 2 arrays and depending on user requests may contain up to 5 arrays.  The object created by `historic_sim()` and `simple_sim()` has two methods available:
 
-* `print_table()`
-* `plot_table()`.
+* `print()`
+* `plot()`.
 
 These methods allow the user to select a two-dimensional slice of an array from `historic_sim()` or `simple_sim()` and print or plot the slice.  Both `historic_sim()` and `simple_sim()` allow the user to study two-arm clinical trials with Gaussian, Poisson, Bernoulli, Lognormal, Weibull, and Piecewise Exponential outcomes.  
 
@@ -89,9 +89,9 @@ weibull_test <- historic_sim(trial_reps = 500, outcome_type = "weibull",
 #were experimental over control hazard ratio among randomized subjects is 0.6.
 #The resulting table is a table of power with different sample sizes represented
 #in the rows, and different a0 values represented in the columns.
-test_table0_6 <- print_table(bayes_ctd_array=weibull_test, measure="power",
-                          tab_type="WX|YZ", effect_val=0.6,
-                          rand_control_diff_val=1.0)
+test_table0_6 <- print(bayes_ctd_array=weibull_test, measure="power",
+                       tab_type="WX|YZ", effect_val=0.6,
+                       rand_control_diff_val=1.0)
 print(test_table0_6)
 
 #For this second table, look at the case were experimental over control hazard 
@@ -99,9 +99,9 @@ print(test_table0_6)
 #exist between historical and randomized controls.
 #The resulting table is a table of power with different sample sizes represented
 #in the rows, and different a0 values represented in the columns.
-test_table0_7 <- print_table(bayes_ctd_array=weibull_test, measure="power",
-                          tab_type="WX|YZ", effect_val=0.7,
-                          rand_control_diff_val=1.0)
+test_table0_7 <- print(bayes_ctd_array=weibull_test, measure="power",
+                       tab_type="WX|YZ", effect_val=0.7,
+                       rand_control_diff_val=1.0)
 print(test_table0_7)
 
 
@@ -110,9 +110,9 @@ print(test_table0_7)
 #exist between historical and randomized controls.
 #The resulting table is a table of power with different sample sizes represented
 #in the rows, and different a0 values represented in the columns.
-test_table1_0 <- print_table(bayes_ctd_array=weibull_test, measure="power",
-                          tab_type="WX|YZ", effect_val=1.0,
-                          rand_control_diff_val=1.0)
+test_table1_0 <- print(bayes_ctd_array=weibull_test, measure="power",
+                       tab_type="WX|YZ", effect_val=1.0,
+                       rand_control_diff_val=1.0)
 print(test_table1_0)
 
 #For the fourth table, look at the case were experimental over control hazard 
@@ -120,9 +120,9 @@ print(test_table1_0)
 #between historical and randomized controls is represented by a hazard ratio
 #of 1.2.  The resulting table is a table of power with different sample sizes 
 #represented in the rows, and different a0 values represented in the columns.
-test_table0_7_1_2 <- print_table(bayes_ctd_array=weibull_test, measure="power",
-                          tab_type="WX|YZ", effect_val=0.7,
-                          rand_control_diff_val=1.2)
+test_table0_7_1_2 <- print(bayes_ctd_array=weibull_test, measure="power",
+                           tab_type="WX|YZ", effect_val=0.7,
+                           rand_control_diff_val=1.2)
 print(test_table0_7_1_2)
 
 #For the fifth table, look at the case were experimental over control hazard 
@@ -130,9 +130,9 @@ print(test_table0_7_1_2)
 #between historical and randomized controls is represented by a hazard ratio
 #of 0.8.  The resulting table is a table of power with different sample sizes 
 #represented in the rows, and different a0 values represented in the columns.
-test_table0_7_0_8 <- print_table(bayes_ctd_array=weibull_test, measure="power",
-                          tab_type="WX|YZ", effect_val=0.7,
-                          rand_control_diff_val=0.8)
+test_table0_7_0_8 <- print(bayes_ctd_array=weibull_test, measure="power",
+                           tab_type="WX|YZ", effect_val=0.7,
+                           rand_control_diff_val=0.8)
 print(test_table0_7_0_8)
 
 #For the sixth table, look at the case were sample size is set to 150, which 
@@ -179,9 +179,9 @@ In addition to tabulating the results as we have done, we can also plot a slice 
 
 ```{r example2}
 #Create a plot of the power simulation results.
-plot_table(bayes_ctd_array=weibull_test, measure="power", tab_type="WX|YZ",
-           smooth=FALSE, plot_out=TRUE, effect_val=0.7,
-           rand_control_diff_val=1.2)
+plot(bayes_ctd_array=weibull_test, measure="power", tab_type="WX|YZ",
+     smooth=FALSE, plot_out=TRUE, effect_val=0.7,
+     rand_control_diff_val=1.2)
 ```
 
 This plot shows the uncertainty in the estimates and suggests that more replicates are needed for an actual trial design study; however, the plot does show how in general as sample size increases the design increases in power and how at any sample size the inclusion of historical control data that is different from the randomized controls affects the power of the treatment effect test.  As more replicates are used in the simulation, this effect will be more obvious.
@@ -207,7 +207,7 @@ pwe_test <- simple_sim(trial_reps = 500, outcome_type = "pwe",
                         censor_value = 3, alpha = 0.05, get_var = TRUE,
                         get_bias = TRUE, get_mse = TRUE, seedval=123)
 
-test_table <- print_table(bayes_ctd_array=pwe_test, measure="power")
+test_table <- print(bayes_ctd_array=pwe_test, measure="power")
 print(test_table)
 ```
 

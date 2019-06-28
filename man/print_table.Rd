@@ -137,6 +137,7 @@ parameters \code{tab_type}, \code{subj_per_arm_val}, \code{a0_vals}, \code{effec
 and \code{rand_control_diff_val} are ignored.
 }
 \examples{
+\donttest{
 #Run a Weibull simulation, using simple_sim().
 #For meaningful results, trial_reps needs to be much larger than 2.
 weibull_test <- simple_sim(trial_reps = 2, outcome_type = "weibull",
@@ -165,6 +166,7 @@ print_table(bayes_ctd_array=weibull_test, measure="bias")
 
 #Tabulate the simulation results for mse.
 print_table(bayes_ctd_array=weibull_test, measure="mse")
+}
 
 \donttest{
 #Run another weibull simulation, using historic_sim().

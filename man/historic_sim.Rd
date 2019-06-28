@@ -189,48 +189,48 @@ weibull_test <- historic_sim(trial_reps = 2, outcome_type = "weibull",
                              quietly=TRUE)
 
 #Tabulate the simulation results for power.
-test_table <- print(bayes_ctd_array=weibull_test, measure="power",
+test_table <- print(x=weibull_test, measure="power",
                     tab_type="WX|YZ", effect_val=0.6,
                     rand_control_diff_val=1.0)
 print(test_table)
 
 \donttest{
 #Create a plot of the power simulation results.
-plot(bayes_ctd_array=weibull_test, measure="power", tab_type="WX|YZ",
+plot(x=weibull_test, measure="power", tab_type="WX|YZ",
      smooth=FALSE, plot_out=TRUE, effect_val=0.6,
      rand_control_diff_val=1.0)
 #Create a plot of the estimated hazard ratio simulation results.
-plot(bayes_ctd_array=weibull_test, measure="est", tab_type="WX|YZ",
+plot(x=weibull_test, measure="est", tab_type="WX|YZ",
      smooth=FALSE, plot_out=TRUE, effect_val=0.6,
      rand_control_diff_val=1.0)
 #Create a plot of the hazard ratio variance simulation results.
-plot(bayes_ctd_array=weibull_test, measure="var", tab_type="WX|YZ",
+plot(x=weibull_test, measure="var", tab_type="WX|YZ",
      smooth=FALSE, plot_out=TRUE, effect_val=0.6,
      rand_control_diff_val=1.0)
 #Create a plot of the hazard ratio bias simulation results.
-plot(bayes_ctd_array=weibull_test, measure="bias", tab_type="WX|YZ",
+plot(x=weibull_test, measure="bias", tab_type="WX|YZ",
      smooth=FALSE, plot_out=TRUE, effect_val=0.6,
      rand_control_diff_val=1.0)
 #Create a plot of the hazard ratio mse simulation results.
-plot(bayes_ctd_array=weibull_test, measure="mse", tab_type="WX|YZ",
+plot(x=weibull_test, measure="mse", tab_type="WX|YZ",
      smooth=FALSE, plot_out=TRUE, effect_val=0.6,
      rand_control_diff_val=1.0)
 
 #Create other power plots using different values for tab_type
-plot(bayes_ctd_array=weibull_test, measure="power", tab_type="XY|WZ",
+plot(x=weibull_test, measure="power", tab_type="XY|WZ",
      smooth=FALSE, plot_out=TRUE, subj_per_arm_val=150,
      rand_control_diff_val=1.0)
 
-plot(bayes_ctd_array=weibull_test, measure="power", tab_type="XZ|WY",
+plot(x=weibull_test, measure="power", tab_type="XZ|WY",
      smooth=FALSE, plot_out=TRUE, subj_per_arm_val=150, effect_val=0.6)
 
-plot(bayes_ctd_array=weibull_test, measure="power", tab_type="YZ|WX",
+plot(x=weibull_test, measure="power", tab_type="YZ|WX",
      smooth=FALSE, plot_out=TRUE, subj_per_arm_val=150, a0_val=0.5)
 
-plot(bayes_ctd_array=weibull_test, measure="power", tab_type="WY|XZ",
+plot(x=weibull_test, measure="power", tab_type="WY|XZ",
      smooth=FALSE, plot_out=TRUE, rand_control_diff_val=1, a0_val=0.5)
 
-plot(bayes_ctd_array=weibull_test, measure="power", tab_type="WZ|XY",
+plot(x=weibull_test, measure="power", tab_type="WZ|XY",
      smooth=FALSE, plot_out=TRUE, effect_val=0.6, a0_val=0.5)
 }
 
@@ -256,12 +256,12 @@ poisson_test <- historic_sim(trial_reps = 100, outcome_type = "poisson",
                               quietly=TRUE)
 
 #Tabulate the simulation results for power.
-test_table <- print(bayes_ctd_array=poisson_test, measure="power",
+test_table <- print(x=poisson_test, measure="power",
                     tab_type=NULL)
 print(test_table)
 
 #Create a plot of the power simulation results.
-plot(bayes_ctd_array=poisson_test, measure="power", tab_type=NULL,
+plot(x=poisson_test, measure="power", tab_type=NULL,
      smooth=FALSE, plot_out=TRUE)
 }
 
@@ -287,11 +287,11 @@ lognormal_test <- historic_sim(trial_reps = 100, outcome_type = "lognormal",
                                get_bias = TRUE, get_mse = TRUE, seedval=123,
                                quietly=TRUE)
 
-test_table <- print(bayes_ctd_array=lognormal_test, measure="power",
+test_table <- print(x=lognormal_test, measure="power",
                     tab_type=NULL)
 print(test_table)
 #Create a plot of the power simulation results.
-plot(bayes_ctd_array=lognormal_test, measure="power", tab_type=NULL,
+plot(x=lognormal_test, measure="power", tab_type=NULL,
      smooth=TRUE, plot_out=TRUE)
 }
 

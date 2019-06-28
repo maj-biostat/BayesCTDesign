@@ -176,6 +176,7 @@ parameters \code{tab_type}, \code{subj_per_arm_val}, \code{a0_val}, \code{effect
 and \code{rand_control_diff_val} are ignored.
 }
 \examples{
+\donttest{
 #Run a Weibull simulation, using simple_sim().
 #For meaningful results, trial_reps needs to be much larger than 2.
 weibull_test <- simple_sim(trial_reps = 2, outcome_type = "weibull",
@@ -206,6 +207,7 @@ plot_table(bayes_ctd_array=weibull_test, measure="bias", tab_type=NULL,
 plot_table(bayes_ctd_array=weibull_test, measure="mse", tab_type=NULL,
            smooth=FALSE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
            effect_val=NULL, rand_control_diff_val=NULL)
+}
 
 \donttest{
 #Run a second Weibull simulation, using simple_sim() and smooth the plot.

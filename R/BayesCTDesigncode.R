@@ -161,48 +161,48 @@
 #'                              quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
-#' test_table <- print(bayes_ctd_array=weibull_test, measure="power",
+#' test_table <- print(x=weibull_test, measure="power",
 #'                     tab_type="WX|YZ", effect_val=0.6,
 #'                     rand_control_diff_val=1.0)
 #' print(test_table)
 #'
 #' \donttest{
 #' #Create a plot of the power simulation results.
-#' plot(bayes_ctd_array=weibull_test, measure="power", tab_type="WX|YZ",
+#' plot(x=weibull_test, measure="power", tab_type="WX|YZ",
 #'      smooth=FALSE, plot_out=TRUE, effect_val=0.6,
 #'      rand_control_diff_val=1.0)
 #' #Create a plot of the estimated hazard ratio simulation results.
-#' plot(bayes_ctd_array=weibull_test, measure="est", tab_type="WX|YZ",
+#' plot(x=weibull_test, measure="est", tab_type="WX|YZ",
 #'      smooth=FALSE, plot_out=TRUE, effect_val=0.6,
 #'      rand_control_diff_val=1.0)
 #' #Create a plot of the hazard ratio variance simulation results.
-#' plot(bayes_ctd_array=weibull_test, measure="var", tab_type="WX|YZ",
+#' plot(x=weibull_test, measure="var", tab_type="WX|YZ",
 #'      smooth=FALSE, plot_out=TRUE, effect_val=0.6,
 #'      rand_control_diff_val=1.0)
 #' #Create a plot of the hazard ratio bias simulation results.
-#' plot(bayes_ctd_array=weibull_test, measure="bias", tab_type="WX|YZ",
+#' plot(x=weibull_test, measure="bias", tab_type="WX|YZ",
 #'      smooth=FALSE, plot_out=TRUE, effect_val=0.6,
 #'      rand_control_diff_val=1.0)
 #' #Create a plot of the hazard ratio mse simulation results.
-#' plot(bayes_ctd_array=weibull_test, measure="mse", tab_type="WX|YZ",
+#' plot(x=weibull_test, measure="mse", tab_type="WX|YZ",
 #'      smooth=FALSE, plot_out=TRUE, effect_val=0.6,
 #'      rand_control_diff_val=1.0)
 #'
 #' #Create other power plots using different values for tab_type
-#' plot(bayes_ctd_array=weibull_test, measure="power", tab_type="XY|WZ",
+#' plot(x=weibull_test, measure="power", tab_type="XY|WZ",
 #'      smooth=FALSE, plot_out=TRUE, subj_per_arm_val=150,
 #'      rand_control_diff_val=1.0)
 #'
-#' plot(bayes_ctd_array=weibull_test, measure="power", tab_type="XZ|WY",
+#' plot(x=weibull_test, measure="power", tab_type="XZ|WY",
 #'      smooth=FALSE, plot_out=TRUE, subj_per_arm_val=150, effect_val=0.6)
 #'
-#' plot(bayes_ctd_array=weibull_test, measure="power", tab_type="YZ|WX",
+#' plot(x=weibull_test, measure="power", tab_type="YZ|WX",
 #'      smooth=FALSE, plot_out=TRUE, subj_per_arm_val=150, a0_val=0.5)
 #'
-#' plot(bayes_ctd_array=weibull_test, measure="power", tab_type="WY|XZ",
+#' plot(x=weibull_test, measure="power", tab_type="WY|XZ",
 #'      smooth=FALSE, plot_out=TRUE, rand_control_diff_val=1, a0_val=0.5)
 #'
-#' plot(bayes_ctd_array=weibull_test, measure="power", tab_type="WZ|XY",
+#' plot(x=weibull_test, measure="power", tab_type="WZ|XY",
 #'      smooth=FALSE, plot_out=TRUE, effect_val=0.6, a0_val=0.5)
 #' }
 #'
@@ -228,12 +228,12 @@
 #'                               quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
-#' test_table <- print(bayes_ctd_array=poisson_test, measure="power",
+#' test_table <- print(x=poisson_test, measure="power",
 #'                     tab_type=NULL)
 #' print(test_table)
 #'
 #' #Create a plot of the power simulation results.
-#' plot(bayes_ctd_array=poisson_test, measure="power", tab_type=NULL,
+#' plot(x=poisson_test, measure="power", tab_type=NULL,
 #'      smooth=FALSE, plot_out=TRUE)
 #' }
 #'
@@ -259,11 +259,11 @@
 #'                                get_bias = TRUE, get_mse = TRUE, seedval=123,
 #'                                quietly=TRUE)
 #'
-#' test_table <- print(bayes_ctd_array=lognormal_test, measure="power",
+#' test_table <- print(x=lognormal_test, measure="power",
 #'                     tab_type=NULL)
 #' print(test_table)
 #' #Create a plot of the power simulation results.
-#' plot(bayes_ctd_array=lognormal_test, measure="power", tab_type=NULL,
+#' plot(x=lognormal_test, measure="power", tab_type=NULL,
 #'      smooth=TRUE, plot_out=TRUE)
 #' }
 #'
@@ -487,25 +487,25 @@ historic_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_ar
 #'                            seedval=123, quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
-#' test_table <- print(bayes_ctd_array=weibull_test, measure="power",
+#' test_table <- print(x=weibull_test, measure="power",
 #'                     tab_type=NULL, subj_per_arm_val=NULL, a0_val=NULL,
 #'                     effect_val=NULL, rand_control_diff_val=NULL)
 #' print(test_table)
 #'
 #' #Create a plot of the power simulation results.
-#' plot(bayes_ctd_array=weibull_test, measure="power", tab_type=NULL,
+#' plot(x=weibull_test, measure="power", tab_type=NULL,
 #'      smooth=FALSE, plot_out=TRUE)
 #' #Create a plot of the estimated hazard ratio simulation results.
-#' plot(bayes_ctd_array=weibull_test, measure="est", tab_type=NULL,
+#' plot(x=weibull_test, measure="est", tab_type=NULL,
 #'      smooth=FALSE, plot_out=TRUE)
 #' #Create a plot of the hazard ratio variance simulation results.
-#' plot(bayes_ctd_array=weibull_test, measure="var", tab_type=NULL,
+#' plot(x=weibull_test, measure="var", tab_type=NULL,
 #'      smooth=FALSE, plot_out=TRUE)
 #' #Create a plot of the hazard ratio bias simulation results.
-#' plot(bayes_ctd_array=weibull_test, measure="bias", tab_type=NULL,
+#' plot(x=weibull_test, measure="bias", tab_type=NULL,
 #'      smooth=FALSE, plot_out=TRUE)
 #' #Create a plot of the hazard ratio mse simulation results.
-#' plot(bayes_ctd_array=weibull_test, measure="mse", tab_type=NULL,
+#' plot(x=weibull_test, measure="mse", tab_type=NULL,
 #'      smooth=FALSE, plot_out=TRUE)
 #' @export
 simple_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_arm = c(50, 100, 150, 200, 250), effect_vals = c(0.6,1,
@@ -675,6 +675,7 @@ simple_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_arm 
 #' @return \code{print_table()} returns a two dimensional array of simulation results.
 #'
 #' @examples
+#' \donttest{
 #' #Run a Weibull simulation, using simple_sim().
 #' #For meaningful results, trial_reps needs to be much larger than 2.
 #' weibull_test <- simple_sim(trial_reps = 2, outcome_type = "weibull",
@@ -703,6 +704,7 @@ simple_sim <- function(trial_reps = 100, outcome_type = "weibull", subj_per_arm 
 #'
 #' #Tabulate the simulation results for mse.
 #' print_table(bayes_ctd_array=weibull_test, measure="mse")
+#' }
 #'
 #' \donttest{
 #' #Run another weibull simulation, using historic_sim().
@@ -915,6 +917,7 @@ print_table <- function(bayes_ctd_array = NULL, measure = "power", tab_type = "W
 #' @return \code{print_table()} returns a two dimensional array of simulation results.
 #'
 #' @examples
+#' \donttest{
 #' #Run a Weibull simulation, using simple_sim().
 #' #For meaningful results, trial_reps needs to be much larger than 2.
 #' weibull_test <- simple_sim(trial_reps = 2, outcome_type = "weibull",
@@ -943,6 +946,7 @@ print_table <- function(bayes_ctd_array = NULL, measure = "power", tab_type = "W
 #'
 #' #Tabulate the simulation results for mse.
 #' print_table(bayes_ctd_array=weibull_test, measure="mse")
+#' }
 #'
 #' \donttest{
 #' #Run another weibull simulation, using historic_sim().
@@ -1048,6 +1052,8 @@ print_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power
     # tab_type='YX|WZ', Table of Design Characteristics: Effect by a0
     # tab_type='ZW|XY', Table of Design Characteristics: Control Differences by Sample Size
     # tab_type='ZY|WX', Table of Design Characteristics: Control Differences by Effect
+
+    .Deprecated("print")
 
     #Add simple code to help out the user with tab_type on matters where order is
     #not important and can be easily fixed.
@@ -1407,7 +1413,7 @@ print_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power
 #' using \code{historic_sim()} or \code{simple_sim()}.
 #'
 #' If the object of class \code{bayes_ctd_array} is created by \code{historic_sim()},
-#' then the function \code{print_()} allows the user to print user-specified 1- and 2-
+#' then the function \code{print()} allows the user to print user-specified 1- and 2-
 #' dimensional slices of the simulation results based on slicing code described
 #' below.  If the object of class \code{bayes_ctd_array} is created by
 #' \code{simple_sim()}, a basic table of characteristic by sample size and effect is created.
@@ -1472,47 +1478,48 @@ print_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power
 #' parameters \code{tab_type}, \code{subj_per_arm_val}, \code{a0_vals}, \code{effect_val},
 #' and \code{rand_control_diff_val} are ignored.
 #'
-#' @param bayes_ctd_array Name of object of class \code{bayes_ctd_array} containing
+#' @param x Name of object of class \code{bayes_ctd_array} containing
 #'   data from clinical trial simulation.
 #' @param measure Must be equal to \code{power}, \code{est}, \code{var}, \code{bias},
 #'   or \code{mse}.  Default is \code{power}.  Case does not matter.
 #' @param tab_type A character string that must equal \code{WX|YZ}, \code{WY|XZ},
 #'   \code{WZ|XY}, \code{XY|WZ}, \code{XZ|WY}, \code{YZ|WX}, \code{ZX|WY}, \code{XW|YZ},
 #'   \code{YW|XZ}, \code{YX|WZ}, \code{ZW|XY}, \code{ZX|WY}, \code{ZY|WX} when
-#'   \code{bayes_ctd_array} is generated by \code{historic_sim()}.  Default is
-#'   \code{WX|YZ}.  When \code{bayes_ctd_array} is generated by \code{simple_sim()},
+#'   \code{x} is generated by \code{historic_sim()}.  Default is
+#'   \code{WX|YZ}.  When \code{x} is generated by \code{simple_sim()},
 #'   \code{tab_type} is ignored.
-#' @param subj_per_arm_val Must be non-missing, if \code{bayes_ctd_array} is generated
+#' @param subj_per_arm_val Must be non-missing, if \code{x} is generated
 #'   by \code{historic_sim()} and sample size is being held constant.
-#'   If \code{bayes_ctd_array} is generated by \code{historic_sim()} and sample size
+#'   If \code{x} is generated by \code{historic_sim()} and sample size
 #'   is being held constant, \code{subj_per_arm_val} must equal a value submitted
 #'   to \code{historic_sim()} within the \code{subj_per_arm} parameter.  When
-#'   \code{bayes_ctd_array} is generated by \code{simple_sim()}, \code{subj_per_arm_val}
+#'   \code{x} is generated by \code{simple_sim()}, \code{subj_per_arm_val}
 #'   is ignored.
-#' @param a0_val Must be non-missing, if \code{bayes_ctd_array} is generated
+#' @param a0_val Must be non-missing, if \code{x} is generated
 #'   by \code{historic_sim()} and a0, the power prior parameter, is being held
-#'   constant.  If \code{bayes_ctd_array} is generated by \code{historic_sim()} and
+#'   constant.  If \code{x} is generated by \code{historic_sim()} and
 #'   a0 is being held constant, \code{a0_val} must equal a value submitted
 #'   to \code{historic_sim()} within the \code{a0_vals} parameter.  When
-#'   \code{bayes_ctd_array} is generated by \code{simple_sim()}, \code{a0_val} is
+#'   \code{x} is generated by \code{simple_sim()}, \code{a0_val} is
 #'   ignored.
-#' @param effect_val  Must be non-missing, if \code{bayes_ctd_array} is generated
+#' @param effect_val  Must be non-missing, if \code{x} is generated
 #'   by \code{historic_sim()} and effect is being held constant.  If
-#'   \code{bayes_ctd_array} is generated by \code{historic_sim()} and effect is being
+#'   \code{x} is generated by \code{historic_sim()} and effect is being
 #'   held constant, \code{effect_val} must equal a value submitted to
 #'   \code{historic_sim()} within the \code{effect_vals} parameter.  When
-#'   \code{bayes_ctd_array} is generated by \code{simple_sim()}, \code{effect_val} is
+#'   \code{x} is generated by \code{simple_sim()}, \code{effect_val} is
 #'   ignored.
-#' @param rand_control_diff_val Must be non-missing, if \code{bayes_ctd_array} is
+#' @param rand_control_diff_val Must be non-missing, if \code{x} is
 #'   generated by \code{historic_sim()} and differences between randomized
-#'   and historical controls are being held constant.  If \code{bayes_ctd_array}
+#'   and historical controls are being held constant.  If \code{x}
 #'   is generated by \code{historic_sim()} and control differences are being
 #'   held constant, \code{rand_control_diff_val} must equal a value submitted to
 #'   \code{historic_sim()} within the \code{rand_control_diff} parameter.  When
-#'   \code{bayes_ctd_array} is generated by \code{simple_sim()},
+#'   \code{x} is generated by \code{simple_sim()},
 #'   \code{rand_control_diff_val} is ignored.
 #' @param print_chg_warn A parameter not used by the user, but is used by
 #'   \code{plot()} to ensure warnings are not printed twice.
+#' @param ...	further arguments passed to or from other methods.
 #'
 #' @return \code{print()} returns a two dimensional array of simulation results.
 #'
@@ -1529,22 +1536,22 @@ print_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power
 #'                            seedval=123, quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
-#' test_table <- print(bayes_ctd_array=weibull_test, measure="power",
+#' test_table <- print(x=weibull_test, measure="power",
 #'                     tab_type=NULL, subj_per_arm_val=NULL, a0_val=NULL,
 #'                     effect_val=NULL, rand_control_diff_val=NULL)
 #' print(test_table)
 #'
 #' #Tabulate the simulation results for estimates.
-#' print(bayes_ctd_array=weibull_test, measure="est")
+#' print(x=weibull_test, measure="est")
 #'
 #' #Tabulate the simulation results for variance.
-#' print(bayes_ctd_array=weibull_test, measure="var")
+#' print(x=weibull_test, measure="var")
 #'
 #' #Tabulate the simulation results for bias.
-#' print(bayes_ctd_array=weibull_test, measure="bias")
+#' print(x=weibull_test, measure="bias")
 #'
 #' #Tabulate the simulation results for mse.
-#' print(bayes_ctd_array=weibull_test, measure="mse")
+#' print(x=weibull_test, measure="mse")
 #'
 #' \donttest{
 #' #Run another weibull simulation, using historic_sim().
@@ -1569,25 +1576,25 @@ print_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power
 #'                               quietly=TRUE)
 #'
 #' #Tabulate the simulation results for power.
-#' test_table <- print(bayes_ctd_array=weibull_test2, measure="power",
+#' test_table <- print(x=weibull_test2, measure="power",
 #'                     tab_type="WX|YZ", effect_val=0.6,
 #'                     rand_control_diff_val=1.0)
 #' print(test_table)
 #'
 #' #Tabulate the simulation results for estimates.
-#' print(bayes_ctd_array=weibull_test2, measure="est", tab_type="WX|YZ",
+#' print(x=weibull_test2, measure="est", tab_type="WX|YZ",
 #'       effect_val=0.6, rand_control_diff_val=1.0)
 #'
 #' #Tabulate the simulation results for variance.
-#' print(bayes_ctd_array=weibull_test2, measure="var", tab_type="WX|YZ",
+#' print(x=weibull_test2, measure="var", tab_type="WX|YZ",
 #'       effect_val=0.6, rand_control_diff_val=1.0)
 #'
 #' #Tabulate the simulation results for bias.
-#' print(bayes_ctd_array=weibull_test2, measure="bias", tab_type="WX|YZ",
+#' print(x=weibull_test2, measure="bias", tab_type="WX|YZ",
 #'       effect_val=0.6, rand_control_diff_val=1.0)
 #'
 #' #Tabulate the simulation results for mse.
-#' print(bayes_ctd_array=weibull_test2, measure="mse", tab_type="WX|YZ",
+#' print(x=weibull_test2, measure="mse", tab_type="WX|YZ",
 #'       effect_val=0.6, rand_control_diff_val=1.0)
 #' }
 #'
@@ -1609,7 +1616,7 @@ print_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power
 #'                               censor_value = 3, alpha = 0.05, get_var = TRUE,
 #'                               get_bias = TRUE, get_mse = TRUE, seedval=123,
 #'                               quietly=TRUE)
-#' test_table <- print(bayes_ctd_array=bernoulli_test, measure="power",
+#' test_table <- print(x=bernoulli_test, measure="power",
 #'                     tab_type=NULL, effect_val=NULL,
 #'                     subj_per_arm_val=NULL)
 #' print(test_table)
@@ -1618,21 +1625,21 @@ print_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power
 #' #rand_control_diff parameters have length greater than 1, then
 #' #only bayes_ctd_array and measure parameters are needed.
 #' #Tabulate the simulation results for estimates.
-#' print(bayes_ctd_array=bernoulli_test, measure="est")
+#' print(x=bernoulli_test, measure="est")
 #'
 #' #Tabulate the simulation results for variance.
-#' print(bayes_ctd_array=bernoulli_test, measure="var")
+#' print(x=bernoulli_test, measure="var")
 #'
 #' #Tabulate the simulation results for bias.
-#' print(bayes_ctd_array=bernoulli_test, measure="bias")
+#' print(x=bernoulli_test, measure="bias")
 #'
 #' #Tabulate the simulation results for mse.
-#' print(bayes_ctd_array=bernoulli_test, measure="mse")
+#' print(x=bernoulli_test, measure="mse")
 #' }
 #'
 #' @export
-print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_type = "WX|YZ", subj_per_arm_val = NULL,
-                                        a0_val = NULL, effect_val = NULL, rand_control_diff_val = NULL, print_chg_warn = 1) {
+print.bayes_ctd_array <- function(x = NULL, measure = "power", tab_type = "WX|YZ", subj_per_arm_val = NULL,
+                                        a0_val = NULL, effect_val = NULL, rand_control_diff_val = NULL, print_chg_warn = 1, ...) {
 
   # (W): subj_per_arm,
   # (X): a0_val,
@@ -1655,7 +1662,7 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
   #not important and can be easily fixed.
   tab_type = toupper(tab_type)
   if (!((length(tab_type)== 0) && (typeof(tab_type) == "character"))){
-    if (bayes_ctd_array$objtype == 'historic') {
+    if (x$objtype == 'historic') {
       if (tab_type=='WX|ZY') tab_type <- 'WX|YZ'
       if (tab_type=='WY|ZX') tab_type <- 'WY|XZ'
       if (tab_type=='WZ|YX') tab_type <- 'WZ|XY'
@@ -1678,12 +1685,12 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
 
   #------------- Go through all the high level checks for proper input. -------------#
 
-  if (bayes_ctd_array$objtype == 'simple') {
+  if (x$objtype == 'simple') {
     tab_type <- "WY|XZ"
     a0_val <- 0
     rand_control_diff_val <- 1
-    subj_per_arm_val <- bayes_ctd_array$subj_per_arm[1]
-    effect_val <- bayes_ctd_array$effect_vals[1]
+    subj_per_arm_val <- x$subj_per_arm[1]
+    effect_val <- x$effect_vals[1]
     if (print_chg_warn == 1) {
       print("Since simple_sim was used, tab_type was set to WY|XZ")
       print("Values for tab_type, subj_per_arm_val, a0_val, effect_val, and rand_control_diff_val were ignored")
@@ -1691,53 +1698,53 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
     }
   }
 
-  if (bayes_ctd_array$objtype == 'realsimple') {
-    if (length(bayes_ctd_array$subj_per_arm) > 1) {
+  if (x$objtype == 'realsimple') {
+    if (length(x$subj_per_arm) > 1) {
       if (print_chg_warn == 1) {
         print("Since only subj_per_arm vector has more than 1 element, tab_type was set to WX|YZ")
         print("This works towards putting all results in a single table")
       }
       tab_type <- "WX|YZ"
-      a0_val <- bayes_ctd_array$a0_vals[1]
-      effect_val <- bayes_ctd_array$effect_vals[1]
-      rand_control_diff_val <- bayes_ctd_array$rand_control_diff[1]
+      a0_val <- x$a0_vals[1]
+      effect_val <- x$effect_vals[1]
+      rand_control_diff_val <- x$rand_control_diff[1]
     }
-    if (length(bayes_ctd_array$a0_vals) > 1) {
+    if (length(x$a0_vals) > 1) {
       if (print_chg_warn == 1) {
         print("Since only a0_vals vector has more than 1 element, tab_type was set to XY|WZ")
         print("This works towards putting all results in a single table")
       }
       tab_type <- "XY|WZ"
-      subj_per_arm_val <- bayes_ctd_array$subj_per_arm[1]
-      effect_val <- bayes_ctd_array$effect_vals[1]
-      rand_control_diff_val <- bayes_ctd_array$rand_control_diff[1]
+      subj_per_arm_val <- x$subj_per_arm[1]
+      effect_val <- x$effect_vals[1]
+      rand_control_diff_val <- x$rand_control_diff[1]
     }
-    if (length(bayes_ctd_array$effect_vals) > 1) {
+    if (length(x$effect_vals) > 1) {
       if (print_chg_warn == 1) {
         print("Since only effect_vals vector has more than 1 element, tab_type was set to YZ|WX")
         print("This works towards putting all results in a single table")
       }
       tab_type <- "YZ|WX"
-      subj_per_arm_val <- bayes_ctd_array$subj_per_arm[1]
-      a0_val <- bayes_ctd_array$a0_vals[1]
-      rand_control_diff_val <- bayes_ctd_array$rand_control_diff[1]
+      subj_per_arm_val <- x$subj_per_arm[1]
+      a0_val <- x$a0_vals[1]
+      rand_control_diff_val <- x$rand_control_diff[1]
     }
-    if (length(bayes_ctd_array$rand_control_diff) > 1) {
+    if (length(x$rand_control_diff) > 1) {
       if (print_chg_warn == 1) {
         print("Since only rand_control_diff vector has more than 1 element, tab_type was set to ZX|WY")
         print("This works towards putting all results in a single table")
       }
       tab_type <- "ZX|WY"
-      subj_per_arm_val <- bayes_ctd_array$subj_per_arm[1]
-      a0_val <- bayes_ctd_array$a0_vals[1]
-      effect_val <- bayes_ctd_array$effect_vals[1]
+      subj_per_arm_val <- x$subj_per_arm[1]
+      a0_val <- x$a0_vals[1]
+      effect_val <- x$effect_vals[1]
     }
   }
 
   # Check to see if two dimensions of bayes_ctd_array have only 1 element each. Is so set tab_type to an appropriate
   # value.
-  if (bayes_ctd_array$objtype == 'historic') {
-    if (length(bayes_ctd_array$effect_vals) == 1 & length(bayes_ctd_array$rand_control_diff) == 1) {
+  if (x$objtype == 'historic') {
+    if (length(x$effect_vals) == 1 & length(x$rand_control_diff) == 1) {
       chkflag1 <- 0
       if(!((length(tab_type)== 0) && (typeof(tab_type) == "character"))){
         if ((tab_type != "WX|YZ") & (tab_type != "XW|YZ")) {
@@ -1749,14 +1756,14 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
         tab_type <- "WX|YZ"
         chkflag1 <- 1
       }
-      effect_val <- bayes_ctd_array$effect_vals[1]
-      rand_control_diff_val <- bayes_ctd_array$rand_control_diff[1]
+      effect_val <- x$effect_vals[1]
+      rand_control_diff_val <- x$rand_control_diff[1]
       if (print_chg_warn == 1 & chkflag1 == 1) {
         print("Since effect_vals and rand_control_diff vectors only have 1 element each and tab_type not equal to 'WX|YZ' or 'XW|YZ', tab_type was set to WX|YZ")
         print("This works towards putting all results in a single table")
       }
     }
-    if (length(bayes_ctd_array$a0_vals) == 1 & length(bayes_ctd_array$rand_control_diff) == 1) {
+    if (length(x$a0_vals) == 1 & length(x$rand_control_diff) == 1) {
       chkflag1 <- 0
       if(!((length(tab_type)== 0) && (typeof(tab_type) == "character"))){
         if ((tab_type != "WY|XZ") & (tab_type != "YW|XZ")) {
@@ -1768,14 +1775,14 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
         tab_type <- "WY|XZ"
         chkflag1 <- 1
       }
-      a0_val <- bayes_ctd_array$a0_vals[1]
-      rand_control_diff_val <- bayes_ctd_array$rand_control_diff[1]
+      a0_val <- x$a0_vals[1]
+      rand_control_diff_val <- x$rand_control_diff[1]
       if (print_chg_warn == 1 & chkflag1 == 1) {
         print("Since a0 and rand_control_diff vectors only have 1 element each and tab_type not equal to 'WY|XZ' or 'YW|XZ', tab_type was set to WY|XZ")
         print("This works towards putting all results in a single table")
       }
     }
-    if (length(bayes_ctd_array$subj_per_arm) == 1 & length(bayes_ctd_array$rand_control_diff) == 1) {
+    if (length(x$subj_per_arm) == 1 & length(x$rand_control_diff) == 1) {
       chkflag1 <- 0
       if(!((length(tab_type)== 0) && (typeof(tab_type) == "character"))){
         if ((tab_type != "XY|WZ") & (tab_type != "YX|WZ")) {
@@ -1787,14 +1794,14 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
         tab_type <- "XY|WZ"
         chkflag1 <- 1
       }
-      subj_per_arm_val <- bayes_ctd_array$subj_per_arm
-      rand_control_diff_val <- bayes_ctd_array$rand_control_diff
+      subj_per_arm_val <- x$subj_per_arm
+      rand_control_diff_val <- x$rand_control_diff
       if (print_chg_warn == 1 & chkflag1 == 1) {
         print("Since sample size and rand_control_diff vectors only have 1 element each and tab_type not equal to 'XY|WZ' or 'YX|WZ', tab_type was set to XY|WZ")
         print("This works towards putting all results in a single table")
       }
     }
-    if (length(bayes_ctd_array$subj_per_arm) == 1 & length(bayes_ctd_array$effect_vals) == 1) {
+    if (length(x$subj_per_arm) == 1 & length(x$effect_vals) == 1) {
       chkflag1 <- 0
       if(!((length(tab_type)== 0) && (typeof(tab_type) == "character"))){
         if ((tab_type != "XZ|WY") & (tab_type != "ZX|WY")) {
@@ -1806,14 +1813,14 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
         tab_type <- "XZ|WY"
         chkflag1 <- 1
       }
-      subj_per_arm_val <- bayes_ctd_array$subj_per_arm
-      effect_val <- bayes_ctd_array$effect_vals
+      subj_per_arm_val <- x$subj_per_arm
+      effect_val <- x$effect_vals
       if (print_chg_warn == 1 & chkflag1 == 1) {
         print("Since sample size and effect_vals vectors only have 1 element each and tab_type not equal to 'XZ|WY' or 'ZX|WY', tab_type was set to XZ|WY")
         print("This works towards putting all results in a single table")
       }
     }
-    if (length(bayes_ctd_array$subj_per_arm) == 1 & length(bayes_ctd_array$a0_vals) == 1) {
+    if (length(x$subj_per_arm) == 1 & length(x$a0_vals) == 1) {
       chkflag1 <- 0
       if(!((length(tab_type)== 0) && (typeof(tab_type) == "character"))){
         if ((tab_type != "YZ|WX") & (tab_type != "ZY|WX")) {
@@ -1825,14 +1832,14 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
         tab_type <- "YZ|WX"
         chkflag1 <- 1
       }
-      subj_per_arm_val <- bayes_ctd_array$subj_per_arm
-      a0_val <- bayes_ctd_array$a0_vals
+      subj_per_arm_val <- x$subj_per_arm
+      a0_val <- x$a0_vals
       if (print_chg_warn == 1 & chkflag1 == 1) {
         print("Since sample size and a0 vectors only have 1 element each and tab_type not equal to 'YZ|WX' or 'ZY|WX', tab_type was set to YZ|WX")
         print("This works towards putting all results in a single table")
       }
     }
-    if (length(bayes_ctd_array$a0_vals) == 1 & length(bayes_ctd_array$effect_vals) == 1) {
+    if (length(x$a0_vals) == 1 & length(x$effect_vals) == 1) {
       chkflag1 <- 0
       if(!((length(tab_type)== 0) && (typeof(tab_type) == "character"))){
         if ((tab_type != "WZ|XY") & (tab_type != "ZW|XY")) {
@@ -1844,8 +1851,8 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
         tab_type <- "WZ|XY"
         chkflag1 <- 1
       }
-      a0_val <- bayes_ctd_array$a0_vals
-      effect_val <- bayes_ctd_array$effect_vals
+      a0_val <- x$a0_vals
+      effect_val <- x$effect_vals
       if (print_chg_warn == 1 & chkflag1 == 1) {
         print("Since a0 and effect_vals vectors only have 1 element each and tab_type not equal to 'WZ|XY' or 'ZW|XY', tab_type was set to WZ|XY")
         print("This works towards putting all results in a single table")
@@ -1853,23 +1860,23 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
     }
   }
 
-  print_error_checks(bayes_ctd_array, measure, tab_type, subj_per_arm_val, a0_val, effect_val, rand_control_diff_val)
+  print_error_checks(x, measure, tab_type, subj_per_arm_val, a0_val, effect_val, rand_control_diff_val)
 
   #Select the data array depending on user defined value of measure.
   if (tolower(measure) == "power")
-    dataarray <- bayes_ctd_array$data$power
+    dataarray <- x$data$power
   if (tolower(measure) == "est")
-    dataarray <- bayes_ctd_array$data$est
+    dataarray <- x$data$est
   if (tolower(measure) == "var")
-    dataarray <- bayes_ctd_array$data$var
+    dataarray <- x$data$var
   if (tolower(measure) == "bias")
-    dataarray <- bayes_ctd_array$data$bias
+    dataarray <- x$data$bias
   if (tolower(measure) == "mse")
-    dataarray <- bayes_ctd_array$data$mse
+    dataarray <- x$data$mse
   if (toupper(tab_type) == "WX|YZ") {
     # Table of Design Characteristics: Sample Size by a0
-    effect_val_levels <- bayes_ctd_array$effect_vals
-    rand_control_diff_levels <- bayes_ctd_array$rand_control_diff
+    effect_val_levels <- x$effect_vals
+    rand_control_diff_levels <- x$rand_control_diff
     # check to make sure effect_val is in effect_vals and
     # rand_control_diff_val is in rand_control_diff
     effect_val_loc <- match(effect_val, effect_val_levels)
@@ -1878,8 +1885,8 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
   }
   if (toupper(tab_type) == "WY|XZ") {
     # Table of Design Characteristics: Sample Size by Effect
-    a0_val_levels <- bayes_ctd_array$a0_vals
-    rand_control_diff_levels <- bayes_ctd_array$rand_control_diff
+    a0_val_levels <- x$a0_vals
+    rand_control_diff_levels <- x$rand_control_diff
     # check to make sure a0_val is in a0_vals and
     # rand_control_diff_val is in rand_control_diff
     a0_val_loc <- match(a0_val, a0_val_levels)
@@ -1888,8 +1895,8 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
   }
   if (toupper(tab_type) == "WZ|XY") {
     # Table of Design Characteristics: Sample Size by Control Differences
-    a0_val_levels <- bayes_ctd_array$a0_vals
-    effect_val_levels <- bayes_ctd_array$effect_vals
+    a0_val_levels <- x$a0_vals
+    effect_val_levels <- x$effect_vals
     # check to make sure effect_val is in effect_vals and
     # a0_val is in a0_vals
     a0_val_loc <- match(a0_val, a0_val_levels)
@@ -1898,8 +1905,8 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
   }
   if (toupper(tab_type) == "XY|WZ") {
     # Table of Design Characteristics: a0 by Effect
-    subj_per_arm_levels <- bayes_ctd_array$subj_per_arm
-    rand_control_diff_levels <- bayes_ctd_array$rand_control_diff
+    subj_per_arm_levels <- x$subj_per_arm
+    rand_control_diff_levels <- x$rand_control_diff
     # check to make sure subj_per_arm_val is in subj_per_arm and
     # rand_control_diff_val is in rand_control_diff
     subj_per_arm_loc <- match(subj_per_arm_val, subj_per_arm_levels)
@@ -1908,8 +1915,8 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
   }
   if (toupper(tab_type) == "XZ|WY") {
     # Table of Design Characteristics: a0 by Control Diffferences
-    subj_per_arm_levels <- bayes_ctd_array$subj_per_arm
-    effect_val_levels <- bayes_ctd_array$effect_vals
+    subj_per_arm_levels <- x$subj_per_arm
+    effect_val_levels <- x$effect_vals
     # check to make sure effect_val is in effect_vals and
     # subj_per_arm_val is in subj_per_arm
     subj_per_arm_loc <- match(subj_per_arm_val, subj_per_arm_levels)
@@ -1918,8 +1925,8 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
   }
   if (toupper(tab_type) == "YZ|WX") {
     # Table of Design Characteristics: Effect by Control Diffferences
-    subj_per_arm_levels <- bayes_ctd_array$subj_per_arm
-    a0_val_levels <- bayes_ctd_array$a0_vals
+    subj_per_arm_levels <- x$subj_per_arm
+    a0_val_levels <- x$a0_vals
     # check to make sure subj_per_arm_val is in subj_per_arm and
     # a0_val is in a0_vals
     subj_per_arm_loc <- match(subj_per_arm_val, subj_per_arm_levels)
@@ -1928,8 +1935,8 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
   }
   if (toupper(tab_type) == "XW|YZ") {
     # Table of Design Characteristics: a0 by sample size
-    effect_val_levels <- bayes_ctd_array$effect_vals
-    rand_control_diff_levels <- bayes_ctd_array$rand_control_diff
+    effect_val_levels <- x$effect_vals
+    rand_control_diff_levels <- x$rand_control_diff
     # check to make sure rand_control_diff_val is in rand_control_diff and
     # effect_val is in effect_vals
     effect_val_loc <- match(effect_val, effect_val_levels)
@@ -1938,8 +1945,8 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
   }
   if (toupper(tab_type) == "YW|XZ") {
     # Table of Design Characteristics: Effect by sample size
-    a0_val_levels <- bayes_ctd_array$a0_vals
-    rand_control_diff_levels <- bayes_ctd_array$rand_control_diff
+    a0_val_levels <- x$a0_vals
+    rand_control_diff_levels <- x$rand_control_diff
     # check to make sure rand_control_diff_val is in rand_control_diff and
     # a0_val is in a0_vals
     a0_val_loc <- match(a0_val, a0_val_levels)
@@ -1948,8 +1955,8 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
   }
   if (toupper(tab_type) == "YX|WZ") {
     # Table of Design Characteristics: Effect by a0
-    subj_per_arm_levels <- bayes_ctd_array$subj_per_arm
-    rand_control_diff_levels <- bayes_ctd_array$rand_control_diff
+    subj_per_arm_levels <- x$subj_per_arm
+    rand_control_diff_levels <- x$rand_control_diff
     # check to make sure subj_per_arm_val is in subj_per_arm and
     # rand_control_diff_val is in rand_control_diff
     subj_per_arm_loc <- match(subj_per_arm_val, subj_per_arm_levels)
@@ -1958,8 +1965,8 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
   }
   if (toupper(tab_type) == "ZW|XY") {
     # Table of Design Characteristics: Control Differences by sample size
-    a0_val_levels <- bayes_ctd_array$a0_vals
-    effect_val_levels <- bayes_ctd_array$effect_vals
+    a0_val_levels <- x$a0_vals
+    effect_val_levels <- x$effect_vals
     # check to make sure a0_val is in a0_vals and
     # effect_val is in effect_vals
     a0_val_loc <- match(a0_val, a0_val_levels)
@@ -1968,8 +1975,8 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
   }
   if (toupper(tab_type) == "ZX|WY") {
     # Table of Design Characteristics: Control Differences by a0
-    subj_per_arm_levels <- bayes_ctd_array$subj_per_arm
-    effect_val_levels <- bayes_ctd_array$effect_vals
+    subj_per_arm_levels <- x$subj_per_arm
+    effect_val_levels <- x$effect_vals
     # check to make sure subj_per_arm_val is in subj_per_arm and
     # effect_val is in effect_vals
     subj_per_arm_loc <- match(subj_per_arm_val, subj_per_arm_levels)
@@ -1978,8 +1985,8 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
   }
   if (toupper(tab_type) == "ZY|WX") {
     # Table of Design Characteristics: Control Differences by Effect
-    subj_per_arm_levels <- bayes_ctd_array$subj_per_arm
-    a0_val_levels <- bayes_ctd_array$a0_vals
+    subj_per_arm_levels <- x$subj_per_arm
+    a0_val_levels <- x$a0_vals
     # check to make sure subj_per_arm_val is in subj_per_arm and
     # a0_val is in a0_vals
     subj_per_arm_loc <- match(subj_per_arm_val, subj_per_arm_levels)
@@ -1989,8 +1996,8 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
 
   if (toupper(tab_type) == "YX|WZ") {
     # Table of Design Characteristics: Effect by a0
-    subj_per_arm_levels <- bayes_ctd_array$subj_per_arm
-    rand_control_diff_levels <- bayes_ctd_array$rand_control_diff
+    subj_per_arm_levels <- x$subj_per_arm
+    rand_control_diff_levels <- x$rand_control_diff
     # check to make sure subj_per_arm_val is in subj_per_arm and
     # rand_control_diff_val is in rand_control_diff
     subj_per_arm_loc <- match(subj_per_arm_val, subj_per_arm_levels)
@@ -2152,6 +2159,7 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
 #'   determine if enough elements are present to justify smoothing.
 #'
 #' @examples
+#' \donttest{
 #' #Run a Weibull simulation, using simple_sim().
 #' #For meaningful results, trial_reps needs to be much larger than 2.
 #' weibull_test <- simple_sim(trial_reps = 2, outcome_type = "weibull",
@@ -2182,6 +2190,7 @@ print.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab
 #' plot_table(bayes_ctd_array=weibull_test, measure="mse", tab_type=NULL,
 #'            smooth=FALSE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
 #'            effect_val=NULL, rand_control_diff_val=NULL)
+#' }
 #'
 #' \donttest{
 #' #Run a second Weibull simulation, using simple_sim() and smooth the plot.
@@ -2446,6 +2455,7 @@ plot_table <- function(bayes_ctd_array, measure = "power", tab_type = "WX|YZ", s
 #'   determine if enough elements are present to justify smoothing.
 #'
 #' @examples
+#' \donttest{
 #' #Run a Weibull simulation, using simple_sim().
 #' #For meaningful results, trial_reps needs to be much larger than 2.
 #' weibull_test <- simple_sim(trial_reps = 2, outcome_type = "weibull",
@@ -2476,6 +2486,7 @@ plot_table <- function(bayes_ctd_array, measure = "power", tab_type = "WX|YZ", s
 #' plot_table(bayes_ctd_array=weibull_test, measure="mse", tab_type=NULL,
 #'            smooth=FALSE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
 #'            effect_val=NULL, rand_control_diff_val=NULL)
+#' }
 #'
 #' \donttest{
 #' #Run a second Weibull simulation, using simple_sim() and smooth the plot.
@@ -2605,6 +2616,7 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
     # tab_type='ZW|XY', Line Plot of Design Characteristics: Control Differences by Sample Size
     # tab_type='ZY|WX', Line Plot of Design Characteristics: Control Differences by Effect
 
+    .Deprecated("plot")
     #Add simple code to help out the user with tab_type on matters where order is
     #not important and can be easily fixed.
     tab_type = toupper(tab_type)
@@ -4057,7 +4069,7 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
 #' var, bias, or mse).
 #'
 #' If the object of class \code{bayes_ctd_array} is created by \code{historic_sim()},
-##' when calling \code{plot()} the user must specify a measure to plot
+#' when calling \code{plot()} the user must specify a measure to plot
 #' (power, est, var, bias, or mse) and may be required to specify a plot type through
 #' the \code{tab_type} parameter.  A plot type, \code{tab_type}, will be required if
 #' 3 of the 4 trial characteristics are equal to a vector of 2 or more values.  This
@@ -4112,15 +4124,15 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
 #' parameters \code{tab_type}, \code{subj_per_arm_val}, \code{a0_val}, \code{effect_val},
 #' and \code{rand_control_diff_val} are ignored.
 #'
-#' @param bayes_ctd_array Name of object of class \code{bayes_ctd_array} containing
+#' @param x Name of object of class \code{bayes_ctd_array} containing
 #'   data from clinical trial simulation.
 #' @param measure Must be equal to \code{power}, \code{est}, \code{var}, \code{bias},
 #'   or \code{mse}.  Default is \code{power}.  Case does not matter.
 #' @param tab_type A character string that must equal \code{WX|YZ}, \code{WY|XZ},
 #'   \code{WZ|XY}, \code{XY|WZ}, \code{XZ|WY}, \code{YZ|WX}, \code{ZX|WY}, \code{XW|YZ},
 #'   \code{YW|XZ}, \code{YX|WZ}, \code{ZW|XY}, \code{ZX|WY}, \code{ZY|WX} when
-#'   \code{bayes_ctd_array} is generated by \code{historic_sim()}.  Default is
-#'   \code{WX|YZ}.  When \code{bayes_ctd_array} is generated by \code{simple_sim()},
+#'   \code{x} is generated by \code{historic_sim()}.  Default is
+#'   \code{WX|YZ}.  When \code{x} is generated by \code{simple_sim()},
 #'   \code{tab_type} is ignored.
 #' @param smooth A true/false parameter indicating whether smoothed results
 #'   should be plotted. Note, smoothing of simulation results requires the length of
@@ -4132,34 +4144,34 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
 #' @param plot_out A true/false parameter indicating whether the plot should be
 #'   produced.  This parameter is useful if the user only wants a table of smoothed
 #'   values.  Default is \code{TRUE}.
-#' @param subj_per_arm_val Must be non-missing, if \code{bayes_ctd_array} is generated
+#' @param subj_per_arm_val Must be non-missing, if \code{x} is generated
 #'   by \code{historic_sim()} and sample size is being held constant.
-#'   If \code{bayes_ctd_array} is generated by \code{historic_sim()} and sample size
+#'   If \code{x} is generated by \code{historic_sim()} and sample size
 #'   is being held constant, \code{subj_per_arm_val} must equal a value submitted
 #'   to \code{historic_sim()} within the \code{subj_per_arm} parameter.  When
-#'   \code{bayes_ctd_array} is generated by \code{simple_sim()}, \code{subj_per_arm_val}
+#'   \code{x} is generated by \code{simple_sim()}, \code{subj_per_arm_val}
 #'   is ignored.
-#' @param a0_val Must be non-missing, if \code{bayes_ctd_array} is generated
+#' @param a0_val Must be non-missing, if \code{x} is generated
 #'   by \code{historic_sim()} and a0, the power prior parameter, is being held
-#'   constant.  If \code{bayes_ctd_array} is generated by \code{historic_sim()} and
+#'   constant.  If \code{x} is generated by \code{historic_sim()} and
 #'   a0 is being held constant, \code{a0_val} must equal a value submitted
 #'   to \code{historic_sim()} within the \code{a0_val} parameter.  When
-#'   \code{bayes_ctd_array} is generated by \code{simple_sim()}, \code{a0_val} is
+#'   \code{x} is generated by \code{simple_sim()}, \code{a0_val} is
 #'   ignored.
-#' @param effect_val  Must be non-missing, if \code{bayes_ctd_array} is generated
+#' @param effect_val  Must be non-missing, if \code{x} is generated
 #'   by \code{historic_sim()} and effect is being held constant.  If
-#'   \code{bayes_ctd_array} is generated by \code{historic_sim()} and effect is being
+#'   \code{x} is generated by \code{historic_sim()} and effect is being
 #'   held constant, \code{effect_val} must equal a value submitted to
 #'   \code{historic_sim()} within the \code{effect_vals} parameter.  When
-#'   \code{bayes_ctd_array} is generated by \code{simple_sim()}, \code{effect_val} is
+#'   \code{x} is generated by \code{simple_sim()}, \code{effect_val} is
 #'   ignored.
-#' @param rand_control_diff_val Must be non-missing, if \code{bayes_ctd_array} is
+#' @param rand_control_diff_val Must be non-missing, if \code{x} is
 #'   generated by \code{historic_sim()} and differences between randomized
-#'   and historical controls are being held constant.  If \code{bayes_ctd_array}
+#'   and historical controls are being held constant.  If \code{x}
 #'   is generated by \code{historic_sim()} and control differences are being
 #'   held constant, \code{rand_control_diff_val} must equal a value submitted to
 #'   \code{historic_sim()} within the \code{rand_control_diff} parameter.  When
-#'   \code{bayes_ctd_array} is generated by \code{simple_sim()},
+#'   \code{x} is generated by \code{simple_sim()},
 #'   \code{rand_control_diff_val} is ignored.
 #' @param span The \code{span} parameter value for a call \code{loess()}.  Default is 0.75.  If
 #'   \code{span} is a single number, then that value will be used to smooth the data in all
@@ -4171,6 +4183,7 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
 #'   "\code{gaussian}".  The value of \code{family} will be used for all columns being plotted.
 #' @param title Title for the plot.
 #' @param ylim Lower and upper limits for y-axis of plot.
+#' @param ...	further arguments passed to or from other methods.
 #'
 #' @return \code{plot()} returns a plot for a two dimensional array of simulation
 #'   results.  If \code{smooth} is \code{TRUE}, then the plot is based on a smoothed
@@ -4196,23 +4209,23 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
 #'                            seedval=123, quietly=TRUE)
 #'
 #' #Create a plot of the power simulation results.
-#' plot(bayes_ctd_array=weibull_test, measure="power", tab_type=NULL,
+#' plot(x=weibull_test, measure="power", tab_type=NULL,
 #'      smooth=FALSE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
 #'      effect_val=NULL, rand_control_diff_val=NULL)
 #' #Create a plot of the hazard ratio simulation results.
-#' plot(bayes_ctd_array=weibull_test, measure="est", tab_type=NULL,
+#' plot(x=weibull_test, measure="est", tab_type=NULL,
 #'      smooth=FALSE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
 #'      effect_val=NULL, rand_control_diff_val=NULL)
 #' #Create a plot of the hazard ratio variance simulation results.
-#' plot(bayes_ctd_array=weibull_test, measure="var", tab_type=NULL,
+#' plot(x=weibull_test, measure="var", tab_type=NULL,
 #'      smooth=FALSE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
 #'      effect_val=NULL, rand_control_diff_val=NULL)
 #' #Create a plot of the hazard ratio bias simulation results.
-#' plot(bayes_ctd_array=weibull_test, measure="bias", tab_type=NULL,
+#' plot(x=weibull_test, measure="bias", tab_type=NULL,
 #'      smooth=FALSE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
 #'      effect_val=NULL, rand_control_diff_val=NULL)
 #' #Create a plot of the hazard ratio mse simulation results.
-#' plot(bayes_ctd_array=weibull_test, measure="mse", tab_type=NULL,
+#' plot(x=weibull_test, measure="mse", tab_type=NULL,
 #'      smooth=FALSE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
 #'      effect_val=NULL, rand_control_diff_val=NULL)
 #'
@@ -4228,7 +4241,7 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
 #'                             quietly=TRUE)
 #'
 #' #Create a plot of the power simulation results.
-#' plot(bayes_ctd_array=weibull_test2, measure="power", tab_type=NULL,
+#' plot(x=weibull_test2, measure="power", tab_type=NULL,
 #'      smooth=TRUE, plot_out=TRUE, subj_per_arm_val=NULL, a0_val=NULL,
 #'      effect_val=NULL, rand_control_diff_val=NULL, span=c(1,1,1))
 #' }
@@ -4256,7 +4269,7 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
 #'                               quietly=TRUE)
 #'
 #' #Create a plot of the power simulation results.
-#' plot(bayes_ctd_array=weibull_test3, measure="power", tab_type="WX|YZ",
+#' plot(x=weibull_test3, measure="power", tab_type="WX|YZ",
 #'      smooth=FALSE, plot_out=TRUE, effect_val=0.6,
 #'      rand_control_diff_val=1.0)
 #' }
@@ -4280,12 +4293,12 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
 #'                              censor_value = 3, alpha = 0.05, get_var = TRUE,
 #'                              get_bias = TRUE, get_mse = TRUE, seedval=123,
 #'                              quietly=TRUE)
-#' test_table <- print_table(bayes_ctd_array=gaussian_test, measure="power",
+#' test_table <- print(x=gaussian_test, measure="power",
 #'                          tab_type=NULL, effect_val=NULL,
 #'                          subj_per_arm_val=NULL)
 #' print(test_table)
 #' #Create a plot of the power simulation results.
-#' plot(bayes_ctd_array=gaussian_test, measure="power", tab_type=NULL,
+#' plot(x=gaussian_test, measure="power", tab_type=NULL,
 #'      smooth=TRUE, plot_out=TRUE, effect_val=NULL,
 #'      rand_control_diff_val=NULL)
 #' }
@@ -4320,15 +4333,15 @@ plot_table.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power"
 #'                         quietly=TRUE)
 #'
 #' #Create a plot of the power simulation results.
-#' plot(bayes_ctd_array=pwe_test, measure="power", tab_type=NULL,
+#' plot(x=pwe_test, measure="power", tab_type=NULL,
 #'      smooth=TRUE, plot_out=TRUE, effect_val=NULL,
 #'      rand_control_diff_val=NULL)
 #' }
 #'
 #' @export
-plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_type = "WX|YZ", smooth = FALSE,
+plot.bayes_ctd_array <- function(x = NULL, measure = "power", tab_type = "WX|YZ", smooth = FALSE,
                                        plot_out = TRUE, subj_per_arm_val = NULL, a0_val = NULL, effect_val = NULL, rand_control_diff_val = NULL, span = 0.75,
-                                       degree = 2, family = "gaussian", title=NULL, ylim=NULL) {
+                                       degree = 2, family = "gaussian", title=NULL, ylim=NULL, ...) {
   # (W): subj_per_arm,
   # (X): a0_val,
   # (Y): effect_val,
@@ -4350,7 +4363,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
   #not important and can be easily fixed.
   tab_type = toupper(tab_type)
   if (!((length(tab_type)== 0) && (typeof(tab_type) == "character"))){
-    if (bayes_ctd_array$objtype == 'historic') {
+    if (x$objtype == 'historic') {
       if (tab_type=='WX|ZY') tab_type <- 'WX|YZ'
       if (tab_type=='WY|ZX') tab_type <- 'WY|XZ'
       if (tab_type=='WZ|YX') tab_type <- 'WZ|XY'
@@ -4371,56 +4384,56 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
   # available to go through all code and remove code no longer necessary.
 
   #------------- Go through all the high level checks for proper input. -------------#
-  if (bayes_ctd_array$objtype == 'simple') {
+  if (x$objtype == 'simple') {
     tab_type <- "WY|XZ"
     a0_val <- 0
     rand_control_diff_val <- 1
-    subj_per_arm_val <- bayes_ctd_array$subj_per_arm[1]
-    effect_val <- bayes_ctd_array$effect_vals[1]
+    subj_per_arm_val <- x$subj_per_arm[1]
+    effect_val <- x$effect_vals[1]
     print("Since simple_sim was used, tab_type was set to WY|XZ")
     print("Values for tab_type, subj_per_arm_val, a0_val, effect_val, and rand_control_diff_val were ignored")
     print("This works towards putting all results on a single plot, effect by sample size")
   }
 
-  if (bayes_ctd_array$objtype == 'realsimple') {
-    if (length(bayes_ctd_array$subj_per_arm) > 1) {
+  if (x$objtype == 'realsimple') {
+    if (length(x$subj_per_arm) > 1) {
       print("Since only subj_per_arm vector has more than 1 element, tab_type was set to WX|YZ")
       print("This works towards putting all results in a single table")
       tab_type <- "WX|YZ"
-      a0_val <- bayes_ctd_array$a0_vals[1]
-      effect_val <- bayes_ctd_array$effect_vals[1]
-      rand_control_diff_val <- bayes_ctd_array$rand_control_diff[1]
+      a0_val <- x$a0_vals[1]
+      effect_val <- x$effect_vals[1]
+      rand_control_diff_val <- x$rand_control_diff[1]
     }
-    if (length(bayes_ctd_array$a0_vals) > 1) {
+    if (length(x$a0_vals) > 1) {
       print("Since only a0_vals vector has more than 1 element, tab_type was set to XY|WZ")
       print("This works towards putting all results in a single table")
       tab_type <- "XY|WZ"
-      subj_per_arm_val <- bayes_ctd_array$subj_per_arm[1]
-      effect_val <- bayes_ctd_array$effect_vals[1]
-      rand_control_diff_val <- bayes_ctd_array$rand_control_diff[1]
+      subj_per_arm_val <- x$subj_per_arm[1]
+      effect_val <- x$effect_vals[1]
+      rand_control_diff_val <- x$rand_control_diff[1]
     }
-    if (length(bayes_ctd_array$effect_vals) > 1) {
+    if (length(x$effect_vals) > 1) {
       print("Since only effect_vals vector has more than 1 element, tab_type was set to YZ|WX")
       print("This works towards putting all results in a single table")
       tab_type <- "YZ|WX"
-      subj_per_arm_val <- bayes_ctd_array$subj_per_arm[1]
-      a0_val <- bayes_ctd_array$a0_vals[1]
-      rand_control_diff_val <- bayes_ctd_array$rand_control_diff[1]
+      subj_per_arm_val <- x$subj_per_arm[1]
+      a0_val <- x$a0_vals[1]
+      rand_control_diff_val <- x$rand_control_diff[1]
     }
-    if (length(bayes_ctd_array$rand_control_diff) > 1) {
+    if (length(x$rand_control_diff) > 1) {
       print("Since only rand_control_diff vector has more than 1 element, tab_type was set to ZX|WY")
       print("This works towards putting all results in a single table")
       tab_type <- "ZX|WY"
-      subj_per_arm_val <- bayes_ctd_array$subj_per_arm[1]
-      a0_val <- bayes_ctd_array$a0_vals[1]
-      effect_val <- bayes_ctd_array$effect_vals[1]
+      subj_per_arm_val <- x$subj_per_arm[1]
+      a0_val <- x$a0_vals[1]
+      effect_val <- x$effect_vals[1]
     }
   }
 
-  if (bayes_ctd_array$objtype == 'historic') {
-    # Check to see if two dimensions of bayes_ctd_array have only 1 element each. Is so set tab_type to an appropriate
+  if (x$objtype == 'historic') {
+    # Check to see if two dimensions of x have only 1 element each. Is so set tab_type to an appropriate
     # value.
-    if (length(bayes_ctd_array$effect_vals) == 1 & length(bayes_ctd_array$rand_control_diff) == 1) {
+    if (length(x$effect_vals) == 1 & length(x$rand_control_diff) == 1) {
       chkflag1 <- 0
       if(!((length(tab_type)== 0) && (typeof(tab_type) == "character"))){
         if ((tab_type != "WX|YZ") & (tab_type != "XW|YZ")) {
@@ -4432,14 +4445,14 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
         tab_type <- "WX|YZ"
         chkflag1 <- 1
       }
-      effect_val <- bayes_ctd_array$effect_vals[1]
-      rand_control_diff_val <- bayes_ctd_array$rand_control_diff[1]
+      effect_val <- x$effect_vals[1]
+      rand_control_diff_val <- x$rand_control_diff[1]
       if (chkflag1 == 1) {
         print("Since effect_vals and rand_control_diff vectors only have 1 element each and tab_type not equal to 'WX|YZ' or 'XW|YZ', tab_type was set to WX|YZ")
         print("This works towards putting all results on a single plot")
       }
     }
-    if (length(bayes_ctd_array$a0_vals) == 1 & length(bayes_ctd_array$rand_control_diff) == 1) {
+    if (length(x$a0_vals) == 1 & length(x$rand_control_diff) == 1) {
       chkflag1 <- 0
       if(!((length(tab_type)== 0) && (typeof(tab_type) == "character"))){
         if ((tab_type != "WY|XZ") & (tab_type != "YW|XZ")) {
@@ -4451,14 +4464,14 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
         tab_type <- "WY|XZ"
         chkflag1 <- 1
       }
-      a0_val <- bayes_ctd_array$a0_vals[1]
-      rand_control_diff_val <- bayes_ctd_array$rand_control_diff[1]
+      a0_val <- x$a0_vals[1]
+      rand_control_diff_val <- x$rand_control_diff[1]
       if (chkflag1 == 1) {
         print("Since a0 and rand_control_diff vectors only have 1 element each and tab_type not equal to 'WY|XZ' or 'YW|XZ', tab_type was set to WY|XZ")
         print("This works towards putting all results on a single plot")
       }
     }
-    if (length(bayes_ctd_array$subj_per_arm) == 1 & length(bayes_ctd_array$rand_control_diff) == 1) {
+    if (length(x$subj_per_arm) == 1 & length(x$rand_control_diff) == 1) {
       chkflag1 <- 0
       if(!((length(tab_type)== 0) && (typeof(tab_type) == "character"))){
         if ((tab_type != "XY|WZ") & (tab_type != "YX|WZ")) {
@@ -4470,14 +4483,14 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
         tab_type <- "XY|WZ"
         chkflag1 <- 1
       }
-      subj_per_arm_val <- bayes_ctd_array$subj_per_arm
-      rand_control_diff_val <- bayes_ctd_array$rand_control_diff
+      subj_per_arm_val <- x$subj_per_arm
+      rand_control_diff_val <- x$rand_control_diff
       if (chkflag1 == 1) {
         print("Since sample size and rand_control_diff vectors only have 1 element each and tab_type not equal to 'XY|WZ' or 'YX|WZ', tab_type was set to XY|WZ")
         print("This works towards putting all results on a single plot")
       }
     }
-    if (length(bayes_ctd_array$subj_per_arm) == 1 & length(bayes_ctd_array$effect_vals) == 1) {
+    if (length(x$subj_per_arm) == 1 & length(x$effect_vals) == 1) {
       chkflag1 <- 0
       if(!((length(tab_type)== 0) && (typeof(tab_type) == "character"))){
         if ((tab_type != "XZ|WY") & (tab_type != "ZX|WY")) {
@@ -4489,14 +4502,14 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
         tab_type <- "XZ|WY"
         chkflag1 <- 1
       }
-      subj_per_arm_val <- bayes_ctd_array$subj_per_arm
-      effect_val <- bayes_ctd_array$effect_vals
+      subj_per_arm_val <- x$subj_per_arm
+      effect_val <- x$effect_vals
       if (chkflag1 == 1) {
         print("Since sample size and effect_vals vectors only have 1 element each and tab_type not equal to 'XZ|WY' or 'ZX|WY', tab_type was set to XZ|WY")
         print("This works towards putting all results on a single plot")
       }
     }
-    if (length(bayes_ctd_array$subj_per_arm) == 1 & length(bayes_ctd_array$a0_vals) == 1) {
+    if (length(x$subj_per_arm) == 1 & length(x$a0_vals) == 1) {
       chkflag1 <- 0
       if(!((length(tab_type)== 0) && (typeof(tab_type) == "character"))){
         if ((tab_type != "YZ|WX") & (tab_type != "ZY|WX")) {
@@ -4508,14 +4521,14 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
         tab_type <- "YZ|WX"
         chkflag1 <- 1
       }
-      subj_per_arm_val <- bayes_ctd_array$subj_per_arm
-      a0_val <- bayes_ctd_array$a0_vals
+      subj_per_arm_val <- x$subj_per_arm
+      a0_val <- x$a0_vals
       if (chkflag1 == 1) {
         print("Since sample size and a0 vectors only have 1 element each and tab_type not equal to 'YZ|WX' or 'ZY|WX', tab_type was set to YZ|WX")
         print("This works towards putting all results on a single plot")
       }
     }
-    if (length(bayes_ctd_array$a0_vals) == 1 & length(bayes_ctd_array$effect_vals) == 1) {
+    if (length(x$a0_vals) == 1 & length(x$effect_vals) == 1) {
       chkflag1 <- 0
       if(!((length(tab_type)== 0) && (typeof(tab_type) == "character"))){
         if ((tab_type != "WZ|XY") & (tab_type != "ZW|XY")) {
@@ -4527,8 +4540,8 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
         tab_type <- "WZ|XY"
         chkflag1 <- 1
       }
-      a0_val <- bayes_ctd_array$a0_vals
-      effect_val <- bayes_ctd_array$effect_vals
+      a0_val <- x$a0_vals
+      effect_val <- x$effect_vals
       if (chkflag1 == 1) {
         print("Since a0 and effect_vals vectors only have 1 element each and tab_type not equal to 'WZ|XY' or 'ZW|XY', tab_type was set to WZ|XY")
         print("This works towards putting all results on a single plot")
@@ -4536,7 +4549,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
     }
   }
 
-  plot_error_checks(bayes_ctd_array, measure, tab_type, smooth, plot_out, subj_per_arm_val, a0_val, effect_val,
+  plot_error_checks(x, measure, tab_type, smooth, plot_out, subj_per_arm_val, a0_val, effect_val,
                           rand_control_diff_val, span)
 
   #If title is NULL, create a title from the two parameters that are fixed.
@@ -4591,11 +4604,11 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
   if (tab_type == "WX|YZ") {
     # Line Plot of Design Characteristics: Sample Size by a0
     # First generate the table using a call to print_table.
-    table_mat <- print_table(bayes_ctd_array = bayes_ctd_array, measure = measure, tab_type = tab_type, effect_val = effect_val,
+    table_mat <- print(x = x, measure = measure, tab_type = tab_type, effect_val = effect_val,
                              rand_control_diff_val = rand_control_diff_val, print_chg_warn = 0)
     table_mat <- data.frame(table_mat)
     if (dim(table_mat)[2]==1){
-      tempcolname <- paste('X', as.character(bayes_ctd_array$a0_vals), sep='')
+      tempcolname <- paste('X', as.character(x$a0_vals), sep='')
       colnames(table_mat) <- tempcolname
     }
     # Use a call to stats::loess to smooth simulation results is requested.
@@ -4603,10 +4616,10 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       colcnt <- dim(table_mat)[2]
       if (length(span) == 1)  #If span is single number, then use it to smooth all columns.
         span <- rep(span, colcnt)
-      x <- as.numeric(rownames(table_mat))
+      y <- as.numeric(rownames(table_mat))
       for (i in 1:colcnt) {
-        loessfit <- stats::loess(table_mat[, i] ~ x, span = span[i], degree = degree, family = family)
-        table_mat[, i] <- stats::predict(loessfit, data.frame(x = x))
+        loessfit <- stats::loess(table_mat[, i] ~ y, span = span[i], degree = degree, family = family)
+        table_mat[, i] <- stats::predict(loessfit, data.frame(y = y))
       }
     }
     # If no plot needed, then return the table.  A user should only use this
@@ -4685,11 +4698,11 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
   if (tab_type == "WY|XZ") {
     # Line Plot of Design Characteristics: Sample Size by Effect
     # First generate the table using a call to print_table.
-    table_mat <- print_table(bayes_ctd_array = bayes_ctd_array, measure = measure, tab_type = "WY|XZ", a0_val = a0_val,
+    table_mat <- print(x = x, measure = measure, tab_type = "WY|XZ", a0_val = a0_val,
                              rand_control_diff_val = rand_control_diff_val, print_chg_warn = 0)
     table_mat <- data.frame(table_mat)
     if (dim(table_mat)[2]==1){
-      tempcolname <- paste('X', as.character(bayes_ctd_array$effect_vals), sep='')
+      tempcolname <- paste('X', as.character(x$effect_vals), sep='')
       colnames(table_mat) <- tempcolname
     }
     # Use a call to stats::loess to smooth simulation results is requested.
@@ -4697,10 +4710,10 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       colcnt <- dim(table_mat)[2]
       if (length(span) == 1) #If span is single number, then use it to smooth all columns.
         span <- rep(span, colcnt)
-      x <- as.numeric(rownames(table_mat))
+      y <- as.numeric(rownames(table_mat))
       for (i in 1:colcnt) {
-        loessfit <- stats::loess(table_mat[, i] ~ x, span = span[i], degree = degree, family = family)
-        table_mat[, i] <- stats::predict(loessfit, data.frame(x = x))
+        loessfit <- stats::loess(table_mat[, i] ~ y, span = span[i], degree = degree, family = family)
+        table_mat[, i] <- stats::predict(loessfit, data.frame(y = y))
       }
     }
     # If no plot needed, then return the table.  A user should only use this
@@ -4775,11 +4788,11 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
   if (tab_type == "WZ|XY") {
     # Line Plot of Design Characteristics: Sample Size by Control Differences
     # First generate the table using a call to print_table.
-    table_mat <- print_table(bayes_ctd_array = bayes_ctd_array, measure = measure, tab_type = "WZ|XY", a0_val = a0_val,
+    table_mat <- print(x = x, measure = measure, tab_type = "WZ|XY", a0_val = a0_val,
                              effect_val = effect_val, print_chg_warn = 0)
     table_mat <- data.frame(table_mat)
     if (dim(table_mat)[2]==1){
-      tempcolname <- paste('X', as.character(bayes_ctd_array$rand_control_diff), sep='')
+      tempcolname <- paste('X', as.character(x$rand_control_diff), sep='')
       colnames(table_mat) <- tempcolname
     }
     # Use a call to stats::loess to smooth simulation results is requested.
@@ -4787,10 +4800,10 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       colcnt <- dim(table_mat)[2]
       if (length(span) == 1) #If span is single number, then use it to smooth all columns.
         span <- rep(span, colcnt)
-      x <- as.numeric(rownames(table_mat))
+      y <- as.numeric(rownames(table_mat))
       for (i in 1:colcnt) {
-        loessfit <- stats::loess(table_mat[, i] ~ x, span = span[i], degree = degree, family = family)
-        table_mat[, i] <- stats::predict(loessfit, data.frame(x = x))
+        loessfit <- stats::loess(table_mat[, i] ~ y, span = span[i], degree = degree, family = family)
+        table_mat[, i] <- stats::predict(loessfit, data.frame(y = y))
       }
     }
     # If no plot needed, then return the table.  A user should only use this
@@ -4871,11 +4884,11 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
   if (tab_type == "XY|WZ") {
     # Line Plot of Design Characteristics: a0 by Effect
     # First generate the table using a call to print_table.
-    table_mat <- print_table(bayes_ctd_array = bayes_ctd_array, measure = measure, tab_type = "XY|WZ", subj_per_arm_val = subj_per_arm_val,
+    table_mat <- print(x = x, measure = measure, tab_type = "XY|WZ", subj_per_arm_val = subj_per_arm_val,
                              rand_control_diff_val = rand_control_diff_val, print_chg_warn = 0)
     table_mat <- data.frame(table_mat)
     if (dim(table_mat)[2]==1){
-      tempcolname <- paste('X', as.character(bayes_ctd_array$effect_vals), sep='')
+      tempcolname <- paste('X', as.character(x$effect_vals), sep='')
       colnames(table_mat) <- tempcolname
     }
     # Use a call to stats::loess to smooth simulation results is requested.
@@ -4883,10 +4896,10 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       colcnt <- dim(table_mat)[2]
       if (length(span) == 1) #If span is single number, then use it to smooth all columns.
         span <- rep(span, colcnt)
-      x <- as.numeric(rownames(table_mat))
+      y <- as.numeric(rownames(table_mat))
       for (i in 1:colcnt) {
-        loessfit <- stats::loess(table_mat[, i] ~ x, span = span[i], degree = degree, family = family)
-        table_mat[, i] <- stats::predict(loessfit, data.frame(x = x))
+        loessfit <- stats::loess(table_mat[, i] ~ y, span = span[i], degree = degree, family = family)
+        table_mat[, i] <- stats::predict(loessfit, data.frame(y = y))
       }
     }
     # If no plot needed, then return the table.  A user should only use this
@@ -4962,11 +4975,11 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
   if (tab_type == "XZ|WY") {
     # Line Plot of Design Characteristics: a0 by Control Diffferences
     # First generate the table using a call to print_table.
-    table_mat <- print_table(bayes_ctd_array = bayes_ctd_array, measure = measure, tab_type = "XZ|WY", subj_per_arm_val = subj_per_arm_val,
+    table_mat <- print(x = x, measure = measure, tab_type = "XZ|WY", subj_per_arm_val = subj_per_arm_val,
                              effect_val = effect_val, print_chg_warn = 0)
     table_mat <- data.frame(table_mat)
     if (dim(table_mat)[2]==1){
-      tempcolname <- paste('X', as.character(bayes_ctd_array$rand_control_diff), sep='')
+      tempcolname <- paste('X', as.character(x$rand_control_diff), sep='')
       colnames(table_mat) <- tempcolname
     }
     # Use a call to stats::loess to smooth simulation results is requested.
@@ -4974,10 +4987,10 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       colcnt <- dim(table_mat)[2]
       if (length(span) == 1) #If span is single number, then use it to smooth all columns.
         span <- rep(span, colcnt)
-      x <- as.numeric(rownames(table_mat))
+      y <- as.numeric(rownames(table_mat))
       for (i in 1:colcnt) {
-        loessfit <- stats::loess(table_mat[, i] ~ x, span = span[i], degree = degree, family = family)
-        table_mat[, i] <- stats::predict(loessfit, data.frame(x = x))
+        loessfit <- stats::loess(table_mat[, i] ~ y, span = span[i], degree = degree, family = family)
+        table_mat[, i] <- stats::predict(loessfit, data.frame(y = y))
       }
     }
     # If no plot needed, then return the table.  A user should only use this
@@ -5054,11 +5067,11 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
   if (tab_type == "YZ|WX") {
     # Line Plot of Design Characteristics: Effect by Control Diffferences
     # First generate the table using a call to print_table.
-    table_mat <- print_table(bayes_ctd_array = bayes_ctd_array, measure = measure, tab_type = "YZ|WX", subj_per_arm_val = subj_per_arm_val,
+    table_mat <- print(x = x, measure = measure, tab_type = "YZ|WX", subj_per_arm_val = subj_per_arm_val,
                              a0_val = a0_val, print_chg_warn = 0)
     table_mat <- data.frame(table_mat)
     if (dim(table_mat)[2]==1){
-      tempcolname <- paste('X', as.character(bayes_ctd_array$rand_control_diff), sep='')
+      tempcolname <- paste('X', as.character(x$rand_control_diff), sep='')
       colnames(table_mat) <- tempcolname
     }
     # Use a call to stats::loess to smooth simulation results is requested.
@@ -5066,10 +5079,10 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       colcnt <- dim(table_mat)[2]
       if (length(span) == 1) #If span is single number, then use it to smooth all columns.
         span <- rep(span, colcnt)
-      x <- as.numeric(rownames(table_mat))
+      y <- as.numeric(rownames(table_mat))
       for (i in 1:colcnt) {
-        loessfit <- stats::loess(table_mat[, i] ~ x, span = span[i], degree = degree, family = family)
-        table_mat[, i] <- stats::predict(loessfit, data.frame(x = x))
+        loessfit <- stats::loess(table_mat[, i] ~ y, span = span[i], degree = degree, family = family)
+        table_mat[, i] <- stats::predict(loessfit, data.frame(y = y))
       }
     }
     # If no plot needed, then return the table.  A user should only use this
@@ -5149,7 +5162,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
   if (tab_type == "ZX|WY") {
     # Line Plot of Design Characteristics: Control Diffferences by a0
     # First generate the table using a call to print_table.
-    table_mat <- print_table(bayes_ctd_array = bayes_ctd_array, measure = measure, tab_type = "ZX|WY", subj_per_arm_val = subj_per_arm_val,
+    table_mat <- print(x = x, measure = measure, tab_type = "ZX|WY", subj_per_arm_val = subj_per_arm_val,
                              effect_val = effect_val, print_chg_warn = 0)
     #The following if block makes the 1D case work, if it occurs.
     #The return of a 1D vector from print_table(tab_type="ZX|WY")
@@ -5163,7 +5176,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
     }
     table_mat <- data.frame(table_mat)
     if (dim(table_mat)[2]==1){
-      tempcolname <- paste('X', as.character(bayes_ctd_array$a0_vals), sep='')
+      tempcolname <- paste('X', as.character(x$a0_vals), sep='')
       colnames(table_mat) <- tempcolname
     }
     # Use a call to stats::loess to smooth simulation results is requested.
@@ -5171,10 +5184,10 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       colcnt <- dim(table_mat)[2]
       if (length(span) == 1) #If span is single number, then use it to smooth all columns.
         span <- rep(span, colcnt)
-      x <- as.numeric(rownames(table_mat))
+      y <- as.numeric(rownames(table_mat))
       for (i in 1:colcnt) {
-        loessfit <- stats::loess(table_mat[, i] ~ x, span = span[i], degree = degree, family = family)
-        table_mat[, i] <- stats::predict(loessfit, data.frame(x = x))
+        loessfit <- stats::loess(table_mat[, i] ~ y, span = span[i], degree = degree, family = family)
+        table_mat[, i] <- stats::predict(loessfit, data.frame(y = y))
       }
     }
     # If no plot needed, then return the table.  A user should only use this
@@ -5254,7 +5267,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
   if (tab_type == "XW|YZ") {
     # Line Plot of Design Characteristics: a0 by sample size
     # First generate the table using a call to print_table.
-    table_mat <- print_table(bayes_ctd_array = bayes_ctd_array, measure = measure, tab_type = "XW|YZ", effect_val = effect_val,
+    table_mat <- print(x = x, measure = measure, tab_type = "XW|YZ", effect_val = effect_val,
                              rand_control_diff_val = rand_control_diff_val, print_chg_warn = 0)
     #The following if block makes the 1D case work, if it occurs.
     #The return of a 1D vector from print_table(tab_type="ZX|WY")
@@ -5268,7 +5281,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
     }
     table_mat <- data.frame(table_mat)
     if (dim(table_mat)[2]==1){
-      tempcolname <- paste('X', as.character(bayes_ctd_array$subj_per_arm), sep='')
+      tempcolname <- paste('X', as.character(x$subj_per_arm), sep='')
       colnames(table_mat) <- tempcolname
     }
     # Use a call to stats::loess to smooth simulation results is requested.
@@ -5276,10 +5289,10 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       colcnt <- dim(table_mat)[2]
       if (length(span) == 1) #If span is single number, then use it to smooth all columns.
         span <- rep(span, colcnt)
-      x <- as.numeric(rownames(table_mat))
+      y <- as.numeric(rownames(table_mat))
       for (i in 1:colcnt) {
-        loessfit <- stats::loess(table_mat[, i] ~ x, span = span[i], degree = degree, family = family)
-        table_mat[, i] <- stats::predict(loessfit, data.frame(x = x))
+        loessfit <- stats::loess(table_mat[, i] ~ y, span = span[i], degree = degree, family = family)
+        table_mat[, i] <- stats::predict(loessfit, data.frame(y = y))
       }
     }
     # If no plot needed, then return the table.  A user should only use this
@@ -5359,7 +5372,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
   if (tab_type == "YW|XZ") {
     # Line Plot of Design Characteristics: Effect by sample size
     # First generate the table using a call to print_table.
-    table_mat <- print_table(bayes_ctd_array = bayes_ctd_array, measure = measure, tab_type = "YW|XZ",
+    table_mat <- print(x = x, measure = measure, tab_type = "YW|XZ",
                              a0_val = a0_val, rand_control_diff_val=rand_control_diff_val, print_chg_warn = 0)
     #The following if block makes the 1D case work, if it occurs.
     #The return of a 1D vector from print_table(tab_type="ZX|WY")
@@ -5373,7 +5386,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
     }
     table_mat <- data.frame(table_mat)
     if (dim(table_mat)[2]==1){
-      tempcolname <- paste('X', as.character(bayes_ctd_array$subj_per_arm), sep='')
+      tempcolname <- paste('X', as.character(x$subj_per_arm), sep='')
       colnames(table_mat) <- tempcolname
     }
     # Use a call to stats::loess to smooth simulation results is requested.
@@ -5381,10 +5394,10 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       colcnt <- dim(table_mat)[2]
       if (length(span) == 1) #If span is single number, then use it to smooth all columns.
         span <- rep(span, colcnt)
-      x <- as.numeric(rownames(table_mat))
+      y <- as.numeric(rownames(table_mat))
       for (i in 1:colcnt) {
-        loessfit <- stats::loess(table_mat[, i] ~ x, span = span[i], degree = degree, family = family)
-        table_mat[, i] <- stats::predict(loessfit, data.frame(x = x))
+        loessfit <- stats::loess(table_mat[, i] ~ y, span = span[i], degree = degree, family = family)
+        table_mat[, i] <- stats::predict(loessfit, data.frame(y = y))
       }
     }
     # If no plot needed, then return the table.  A user should only use this
@@ -5464,7 +5477,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
   if (tab_type == "ZW|XY") {
     # Line Plot of Design Characteristics: Control differences by sample size
     # First generate the table using a call to print_table.
-    table_mat <- print_table(bayes_ctd_array = bayes_ctd_array, measure = measure, tab_type = "ZW|XY",
+    table_mat <- print(x = x, measure = measure, tab_type = "ZW|XY",
                              a0_val = a0_val, effect_val=effect_val, print_chg_warn = 0)
     #The following if block makes the 1D case work, if it occurs.
     #The return of a 1D vector from print_table(tab_type="ZX|WY")
@@ -5478,7 +5491,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
     }
     table_mat <- data.frame(table_mat)
     if (dim(table_mat)[2]==1){
-      tempcolname <- paste('X', as.character(bayes_ctd_array$subj_per_arm), sep='')
+      tempcolname <- paste('X', as.character(x$subj_per_arm), sep='')
       colnames(table_mat) <- tempcolname
     }
     # Use a call to stats::loess to smooth simulation results is requested.
@@ -5486,10 +5499,10 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       colcnt <- dim(table_mat)[2]
       if (length(span) == 1) #If span is single number, then use it to smooth all columns.
         span <- rep(span, colcnt)
-      x <- as.numeric(rownames(table_mat))
+      y <- as.numeric(rownames(table_mat))
       for (i in 1:colcnt) {
-        loessfit <- stats::loess(table_mat[, i] ~ x, span = span[i], degree = degree, family = family)
-        table_mat[, i] <- stats::predict(loessfit, data.frame(x = x))
+        loessfit <- stats::loess(table_mat[, i] ~ y, span = span[i], degree = degree, family = family)
+        table_mat[, i] <- stats::predict(loessfit, data.frame(y = y))
       }
     }
     # If no plot needed, then return the table.  A user should only use this
@@ -5569,7 +5582,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
   if (tab_type == "ZY|WX") {
     # Line Plot of Design Characteristics: a0 by Effect
     # First generate the table using a call to print_table.
-    table_mat <- print_table(bayes_ctd_array = bayes_ctd_array, measure = measure, tab_type = "ZY|WX", subj_per_arm_val = subj_per_arm_val,
+    table_mat <- print(x = x, measure = measure, tab_type = "ZY|WX", subj_per_arm_val = subj_per_arm_val,
                              a0_val = a0_val, print_chg_warn = 0)
     #The following if block makes the 1D case work, if it occurs.
     #The return of a 1D vector from print_table(tab_type="ZX|WY")
@@ -5583,7 +5596,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
     }
     table_mat <- data.frame(table_mat)
     if (dim(table_mat)[2]==1){
-      tempcolname <- paste('X', as.character(bayes_ctd_array$effect_vals), sep='')
+      tempcolname <- paste('X', as.character(x$effect_vals), sep='')
       colnames(table_mat) <- tempcolname
     }
     # Use a call to stats::loess to smooth simulation results is requested.
@@ -5591,10 +5604,10 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       colcnt <- dim(table_mat)[2]
       if (length(span) == 1) #If span is single number, then use it to smooth all columns.
         span <- rep(span, colcnt)
-      x <- as.numeric(rownames(table_mat))
+      y <- as.numeric(rownames(table_mat))
       for (i in 1:colcnt) {
-        loessfit <- stats::loess(table_mat[, i] ~ x, span = span[i], degree = degree, family = family)
-        table_mat[, i] <- stats::predict(loessfit, data.frame(x = x))
+        loessfit <- stats::loess(table_mat[, i] ~ y, span = span[i], degree = degree, family = family)
+        table_mat[, i] <- stats::predict(loessfit, data.frame(y = y))
       }
     }
     # If no plot needed, then return the table.  A user should only use this
@@ -5670,7 +5683,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
   if (tab_type == "YX|WZ") {
     # Line Plot of Design Characteristics: Effect by a0
     # First generate the table using a call to print_table.
-    table_mat <- print_table(bayes_ctd_array = bayes_ctd_array, measure = measure, tab_type = "YX|WZ", subj_per_arm_val = subj_per_arm_val,
+    table_mat <- print(x = x, measure = measure, tab_type = "YX|WZ", subj_per_arm_val = subj_per_arm_val,
                              rand_control_diff_val = rand_control_diff_val, print_chg_warn = 0)
     #The following if block makes the 1D case work, if it occurs.
     #The return of a 1D vector from print_table(tab_type="ZX|WY")
@@ -5684,7 +5697,7 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
     }
     table_mat <- data.frame(table_mat)
     if (dim(table_mat)[2]==1){
-      tempcolname <- paste('X', as.character(bayes_ctd_array$a0_vals), sep='')
+      tempcolname <- paste('X', as.character(x$a0_vals), sep='')
       colnames(table_mat) <- tempcolname
     }
     # Use a call to stats::loess to smooth simulation results is requested.
@@ -5692,10 +5705,10 @@ plot.bayes_ctd_array <- function(bayes_ctd_array = NULL, measure = "power", tab_
       colcnt <- dim(table_mat)[2]
       if (length(span) == 1) #If span is single number, then use it to smooth all columns.
         span <- rep(span, colcnt)
-      x <- as.numeric(rownames(table_mat))
+      y <- as.numeric(rownames(table_mat))
       for (i in 1:colcnt) {
-        loessfit <- stats::loess(table_mat[, i] ~ x, span = span[i], degree = degree, family = family)
-        table_mat[, i] <- stats::predict(loessfit, data.frame(x = x))
+        loessfit <- stats::loess(table_mat[, i] ~ y, span = span[i], degree = degree, family = family)
+        table_mat[, i] <- stats::predict(loessfit, data.frame(y = y))
       }
     }
     # If no plot needed, then return the table.  A user should only use this

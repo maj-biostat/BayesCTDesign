@@ -1,3 +1,9 @@
+## Submission of 0.6.0
+I added print() and plot() methods, and I corrected
+the calculation of variance on the scale of the effect.
+The variance calculation uses the delta method and the
+variance of the log effect.
+
 ## Resubmission 2
 Per CRAN review, I have added the rth role back into the
 DESCRIPTION file to cover a role for Diane Catellier.
